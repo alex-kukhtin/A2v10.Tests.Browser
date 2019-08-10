@@ -35,10 +35,21 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="ChromeBrowser.cs" />
+    <Compile Include="IWebBrowser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Xaml\Feature.cs" />
+    <Compile Include="Xaml\Scenario.cs" />
+    <Compile Include="Xaml\Step.cs" />
+    <Compile Include="Xaml\Steps\OpenUrl.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

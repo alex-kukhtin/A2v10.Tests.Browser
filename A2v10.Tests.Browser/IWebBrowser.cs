@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace A2v10.Tests.Browser
 {
-    public class Class1
-    {
-    }
+	public interface IWebBrowser
+	{
+		void GotoUrl(String url);
+	}
 }
