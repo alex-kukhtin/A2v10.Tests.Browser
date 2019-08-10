@@ -10,9 +10,8 @@ namespace A2v10.Tests.Browser.Xaml
 
 	}
 
-	public abstract class Step
+	public abstract class Step : XamlItem
 	{
 		public String Description { get; set; }
-		public abstract void Run(IWebBrowser browser);
 	}
 }

@@ -7,11 +7,13 @@ namespace A2v10.Tests.Browser.Xaml
 	public class ClickButton : Step
 	{
 		public String Text { get; set; }
-		public String Id { get; set; }
 
 		public override void Run(IWebBrowser browser)
 		{
-			//browser.ClickButton("");
+			String xPath = null;
+			if (Text != null)
+				xPath = $".//button[contains(@class,'btn')][normalize-space()='{Text}']";
+			browser.ClickButton(xPath);
 		}
 	}
 }

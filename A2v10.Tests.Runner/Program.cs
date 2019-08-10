@@ -17,17 +17,19 @@ namespace A2v10.Tests.Runner
 		{
 			if (args.Length == 0)
 			{
-				MessageBox.Show("Usage: TestRunner configfile", "TestRunner", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+				MessageBox.Show("Usage: TestRunner appDir", "TestRunner", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 				return;
 			}
-			String path = Path.ChangeExtension(args[0], ".config");
+			String path = Path.Combine(args[0], "_tests");
+			String configPath = Path.ChangeExtension(Path.Combine(path, "TestRunner"), ".config");
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(
 				new MainForm()
 				{
-					ConfigFile = path
+					AppDir = path,
+					ConfigFile = configPath
 				}
 				);
 		}

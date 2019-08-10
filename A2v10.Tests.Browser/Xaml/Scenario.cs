@@ -11,9 +11,15 @@ namespace A2v10.Tests.Browser.Xaml
 	}
 
 	[ContentProperty("Steps")]
-	public class Scenario
+	public class Scenario : XamlItem
 	{
 		public String Description { get; set; }
-		public StepCollection Steps { get; set; }
+		public StepCollection Steps { get; set; } = new StepCollection();
+
+		public override void Run(IWebBrowser browser)
+		{
+			foreach (var st in Steps)
+				st.Run(browser);
+		}
 	}
 }

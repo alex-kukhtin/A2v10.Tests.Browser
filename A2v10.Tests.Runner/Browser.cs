@@ -1,6 +1,7 @@
 ﻿
 using A2v10.Tests.Browser;
 using System;
+using System.Threading.Tasks;
 
 namespace A2v10.Tests.Runner
 {
@@ -16,6 +17,12 @@ namespace A2v10.Tests.Runner
 			}
 		}
 
+		public static void Close()
+		{
+			if (_current != null)
+				_current.Dispose();
+		}
+
 		private static Browser _current;
 
 		private ChromeBrowser _browser;
@@ -23,12 +30,24 @@ namespace A2v10.Tests.Runner
 		private Browser()
 		{
 			_browser = new ChromeBrowser();
-			_browser.Start("http://thishost:81");
-			_browser.Login("", "");
+			var config = Config.Current;
+			_browser.Start(config.Url);
+			_browser.Login(config.Login, config.Password);
 		}
 
 		public void RunAll()
 		{
+			RunOne("dialogs/CreateAgent");
+		}
+
+		public Task RunOne(String futureFile)
+		{
+			var config = Config.Current;
+			var future = config.GetFuture(futureFile);
+			return Task.Run(() =>
+			{
+				future.Run(_browser);
+			});
 		}
 
 		public void Dispose()

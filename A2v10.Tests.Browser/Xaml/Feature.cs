@@ -6,9 +6,15 @@ using System.Windows.Markup;
 namespace A2v10.Tests.Browser.Xaml
 {
 	[ContentProperty("Scenarios")]
-	public class Feature
+	public class Feature : XamlItem
 	{
 		public String Description { get; set; }
-		public ScenarioCollection Scenarios { get; set; }
+		public ScenarioCollection Scenarios { get; set; } = new ScenarioCollection();
+
+		public override void Run(IWebBrowser browser)
+		{
+			foreach (var sc in Scenarios)
+				sc.Run(browser);
+		}
 	}
 }

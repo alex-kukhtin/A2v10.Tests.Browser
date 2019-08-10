@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Diagnostics;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -10,6 +11,8 @@ namespace A2v10.Tests.Browser
 	{
 		private ChromeDriver _driver;
 		private INavigation _navigate;
+
+		private const Int32 WAIT_TIMEOUT = 10000; // ms
 
 		public ChromeBrowser()
 		{
@@ -47,24 +50,62 @@ namespace A2v10.Tests.Browser
 				throw new InvalidOperationException("Browser is not running");
 		}
 
+		public void WaitForComplete()
+		{
+			EnsureDriver();
+			var sw = new Stopwatch();
+			try
+			{
+				String readyState = String.Empty;
+				while (readyState != "0")
+				{
+					readyState = _driver.ExecuteScript("return window.__requestsCount__;")?.ToString();
+					Thread.Sleep(20);
+					if (sw.ElapsedMilliseconds > WAIT_TIMEOUT)
+						throw new TimeoutException();
+				}
+			}
+			catch (Exception /*ex*/)
+			{
+				// do nothing
+			}
+		}
+
 		#region IWebBrowser
 		public void GotoUrl(String url)
 		{
 			EnsureDriver();
 			_navigate.GoToUrl(url);
+			WaitForComplete();
 		}
 
-		public void WaitForComplete()
+		public void Navigate(String url)
 		{
 			EnsureDriver();
-			String readyState = String.Empty;
-			while (readyState != "0")
+			_driver.ExecuteScript($"window.__tests__.$navigate('{url}')");
+			WaitForComplete();
+		}
+
+		public void ClickButton(String xPath)
+		{
+			EnsureDriver();
+			var elem = _driver.FindElementByXPath(xPath);
+			if (!elem.Displayed)
+				throw new TestException($"Element '{xPath}' is not currently visible and so may not be interacted with");
+			elem.Click();
+		}
+
+		public void GetElements(String xPath)
+		{
+			EnsureDriver();
+			var elems = _driver.FindElementsByXPath(xPath);
+			foreach (var e in elems)
 			{
-				readyState = _driver.ExecuteScript("return window.__requestsCount__;")?.ToString();
-				Thread.Sleep(20);
 			}
 		}
+
 		#endregion
+
 
 		#region IDisposable
 		public void Dispose()
