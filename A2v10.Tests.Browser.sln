@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.757
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2v10.Tests.Browser", "A2v10.Tests.Browser\A2v10.Tests.Browser.csproj", "{1E1BEA85-44A0-4E98-85AA-9AEF78AA6CD4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2v10.Tests.Runner", "A2v10.Tests.Runner\A2v10.Tests.Runner.csproj", "{58E2A77E-7ACC-4063-93C9-C304132201D1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{1E1BEA85-44A0-4E98-85AA-9AEF78AA6CD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E1BEA85-44A0-4E98-85AA-9AEF78AA6CD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E1BEA85-44A0-4E98-85AA-9AEF78AA6CD4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58E2A77E-7ACC-4063-93C9-C304132201D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58E2A77E-7ACC-4063-93C9-C304132201D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58E2A77E-7ACC-4063-93C9-C304132201D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58E2A77E-7ACC-4063-93C9-C304132201D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

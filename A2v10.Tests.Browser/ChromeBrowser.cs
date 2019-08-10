@@ -11,20 +11,34 @@ namespace A2v10.Tests.Browser
 		private ChromeDriver _driver;
 		private INavigation _navigate;
 
-		ChromeBrowser()
+		public ChromeBrowser()
 		{
 		}
 
-		void Start() {
+		public void Start(String url) {
 			if (_driver != null)
 				return;
 			ChromeOptions opts = new ChromeOptions()
 			{
-				PageLoadStrategy = PageLoadStrategy.Eager
+				PageLoadStrategy = PageLoadStrategy.Default
 			};
 
 			_driver = new ChromeDriver(opts);
 			_navigate = _driver.Navigate();
+			_navigate.GoToUrl(url);
+		}
+
+		public void Login(String login, String passsword)
+		{
+			var inputLogin = _driver.FindElementById("login");
+			inputLogin.SendKeys(login);
+
+			var inputPassword = _driver.FindElementById("password");
+			inputPassword.SendKeys(passsword);
+
+			var btnSubmit = _driver.FindElementById("submit");
+			btnSubmit.Click();
+			WaitForComplete();
 		}
 
 		void EnsureDriver()

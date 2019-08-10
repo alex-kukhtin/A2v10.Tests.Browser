@@ -46,6 +46,7 @@
     <Compile Include="Xaml\Feature.cs" />
     <Compile Include="Xaml\Scenario.cs" />
     <Compile Include="Xaml\Step.cs" />
+    <Compile Include="Xaml\Steps\ClickButton.cs" />
     <Compile Include="Xaml\Steps\OpenUrl.cs" />
   </ItemGroup>
   <ItemGroup>
