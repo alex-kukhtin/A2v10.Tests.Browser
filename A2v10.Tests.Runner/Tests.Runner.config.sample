@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+		<add key="url" value="service_url_here"/>
+		<add key="login" value="my_login_here"/>
+		<add key="password" value="my_password_here"/>
+	</appSettings>
+</configuration>

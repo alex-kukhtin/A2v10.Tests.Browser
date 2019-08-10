@@ -11,10 +11,27 @@ namespace A2v10.Tests.Browser.Xaml
 		public String Description { get; set; }
 		public ScenarioCollection Scenarios { get; set; } = new ScenarioCollection();
 
-		public override void Run(IWebBrowser browser)
+		public void RunAll(IWebBrowser browser, Action<IRunScenario> run)
 		{
 			foreach (var sc in Scenarios)
-				sc.Run(browser);
+			{
+				var helper = browser.StartScenario(sc.Name);
+				try
+				{
+					sc.Run(browser);
+				}
+				catch (Exception ex)
+				{
+					helper.WriteException(ex);
+				}
+				run(helper);
+			}
+		}
+
+
+		public override void Run(IWebBrowser browser)
+		{
+			throw new NotImplementedException();
 		}
 	}
 }

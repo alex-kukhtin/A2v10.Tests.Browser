@@ -71,7 +71,23 @@ namespace A2v10.Tests.Browser
 			}
 		}
 
+		public void EnsureNoAppException()
+		{
+			var exceptions = _driver.FindElementsByClassName("app-exception");
+			if (exceptions != null && exceptions.Count > 0)
+				throw new TestException($"Clicking on an item throws an exception");
+		}
+
 		#region IWebBrowser
+
+		public IRunScenario StartScenario(String name)
+		{
+			return new RunScenario()
+			{
+				Name = name
+			};
+		}
+
 		public void GotoUrl(String url)
 		{
 			EnsureDriver();
@@ -84,15 +100,21 @@ namespace A2v10.Tests.Browser
 			EnsureDriver();
 			_driver.ExecuteScript($"window.__tests__.$navigate('{url}')");
 			WaitForComplete();
+			var body = _driver.FindElementByTagName("body");
+			body?.Click();
+			EnsureNoAppException();
+			
 		}
 
-		public void ClickButton(String xPath)
+		public void Click(String xPath)
 		{
 			EnsureDriver();
 			var elem = _driver.FindElementByXPath(xPath);
 			if (!elem.Displayed)
 				throw new TestException($"Element '{xPath}' is not currently visible and so may not be interacted with");
 			elem.Click();
+			WaitForComplete();
+			EnsureNoAppException();
 		}
 
 		public void GetElements(String xPath)

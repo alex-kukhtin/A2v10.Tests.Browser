@@ -4,15 +4,15 @@ using System;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class ClickButton : Step
+	public class ClickLink : Step
 	{
-		public String Text { get; set; }
+		public String Url { get; set; }
 
 		public override void Run(IWebBrowser browser)
 		{
 			String xPath = null;
-			if (Text != null)
-				xPath = $".//button[contains(@class,'btn')][normalize-space()='{Text}']";
+			if (Url != null)
+				xPath = $".//a[@href='{Url.Trim()}']";
 			browser.Click(xPath);
 		}
 	}

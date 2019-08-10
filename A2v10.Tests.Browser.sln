@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2v10.Tests.Browser", "A2v1
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "A2v10.Tests.Runner", "A2v10.Tests.Runner\A2v10.Tests.Runner.csproj", "{58E2A77E-7ACC-4063-93C9-C304132201D1}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "A2v10.Tests.Installer", "A2v10.Tests.Installer\A2v10.Tests.Installer.vdproj", "{3A150CDE-90B6-49DE-BBEB-7065CB9C0D9F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,8 @@ Global
 		{58E2A77E-7ACC-4063-93C9-C304132201D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{58E2A77E-7ACC-4063-93C9-C304132201D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{58E2A77E-7ACC-4063-93C9-C304132201D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A150CDE-90B6-49DE-BBEB-7065CB9C0D9F}.Debug|Any CPU.ActiveCfg = Debug
+		{3A150CDE-90B6-49DE-BBEB-7065CB9C0D9F}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -37,17 +37,23 @@ namespace A2v10.Tests.Runner
 
 		public void RunAll()
 		{
-			RunOne("dialogs/CreateAgent");
 		}
 
-		public Task RunOne(String futureFile)
+		public Task RunOneAsync(String futureFile, Action<IRunScenario> run)
 		{
 			var config = Config.Current;
 			var future = config.GetFuture(futureFile);
 			return Task.Run(() =>
 			{
-				future.Run(_browser);
+				future.RunAll(_browser, run);
 			});
+		}
+
+		public void RunOne(String futureFile, Action<IRunScenario> run)
+		{
+			var config = Config.Current;
+			var future = config.GetFuture(futureFile);
+			future.RunAll(_browser, run);
 		}
 
 		public void Dispose()
