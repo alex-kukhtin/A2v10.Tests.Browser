@@ -80,11 +80,12 @@ namespace A2v10.Tests.Browser
 
 		#region IWebBrowser
 
-		public IRunScenario StartScenario(String name)
+		public IRunScenario StartScenario(String name, String description)
 		{
 			return new RunScenario()
 			{
-				Name = name
+				Name = name,
+				Description = description
 			};
 		}
 
@@ -103,7 +104,6 @@ namespace A2v10.Tests.Browser
 			var body = _driver.FindElementByTagName("body");
 			body?.Click();
 			EnsureNoAppException();
-			
 		}
 
 		public void Click(String xPath)
@@ -124,6 +124,13 @@ namespace A2v10.Tests.Browser
 			foreach (var e in elems)
 			{
 			}
+		}
+
+		public void Escape()
+		{
+			EnsureDriver();
+			var body = _driver.FindElementByTagName("body");
+			body?.SendKeys(Keys.Escape);
 		}
 
 		#endregion

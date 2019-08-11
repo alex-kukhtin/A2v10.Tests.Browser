@@ -4,13 +4,13 @@ using System;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class EnsureDropDown : Step
+	public class EnsureDialog : Step
 	{
-		public String Items { get; set; }
+		public String Title { get; set; }
 
 		public override void Run(IWebBrowser browser)
 		{
-			String xPath = ".//div[contains(@class, 'dropdown')][contains(@class, 'show')]/*/button";
+			String xPath = ".//div[contains(@class, 'modal-wrapper')][contains(@class, 'show')]/div[contains(@class, 'modal-window')]";
 			// TODO
 			browser.GetElements(xPath);
 		}

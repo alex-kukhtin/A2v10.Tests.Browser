@@ -8,7 +8,7 @@
 			font-family: 'Segoe UI',Tahoma,Arial,sans-serif;
 			color: #333;
 			padding: 20px;
-			font-size:13px;
+			font-size: 13px;
 		}
 
 		.red {
@@ -19,7 +19,7 @@
 			font-size: 18px;
 			color: #999;
 			margin: 0 0 4px 0;
-			padding:0 0 8px 0;
+			padding: 0 0 8px 0;
 		}
 
 		.state:before {
@@ -78,9 +78,9 @@
 
 		.descr {
 			color: #999;
-			font-size:12px;
-			margin-top:6px;
-			border-top:1px solid #ddd;
+			font-size: 12px;
+			margin-top: 6px;
+			border-top: 1px solid #ddd;
 		}
 
 		.success-mark {
@@ -92,6 +92,33 @@
 </head>
 <body>
 	<div id="root">
+		<h1><span class="success state big"></span>STATE SUCCESS</h1>
+		<h1><span class="fail state big"></span>STATE FAIL</h1>
+		<h1><span class="undefined state big"></span>STATE UNDEFINED</h1>
+		<hr />
+		<div>
+			<h1><span class="success state big"></span>01 Main Menu</h1>
+			<div class="descr">I am the feature description</div>
+			<ul class="scenario">
+				<li>
+					<span class="success state"></span><span class="step">01 Main Menu links</span>
+					<div class="descr">I am the scenario description</div>
+				</li>
+				<li>
+					<span class="undefined state"></span><span class="step">01 Main Menu links</span>
+					<div class="descr">I am the scenario description</div>
+				</li>
+				<li>
+					<span class="fail state"></span><span class="step">02 Main Menu links</span>
+					<span class="ex">
+						This is exception text here May be more more lines
+						asdasd
+						adasd
+						asdadasd
+					</span>
+				</li>
+			</ul>
+		</div>
 	</div>
 </body>
 </html>

@@ -147,6 +147,7 @@
 			// 
 			this.treeView.BorderStyle = System.Windows.Forms.BorderStyle.None;
 			this.treeView.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.treeView.HideSelection = false;
 			this.treeView.ImageIndex = 0;
 			this.treeView.ImageList = this.treeImageList;
 			this.treeView.Location = new System.Drawing.Point(0, 0);
@@ -161,7 +162,6 @@
 			this.webBrowser1.AllowNavigation = false;
 			this.webBrowser1.AllowWebBrowserDrop = false;
 			this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.webBrowser1.IsWebBrowserContextMenuEnabled = false;
 			this.webBrowser1.Location = new System.Drawing.Point(0, 0);
 			this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser1.Name = "webBrowser1";

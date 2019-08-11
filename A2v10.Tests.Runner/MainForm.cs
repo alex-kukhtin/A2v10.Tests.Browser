@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-using A2v10.Tests.Browser;
 using A2v10.Tests.Runner.Properties;
 
 namespace A2v10.Tests.Runner
@@ -17,28 +16,12 @@ namespace A2v10.Tests.Runner
 		public String AppDir { get; set; }
 		public String ConfigFile { get; set; }
 
-		const Int32 IMAGE_FOLDER = 0;
-		const Int32 IMAGE_HIDDEN = 4;
-		const Int32 IMAGE_SUCCESS = 2;
-		const Int32 IMAGE_FAIL = 3;
-		const Int32 IMAGE_NOT_STARTED = 1;
-		const Int32 IMAGE_LOADING = 5;
+		private ThreadQueue _threadQueue;
+		private Int32 _countThreads;
 
 		public MainForm()
 		{
 			InitializeComponent();
-		}
-
-		private void RunAll(Object sender, EventArgs e)
-		{
-			ForEachFeature(treeView.Nodes, n =>
-			{
-				n.ImageIndex = IMAGE_HIDDEN;
-				n.SelectedImageIndex = IMAGE_HIDDEN;
-				(n.Tag as NodeInfo).Clear();
-			});
-			RunAll(treeView.Nodes);
-			SetButtonsState(disable:true);
 		}
 
 		private void RunAll(TreeNodeCollection nodes)
@@ -54,28 +37,28 @@ namespace A2v10.Tests.Runner
 					RunAll(node.Nodes);
 				}
 			}
-			SetCurrentNodeText();
+			UpdateUI();
 		}
 
 		private void RunOne(TreeNode node)
 		{
-			if (!node.IsFeature())
+			if (!(node.Tag is NodeInfo ni))
 				return;
 
-			var ni = node.Tag as NodeInfo;
 			if (ni.Type != NodeType.Feature)
 				return;
 
-			node.ImageIndex = IMAGE_LOADING;
-			node.SelectedImageIndex = IMAGE_LOADING;
-			ni.Clear();
+			node.SetRunning();
 
+			_countThreads += 1;
+			UpdateUI();
+
+			// thread safe!
 			MethodInvoker mi = delegate ()
 			{
-				SetNodeResult(node);
-				if (node == treeView.SelectedNode)
-					SetCurrentNodeText();
-				SetButtonsState();
+				node.SetResult();
+				_countThreads -= 1;
+				UpdateUI();
 			};
 
 			_threadQueue.Enqueue(() => {
@@ -83,54 +66,64 @@ namespace A2v10.Tests.Runner
 				this.Invoke(mi);
 			});
 
-			SetButtonsState(disable:true);
-			//Browser.Current.RunOneAsync(ni.Path, (run) => RunAction(ni, run)).Wait();
 		}
 
-		void ForEachFeature(TreeNodeCollection nodes, Action<TreeNode> action)
+		#region Commands
+		private void RunAll(Object sender, EventArgs e)
 		{
-			foreach (var n in nodes)
-			{
-				if (n is TreeNode node) {
-					var ni = node.Tag as NodeInfo;
-					if (ni.Type == NodeType.Feature) {
-						action(node);
-					}
-					ForEachFeature(node.Nodes, action);
-				}
-			}
-		}
-
-		void SetNodeRunning(TreeNode node)
-		{
-			var ni = node.Tag as NodeInfo;
-			if (ni.Type == NodeType.Folder)
-				return;
-			Int32 image = IMAGE_HIDDEN;
-			node.ImageIndex = image;
-			node.SelectedImageIndex = image;
-			ni.Running = true;
-		}
-
-		void SetNodeResult(TreeNode node)
-		{
-			var ni = node.Tag as NodeInfo;
-			if (ni.Type == NodeType.Folder)
-				return;
-			Int32 image = ni.IsSuccess ? IMAGE_SUCCESS : IMAGE_FAIL;
-			node.ImageIndex = image;
-			node.SelectedImageIndex = image;
-			ni.Running = false;
+			RunAll(treeView.Nodes);
 		}
 
 		private void RunOne(Object sender, EventArgs e)
 		{
-			this.BringToFront();
 			var node = treeView.SelectedNode;
-			RunOne(node);
+			if (node == null) return;
+			if (node.IsFeature())
+				RunOne(node);
+			else
+				RunAll(node.Nodes);
 		}
 
-		private ThreadQueue _threadQueue;
+		private void OnReload(Object sender, EventArgs e)
+		{
+			treeView.Nodes.Clear();
+			LoadTree(AppDir, treeView.Nodes);
+		}
+		#endregion
+
+
+
+		String GetSimpleFileName(String file)
+		{
+			String f = Path.GetFileNameWithoutExtension(file);
+			Int32 dot = f.IndexOf('.');
+			if (dot != -1)
+				return f.Substring(0, dot);
+			return f;
+		}
+
+		void LoadTree(String path, TreeNodeCollection nodes)
+		{
+			var dirs = Directory.EnumerateDirectories(path).OrderBy(x => x);
+			foreach (var d in dirs)
+			{
+				var node = NodeInfo.CreateNode(Path.GetFileName(d), d, NodeType.Folder);
+				nodes.Add(node);
+				LoadTree(d, node.Nodes);
+
+				var files = Directory.EnumerateFiles(d, "*.feature.xaml").OrderBy(x => x);
+				foreach (var f in files)
+				{
+					var file = NodeInfo.CreateNode(GetSimpleFileName(f), f, NodeType.Feature);
+					node.Nodes.Add(file);
+				}
+
+				node.Expand();
+			}
+			UpdateUI();
+		}
+
+		#region Events
 
 		private void OnLoad(Object sender, EventArgs e)
 		{
@@ -149,54 +142,6 @@ namespace A2v10.Tests.Runner
 			_threadQueue = new ThreadQueue();
 		}
 
-
-		String GetSimpleFileName(String file)
-		{
-			String f = Path.GetFileNameWithoutExtension(file);
-			Int32 dot = f.IndexOf('.');
-			if (dot != -1)
-				return f.Substring(0, dot);
-			return f;
-		}
-
-		void LoadTree(String path, TreeNodeCollection nodes)
-		{
-			var dirs = Directory.EnumerateDirectories(path).OrderBy(x => x);
-			foreach (var d in dirs)
-			{
-				var node = new TreeNode()
-				{
-					Text = Path.GetFileName(d),
-					ImageIndex = IMAGE_FOLDER,
-					SelectedImageIndex = IMAGE_FOLDER,
-					Tag = new NodeInfo()
-					{
-						Type = NodeType.Folder,
-						Path = d
-					}
-				};
-				nodes.Add(node);
-				LoadTree(d, node.Nodes);
-				var files = Directory.EnumerateFiles(d, "*.feature.xaml").OrderBy(x => x);
-				foreach (var f in files)
-				{
-					var file = new TreeNode()
-					{
-						Text = GetSimpleFileName(f),
-						ImageIndex = IMAGE_HIDDEN,
-						SelectedImageIndex = IMAGE_HIDDEN,
-						Tag = new NodeInfo()
-						{
-							Type = NodeType.Feature,
-							Path = f
-						}
-					};
-					node.Nodes.Add(file);
-				}
-				node.Expand();
-			}
-		}
-
 		private void OnClosing(Object sender, FormClosingEventArgs e)
 		{
 			Browser.Close();
@@ -204,45 +149,45 @@ namespace A2v10.Tests.Runner
 
 		private void TreeViewAfterSelect(Object sender, TreeViewEventArgs e)
 		{
-			SetCurrentNodeText();
-			SetButtonsState();
+			UpdateUI();
 		}
+		#endregion
 
-		void SetCurrentNodeText()
+		private void SetCurrentNodeText()
 		{
 			var node = treeView.SelectedNode;
 			var nodeInfo = node?.Tag as NodeInfo;
+
+			var dom = webBrowser1.Document.DomDocument as dynamic;
+			var elem = dom.getElementById("root");
+			elem.parentNode.removeChild(elem);
+
+			var h = webBrowser1.Document.CreateElement("div");
+
 			if (node == null || nodeInfo == null || nodeInfo.Type == NodeType.Folder)
 			{
-				webBrowser1.Document.Body.InnerHtml = "<div>empty</div>";
+				h.InnerHtml = "<div id=\"root\"></div>";
 			}
 			else
 			{
-				//webBrowser1.DocumentText = "<html><body>I AM THE TEXT FROM SELECTED</body></html>";
-				var errorList = nodeInfo.GetExceptionsHtml();
-				webBrowser1.Document.Body.InnerHtml = $"<h1>{node.Text}</h1><h3>{nodeInfo.IsSuccess}</h3>{errorList}";
+				h.InnerHtml = node.DescriptionHTML();
 			}
+			webBrowser1.Document.Body.AppendChild(h);
 		}
 
-		void SetButtonsState(Boolean disable = false)
+		private void SetButtonsState()
 		{
-			Boolean isEnabled = false;
-			if (!disable)
-				isEnabled = _threadQueue.IsEmpty;
+			Boolean isEnabled = _countThreads == 0;
+
 			toolRunAll.Enabled = isEnabled;
 			toolReload.Enabled = isEnabled;
-
-			if (isEnabled)
-				isEnabled = treeView.SelectedNode.IsFeature();
-
-			toolRunOne.Enabled = isEnabled;
+			toolRunOne.Enabled = isEnabled && treeView.SelectedNode != null;
 		}
 
-		private void OnReload(Object sender, EventArgs e)
+		private void UpdateUI()
 		{
-			treeView.Nodes.Clear();
-			LoadTree(AppDir, treeView.Nodes);
 			SetCurrentNodeText();
+			SetButtonsState();
 		}
 	}
 }

@@ -49,9 +49,12 @@
     <Compile Include="Xaml\Loader.cs" />
     <Compile Include="Xaml\Scenario.cs" />
     <Compile Include="Xaml\Step.cs" />
+    <Compile Include="Xaml\Steps\ClickMenuItem.cs" />
     <Compile Include="Xaml\Steps\ClickLink.cs" />
     <Compile Include="Xaml\Steps\ClickButton.cs" />
+    <Compile Include="Xaml\Steps\EnsureDialog.cs" />
     <Compile Include="Xaml\Steps\EnsureDropDown.cs" />
+    <Compile Include="Xaml\Steps\Escape.cs" />
     <Compile Include="Xaml\Steps\Navigate.cs" />
     <Compile Include="Xaml\Steps\OpenUrl.cs" />
     <Compile Include="Xaml\XamlItem.cs" />

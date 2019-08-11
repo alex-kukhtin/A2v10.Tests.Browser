@@ -15,10 +15,11 @@ namespace A2v10.Tests.Browser.Xaml
 		{
 			foreach (var sc in Scenarios)
 			{
-				var helper = browser.StartScenario(sc.Name);
+				var helper = browser.StartScenario(sc.Name, sc.Description);
 				try
 				{
 					sc.Run(browser);
+					helper.SetSuccess();
 				}
 				catch (Exception ex)
 				{

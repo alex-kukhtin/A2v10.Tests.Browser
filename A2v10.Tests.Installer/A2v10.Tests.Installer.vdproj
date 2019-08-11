@@ -80,6 +80,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
         "Release"
@@ -104,6 +112,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.6.1"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.6.1 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.6.1"
+                    }
+                }
             }
         }
     }
@@ -189,7 +205,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Browser, Version=10.0.7000.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Browser, Version=10.0.7003.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_A6C1D43ECD32DF00B5DE0E59ADB91063"
@@ -220,7 +236,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7000.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7003.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F380DE6E619F478A993003843CF23ADE"
@@ -303,15 +319,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:A2v10 Tests Runner"
-        "ProductCode" = "8:{4989C88A-5458-4615-AD22-ACE231CD017B}"
-        "PackageCode" = "8:{70548BE1-99F1-4CC9-AC38-2FB89E81F2BB}"
+        "ProductCode" = "8:{E1A62536-280D-4334-8F3B-1A2F15D019E6}"
+        "PackageCode" = "8:{64BA095E-8D61-436A-938A-E6A0CC0769AE}"
         "UpgradeCode" = "8:{C4D96370-4C3E-4F12-BB6D-D6F92A87AFAF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:10.0.7001"
+        "ProductVersion" = "8:10.0.7003"
         "Manufacturer" = "8:Alex Kukhtin"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

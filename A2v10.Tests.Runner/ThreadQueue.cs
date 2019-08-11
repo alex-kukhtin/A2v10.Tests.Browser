@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace A2v10.Tests.Runner
@@ -27,6 +28,7 @@ namespace A2v10.Tests.Runner
 		{
 			while (true)
 			{
+				Thread.Sleep(50);
 				if (_queue.TryDequeue(out Action action))
 				{
 					action();

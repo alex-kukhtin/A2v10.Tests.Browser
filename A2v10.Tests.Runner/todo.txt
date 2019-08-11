@@ -1,9 +1,8 @@
 ﻿
-1. Load tree in form
-2. Start/Stop browser and toolbar button
-3. Run one test
-4. Ensure DropDown
-5. ClickHyperlink
-6. Resize browser window
-7. EnsureDialog
+4. Ensure DropDown (MenuItems)
+7. EnsureDialog (Title)
+8. TypeText Label="Сума"
+9. EnsureControlInvalid Label="Сумма" Text=""
+10. EnsureControlValid Label=""
+11. 
 

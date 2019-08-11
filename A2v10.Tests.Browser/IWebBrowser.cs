@@ -7,11 +7,14 @@ namespace A2v10.Tests.Browser
 	public interface IRunScenario
 	{
 		String Name { get; }
+		String Description { get; set; }
+
 		Exception Exception { get; }
 		Boolean IsSuccess { get; }
 		Boolean IsFailure { get; }
 
 		void WriteException(Exception ex);
+		void SetSuccess();
 	}
 
 	public interface IWebBrowser
@@ -20,6 +23,9 @@ namespace A2v10.Tests.Browser
 		void Navigate(String url);
 		void Click(String xPath);
 		void GetElements(String xPath);
-		IRunScenario StartScenario(String name);
+		void Escape();
+
+		IRunScenario StartScenario(String name, String description);
+
 	}
 }
