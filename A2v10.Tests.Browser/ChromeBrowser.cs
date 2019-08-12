@@ -109,8 +109,6 @@ namespace A2v10.Tests.Browser
 			EnsureDriver();
 			_driver.ExecuteScript($"window.__tests__.$navigate('{url}')");
 			WaitForComplete();
-			var body = _driver.FindElementByTagName("body");
-			body?.Click();
 			EnsureNoAppException();
 		}
 
@@ -139,10 +137,10 @@ namespace A2v10.Tests.Browser
 			return result;
 		}
 
-		public IReadOnlyList<ITestElement> GetElementsByClassName(String clasName)
+		public IReadOnlyList<ITestElement> GetElementsByClassName(String className)
 		{
 			EnsureDriver();
-			var elems = _driver.FindElementsByClassName(clasName);
+			var elems = _driver.FindElementsByClassName(className);
 			var result = new List<ITestElement>();
 			foreach (var e in elems)
 				result.Add(new TestElement(e));
@@ -154,6 +152,19 @@ namespace A2v10.Tests.Browser
 			EnsureDriver();
 			var body = _driver.FindElementByTagName("body");
 			body?.SendKeys(Keys.Escape);
+		}
+
+		public IWindow GetLastNewWindow()
+		{
+			EnsureDriver();
+			var handles = _driver.WindowHandles;
+			if (handles.Count < 2)
+				throw new TestException($"Window not found");
+			var winName = handles[handles.Count - 1];
+			_driver.SwitchTo().Window(winName);
+			WaitForComplete();
+			EnsureNoAppException();
+			return new TestWindow(_driver);
 		}
 
 		#endregion
@@ -178,8 +189,14 @@ namespace A2v10.Tests.Browser
 			_driver = null;
 			if (driver != null)
 			{
-				driver.Close();
-				driver.Dispose();
+				try
+				{
+					driver.Close();
+					driver.Dispose();
+				} catch (Exception /*ex*/)
+				{
+					// do nothing. quit
+				}
 			}
 		}
 	}

@@ -19,6 +19,7 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void Run(IWebBrowser browser, IScope scope)
 		{
+			browser.Escape(); // ensure there are no open dialogs
 			foreach (var st in Steps)
 				st.Run(browser, scope);
 		}

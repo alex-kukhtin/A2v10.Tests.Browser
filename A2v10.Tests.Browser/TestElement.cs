@@ -21,7 +21,16 @@ namespace A2v10.Tests.Browser
 
 		public void Click()
 		{
+			if (!_elem.Enabled)
+				throw new TestException($"Element is not currently enabled and so may not be interacted with");
 			_elem.Click();
+		}
+
+		public void TypeText(String text)
+		{
+			if (!_elem.Enabled)
+				throw new TestException($"Element is not currently enabled and so may not be interacted with");
+			_elem.SendKeys(text);
 		}
 
 		public ITestElement GetElementByXPath(String xPath)

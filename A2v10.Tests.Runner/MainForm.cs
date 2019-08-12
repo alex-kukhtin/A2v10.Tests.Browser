@@ -4,6 +4,7 @@ using System;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
 
 using A2v10.Tests.Runner.Properties;
@@ -158,6 +159,10 @@ namespace A2v10.Tests.Runner
 				LoadTree(AppDir, treeView.Nodes);
 			};
 			_threadQueue = new ThreadQueue();
+
+			var v = Assembly.GetExecutingAssembly().GetName().Version;
+			String ver = $" [version {v.Major}.{v.Minor}.{v.Build}]";
+			this.Text += ver;
 		}
 
 		private void OnClosing(Object sender, FormClosingEventArgs e)

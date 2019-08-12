@@ -4,6 +4,5 @@
 9. EnsureControlInvalid Label="Сумма" Text=""
 10. EnsureControlValid Label=""
 12. About dialog
-13. Show version
 14. Show state in status bar
 

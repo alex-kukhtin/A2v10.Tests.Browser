@@ -24,6 +24,7 @@ namespace A2v10.Tests.Browser
 		void Navigate(String url);
 		void Click(ITestElement elem);
 		void Escape();
+		IWindow GetLastNewWindow();
 
 		IRunScenario StartScenario(String name, String description);
 	}

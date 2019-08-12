@@ -4,10 +4,11 @@ using System;
 
 namespace A2v10.Tests.Browser
 {
-	public interface ITestElement: IScope
+	public interface IWindow: IScope
 	{
-		String Text { get; }
+		String Title { get; }
+		String Url { get; }
 
-		void Click();
+		void Close();
 	}
 }
