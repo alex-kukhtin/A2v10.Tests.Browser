@@ -1,26 +1,23 @@
 ﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
 
 using System;
-using System.Collections.Generic;
 using System.Windows.Markup;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class ScenarioCollection : List<Scenario>
-	{
-	}
-
 	[ContentProperty("Steps")]
-	public class Scenario : XamlItem
+	public class Dialog : EnsureDialog
 	{
-		public String Description { get; set; }
-		public String Name { get; set; }
 		public StepCollection Steps { get; set; } = new StepCollection();
 
 		public override void Run(IWebBrowser browser, IScope scope)
 		{
-			foreach (var st in Steps)
-				st.Run(browser, scope);
+			ITestElement dialog = FindDialog(browser);
+
+			foreach (var step in Steps)
+			{
+				step.Run(browser, dialog);
+			}
 		}
 	}
 }

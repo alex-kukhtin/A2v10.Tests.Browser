@@ -1,5 +1,7 @@
-﻿
+﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
 using OpenQA.Selenium;
@@ -75,7 +77,13 @@ namespace A2v10.Tests.Browser
 		{
 			var exceptions = _driver.FindElementsByClassName("app-exception");
 			if (exceptions != null && exceptions.Count > 0)
-				throw new TestException($"Clicking on an item throws an exception");
+			{
+				var text = exceptions[0]?.FindElement(By.ClassName("message"))?.Text;
+				if (text != null)
+					throw new TestException(text);
+				else
+					throw new TestException($"Clicking on an item throws an exception");
+			}
 		}
 
 		#region IWebBrowser
@@ -106,24 +114,39 @@ namespace A2v10.Tests.Browser
 			EnsureNoAppException();
 		}
 
-		public void Click(String xPath)
+		public void Click(ITestElement elem)
 		{
 			EnsureDriver();
-			var elem = _driver.FindElementByXPath(xPath);
-			if (!elem.Displayed)
-				throw new TestException($"Element '{xPath}' is not currently visible and so may not be interacted with");
 			elem.Click();
 			WaitForComplete();
 			EnsureNoAppException();
 		}
 
-		public void GetElements(String xPath)
+		public ITestElement GetElementByXPath(String xPath)
+		{
+			EnsureDriver();
+			var elem = _driver.FindElementByXPath(xPath);
+			return new TestElement(elem);
+		}
+
+		public IReadOnlyList<ITestElement> GetElementsByXPath(String xPath)
 		{
 			EnsureDriver();
 			var elems = _driver.FindElementsByXPath(xPath);
+			var result = new List<ITestElement>();
 			foreach (var e in elems)
-			{
-			}
+				result.Add(new TestElement(e));
+			return result;
+		}
+
+		public IReadOnlyList<ITestElement> GetElementsByClassName(String clasName)
+		{
+			EnsureDriver();
+			var elems = _driver.FindElementsByClassName(clasName);
+			var result = new List<ITestElement>();
+			foreach (var e in elems)
+				result.Add(new TestElement(e));
+			return result;
 		}
 
 		public void Escape()

@@ -6,7 +6,7 @@ namespace A2v10.Tests.Browser.Xaml
 {
 	public class Escape : Step
 	{
-		public override void Run(IWebBrowser browser)
+		public override void Run(IWebBrowser browser, IScope scope)
 		{
 			browser.Escape();
 		}

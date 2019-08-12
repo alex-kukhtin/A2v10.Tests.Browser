@@ -61,11 +61,29 @@ namespace A2v10.Tests.Runner
 				UpdateUI();
 			};
 
-			_threadQueue.Enqueue(() => {
-				Browser.Current.RunOne(ni.Path, (run) => ni.Steps.Add(run));
-				this.Invoke(mi);
-			});
+			Exception runException = null;
 
+			// thread safe!
+			MethodInvoker exceptionInvoker = delegate ()
+			{
+				node.SetException(runException);
+				_countThreads -= 1;
+				UpdateUI();
+			};
+
+
+			_threadQueue.Enqueue(() => {
+				try
+				{
+					Browser.Current.RunOne(ni.Path, (run) => ni.Steps.Add(run));
+					this.Invoke(mi);
+				}
+				catch (Exception ex)
+				{
+					runException = ex;
+					this.Invoke(exceptionInvoker);
+				}
+			});
 		}
 
 		#region Commands

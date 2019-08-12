@@ -4,15 +4,15 @@ using System;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class ClickLink : Step
+	public class ClickTabBarButton : Step
 	{
-		public String Url { get; set; }
+		public String Text { get; set; }
 
 		public override void Run(IWebBrowser browser, IScope scope)
 		{
 			String xPath = null;
-			if (Url != null)
-				xPath = $".//a[@href='{Url.Trim()}']";
+			if (Text != null)
+				xPath = $".//div[contains(@class,'a2-tab-bar-item')]/a[contains(@class,'a2-tab-button')]/span[contains(@class,'content')][normalize-space()='{Text}']";
 			browser.Click(scope.GetElementByXPath(xPath));
 		}
 	}

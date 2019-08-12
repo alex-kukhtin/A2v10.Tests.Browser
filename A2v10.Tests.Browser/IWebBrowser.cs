@@ -1,6 +1,7 @@
 ﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
 
 using System;
+using System.Collections.Generic;
 
 namespace A2v10.Tests.Browser
 {
@@ -17,15 +18,13 @@ namespace A2v10.Tests.Browser
 		void SetSuccess();
 	}
 
-	public interface IWebBrowser
+	public interface IWebBrowser: IScope
 	{
 		void GotoUrl(String url);
 		void Navigate(String url);
-		void Click(String xPath);
-		void GetElements(String xPath);
+		void Click(ITestElement elem);
 		void Escape();
 
 		IRunScenario StartScenario(String name, String description);
-
 	}
 }

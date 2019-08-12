@@ -18,7 +18,7 @@ namespace A2v10.Tests.Browser.Xaml
 				var helper = browser.StartScenario(sc.Name, sc.Description);
 				try
 				{
-					sc.Run(browser);
+					sc.Run(browser, browser);
 					helper.SetSuccess();
 				}
 				catch (Exception ex)
@@ -30,7 +30,7 @@ namespace A2v10.Tests.Browser.Xaml
 		}
 
 
-		public override void Run(IWebBrowser browser)
+		public override void Run(IWebBrowser browse, IScope scope)
 		{
 			throw new NotImplementedException();
 		}

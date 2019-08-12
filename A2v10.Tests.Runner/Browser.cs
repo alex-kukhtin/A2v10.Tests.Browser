@@ -39,16 +39,6 @@ namespace A2v10.Tests.Runner
 		{
 		}
 
-		public Task RunOneAsync(String futureFile, Action<IRunScenario> run)
-		{
-			var config = Config.Current;
-			var future = config.GetFuture(futureFile);
-			return Task.Run(() =>
-			{
-				future.RunAll(_browser, run);
-			});
-		}
-
 		public void RunOne(String futureFile, Action<IRunScenario> run)
 		{
 			var config = Config.Current;

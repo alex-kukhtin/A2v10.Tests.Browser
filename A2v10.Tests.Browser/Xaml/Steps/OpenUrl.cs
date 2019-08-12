@@ -8,7 +8,7 @@ namespace A2v10.Tests.Browser.Xaml
 	{
 		public String Url { get; set; }
 
-		public override void Run(IWebBrowser browser)
+		public override void Run(IWebBrowser browser, IScope scope)
 		{
 			browser.GotoUrl(Url);
 		}

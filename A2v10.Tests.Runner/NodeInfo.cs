@@ -132,6 +132,20 @@ namespace A2v10.Tests.Runner
 			node.SetImage(image);
 		}
 
+		public static void SetException(this TreeNode node, Exception ex)
+		{
+			var ni = node.Tag as NodeInfo;
+			if (ni.Type == NodeType.Folder)
+				return;
+			ni.Running = false;
+			var sc = new RunScenario();
+			sc.WriteException(ex);
+			sc.Name = "Runtime Exception";
+			ni.Steps.Add(sc);
+			Int32 image = NodeInfo.IMAGE_FAIL;
+			node.SetImage(image);
+		}
+
 		public static String DescriptionHTML(this TreeNode node)
 		{
 			var ni = node.Tag as NodeInfo;

@@ -8,11 +8,11 @@ namespace A2v10.Tests.Browser.Xaml
 	{
 		public String Items { get; set; }
 
-		public override void Run(IWebBrowser browser)
+		public override void Run(IWebBrowser browser, IScope scope)
 		{
 			String xPath = ".//div[contains(@class, 'dropdown')][contains(@class, 'show')]/*/button";
 			// TODO
-			browser.GetElements(xPath);
+			var elems = scope.GetElementsByXPath(xPath);
 		}
 	}
 }
