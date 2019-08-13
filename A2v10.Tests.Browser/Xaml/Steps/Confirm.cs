@@ -11,7 +11,6 @@ namespace A2v10.Tests.Browser.Xaml
 	{
 		public override void Run(IWebBrowser browser, IScope scope)
 		{
-			Thread.Sleep(100); // animation
 			base.Run(browser, scope);
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
 
 using System;
+using System.Threading;
 
 namespace A2v10.Tests.Browser.Xaml
 {
@@ -15,6 +16,8 @@ namespace A2v10.Tests.Browser.Xaml
 
 		protected ITestElement FindDialog(IWebBrowser browser)
 		{
+			Thread.Sleep(100); // animation
+
 			String xPath = ".//div[contains(@class, 'modal-wrapper')][contains(@class, 'show')]/div[contains(@class, 'modal-window')]";
 
 			var windows = browser.GetElementsByXPath(xPath);
@@ -26,8 +29,9 @@ namespace A2v10.Tests.Browser.Xaml
 				var titleElem = lastWindow.GetElementsByXPath(".//div[contains(@class, 'modal-header')]/span");
 				if (titleElem.Count != 1)
 					throw new TestException($"Dialog with title '{Title}' not found");
-				if (titleElem[0].Text != Title)
-					throw new TestException($"Invalid dialog title. Actual:'{titleElem[0].Text}', expected: '{Title}'");
+				String strTitle = titleElem[0].Text;
+				if (strTitle.Trim() != Title.Trim())
+					throw new TestException($"Invalid dialog title. Actual:'{strTitle}', expected: '{Title}'");
 			}
 			return lastWindow;
 		}
