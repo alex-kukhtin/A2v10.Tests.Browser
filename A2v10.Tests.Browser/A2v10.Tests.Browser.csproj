@@ -50,6 +50,10 @@
     <Compile Include="TestElement.cs" />
     <Compile Include="TestException.cs" />
     <Compile Include="TestWindow.cs" />
+    <Compile Include="Xaml\ElementSteps\Enter.cs" />
+    <Compile Include="Xaml\ElementSteps\TypeText.cs" />
+    <Compile Include="Xaml\ElementSteps\ElementStep.cs" />
+    <Compile Include="Xaml\Extensions\XPathExtensions.cs" />
     <Compile Include="Xaml\Feature.cs" />
     <Compile Include="Xaml\Loader.cs" />
     <Compile Include="Xaml\Scenario.cs" />
@@ -59,11 +63,11 @@
     <Compile Include="Xaml\Steps\ClickMenuItem.cs" />
     <Compile Include="Xaml\Steps\ClickLink.cs" />
     <Compile Include="Xaml\Steps\ClickButton.cs" />
+    <Compile Include="Xaml\Steps\Control.cs" />
     <Compile Include="Xaml\Steps\NewWindow.cs" />
     <Compile Include="Xaml\Steps\Dialog.cs" />
     <Compile Include="Xaml\Steps\EnsureDialog.cs" />
     <Compile Include="Xaml\Steps\EnsureDropDown.cs" />
-    <Compile Include="Xaml\Steps\TypeText.cs" />
     <Compile Include="Xaml\Steps\Escape.cs" />
     <Compile Include="Xaml\Steps\Navigate.cs" />
     <Compile Include="Xaml\Steps\OpenUrl.cs" />
@@ -72,5 +76,6 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

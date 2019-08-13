@@ -33,6 +33,11 @@ namespace A2v10.Tests.Browser
 			_elem.SendKeys(text);
 		}
 
+		public void Enter()
+		{
+			_elem.SendKeys(Keys.Enter);
+		}
+
 		public ITestElement GetElementByXPath(String xPath)
 		{
 			var elem = _elem.FindElement(By.XPath(xPath));

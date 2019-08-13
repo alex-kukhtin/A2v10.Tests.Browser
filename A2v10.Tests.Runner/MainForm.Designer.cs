@@ -98,7 +98,7 @@
 			// 
 			this.mainStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusSuccess});
-			this.mainStatusBar.Location = new System.Drawing.Point(0, 539);
+			this.mainStatusBar.Location = new System.Drawing.Point(0, 676);
 			this.mainStatusBar.Name = "mainStatusBar";
 			this.mainStatusBar.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
 			this.mainStatusBar.Size = new System.Drawing.Size(784, 22);
@@ -138,7 +138,7 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
 			this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.splitContainer1.Size = new System.Drawing.Size(784, 514);
+			this.splitContainer1.Size = new System.Drawing.Size(784, 651);
 			this.splitContainer1.SplitterDistance = 370;
 			this.splitContainer1.SplitterWidth = 8;
 			this.splitContainer1.TabIndex = 2;
@@ -153,7 +153,7 @@
 			this.treeView.Location = new System.Drawing.Point(0, 0);
 			this.treeView.Name = "treeView";
 			this.treeView.SelectedImageIndex = 0;
-			this.treeView.Size = new System.Drawing.Size(370, 514);
+			this.treeView.Size = new System.Drawing.Size(370, 651);
 			this.treeView.TabIndex = 0;
 			this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewAfterSelect);
 			// 
@@ -165,7 +165,7 @@
 			this.webBrowser1.Location = new System.Drawing.Point(0, 0);
 			this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser1.Name = "webBrowser1";
-			this.webBrowser1.Size = new System.Drawing.Size(406, 514);
+			this.webBrowser1.Size = new System.Drawing.Size(406, 651);
 			this.webBrowser1.TabIndex = 1;
 			this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
 			this.webBrowser1.WebBrowserShortcutsEnabled = false;
@@ -174,7 +174,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(784, 561);
+			this.ClientSize = new System.Drawing.Size(784, 698);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.mainStatusBar);
 			this.Controls.Add(this.mainToolStrip);
