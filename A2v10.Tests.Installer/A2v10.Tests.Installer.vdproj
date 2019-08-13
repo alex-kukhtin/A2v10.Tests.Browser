@@ -205,7 +205,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Browser, Version=10.0.7005.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Browser, Version=10.0.7007.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_A6C1D43ECD32DF00B5DE0E59ADB91063"
@@ -236,7 +236,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7005.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7007.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F380DE6E619F478A993003843CF23ADE"
@@ -319,15 +319,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:A2v10 Tests Runner"
-        "ProductCode" = "8:{E086CD51-F841-4EA7-B6F1-E90323482B2B}"
-        "PackageCode" = "8:{04E1F597-9ACE-4587-ABCE-73A787BAE7DA}"
+        "ProductCode" = "8:{E8A76A02-1A12-4ABA-A5CD-5928B3928159}"
+        "PackageCode" = "8:{BE91E5B4-9953-466B-915B-8DDFC119C588}"
         "UpgradeCode" = "8:{C4D96370-4C3E-4F12-BB6D-D6F92A87AFAF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:10.0.7006"
+        "ProductVersion" = "8:10.0.7007"
         "Manufacturer" = "8:Alex Kukhtin"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

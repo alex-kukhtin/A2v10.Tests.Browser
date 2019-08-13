@@ -1,8 +1,11 @@
 ﻿
 4. Ensure DropDown (MenuItems)
-8. TypeText Label="Сума"
 9. EnsureControlInvalid Label="Сумма" Text=""
 10. EnsureControlValid Label=""
 12. About dialog
 14. Show state in status bar
+15. StopCommand
+12. IsValid
+13. IsInvalid Message
+14. ClickAddOn Icon
 

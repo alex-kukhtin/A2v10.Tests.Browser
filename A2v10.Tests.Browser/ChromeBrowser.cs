@@ -14,7 +14,7 @@ namespace A2v10.Tests.Browser
 		private ChromeDriver _driver;
 		private INavigation _navigate;
 
-		private const Int32 WAIT_TIMEOUT = 10000; // ms
+		private const Int32 WAIT_TIMEOUT = 30000; // ms
 
 		public ChromeBrowser()
 		{
@@ -58,14 +58,19 @@ namespace A2v10.Tests.Browser
 			var sw = new Stopwatch();
 			try
 			{
-				String readyState = String.Empty;
-				while (readyState != "0")
+				Boolean readyState = false;
+				do
 				{
-					readyState = _driver.ExecuteScript("return window.__requestsCount__;")?.ToString();
+					var rs = _driver.ExecuteScript("return window.__tests__ && window.__tests__.$isReady();");
+					Debug.WriteLine(rs);
+					if (rs is Boolean)
+						readyState = (Boolean)rs;
+					if (readyState)
+						return;
 					Thread.Sleep(20);
 					if (sw.ElapsedMilliseconds > WAIT_TIMEOUT)
 						throw new TimeoutException();
-				}
+				} while (!readyState);
 			}
 			catch (Exception /*ex*/)
 			{
