@@ -64,6 +64,7 @@
     <Compile Include="Xaml\Steps\ClickLink.cs" />
     <Compile Include="Xaml\Steps\ClickButton.cs" />
     <Compile Include="Xaml\Steps\Control.cs" />
+    <Compile Include="Xaml\Steps\Confirm.cs" />
     <Compile Include="Xaml\Steps\NewWindow.cs" />
     <Compile Include="Xaml\Steps\Dialog.cs" />
     <Compile Include="Xaml\Steps\EnsureDialog.cs" />
