@@ -14,7 +14,7 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
-			if (string.IsNullOrEmpty(Id))
+			if (String.IsNullOrEmpty(Id))
 				throw new TestException("SelectRow. Attribute 'Id' is required");
 			var id = Id.ResolveValue(root);
 			var script = $"return window.__tests__.$invoke({{target: 'datagrid', testId: '{Parent.TestId}', action: 'selectRow', id: '{id}'}});";

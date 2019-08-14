@@ -14,7 +14,7 @@ namespace A2v10.Tests.Browser.Xaml
 			var script = $"return window.__tests__.$invoke({{target: 'controller', testId: '{Parent.TestId}', action: 'eval', path: '{Path}'}});";
 			var result = browser.ExecuteScript(script);
 			if (result == null)
-				throw new TestException($"Could not evaluate expression {Path}");
+				throw new TestException($"Could not evaluate expression '{Path}'");
 			root.SetValue(To, result);
 		}
 	}

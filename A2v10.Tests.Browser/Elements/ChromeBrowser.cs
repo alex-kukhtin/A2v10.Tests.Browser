@@ -178,6 +178,7 @@ namespace A2v10.Tests.Browser
 		{
 			EnsureDriver();
 			var val = _driver.ExecuteScript(script);
+			WaitForComplete();
 			if (val == null)
 				return null;
 			return val.ToString();
