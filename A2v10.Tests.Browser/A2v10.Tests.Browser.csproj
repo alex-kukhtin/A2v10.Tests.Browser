@@ -76,7 +76,7 @@
     <Compile Include="Steps\DataGrid.cs" />
     <Compile Include="Steps\Control.cs" />
     <Compile Include="Steps\Confirm.cs" />
-    <Compile Include="Steps\InvokeServer.cs" />
+    <Compile Include="Steps\InvokeServerCommand.cs" />
     <Compile Include="Steps\ModelValue.cs" />
     <Compile Include="Steps\NewWindow.cs" />
     <Compile Include="Steps\Dialog.cs" />

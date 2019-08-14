@@ -4,7 +4,7 @@ using System;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class InvokeServer : Step
+	public class InvokeServerCommand : Step
 	{
 		public String Command { get; set; }
 		public String To { get; set; }
