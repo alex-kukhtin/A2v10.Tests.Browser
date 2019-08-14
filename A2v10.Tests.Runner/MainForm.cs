@@ -2,6 +2,7 @@
 
 using System;
 using System.Configuration;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -23,6 +24,18 @@ namespace A2v10.Tests.Runner
 		public MainForm()
 		{
 			InitializeComponent();
+		}
+
+		void ForEachNodes(TreeNodeCollection nodes, Action<TreeNode> action)
+		{
+			foreach (var n in nodes)
+			{
+				if (n is TreeNode node)
+				{
+					action(node);
+					ForEachNodes(node.Nodes, action);
+				}
+			}
 		}
 
 		private void RunAll(TreeNodeCollection nodes)
@@ -108,6 +121,14 @@ namespace A2v10.Tests.Runner
 			treeView.Nodes.Clear();
 			LoadTree(AppDir, treeView.Nodes);
 		}
+
+		private void OnStop(Object sender, EventArgs e)
+		{
+			_threadQueue.Clear(() => _countThreads -= 1);
+			UpdateUI();
+			ForEachNodes(treeView.Nodes, (node) => node.SetStop());
+		}
+
 		#endregion
 
 
@@ -123,6 +144,7 @@ namespace A2v10.Tests.Runner
 
 		void LoadTree(String path, TreeNodeCollection nodes)
 		{
+			UseWaitCursor = true;
 			var dirs = Directory.EnumerateDirectories(path).OrderBy(x => x);
 			foreach (var d in dirs)
 			{
@@ -139,7 +161,10 @@ namespace A2v10.Tests.Runner
 
 				node.Expand();
 			}
+			if (treeView.Nodes.Count > 0)
+				treeView.TopNode = treeView.Nodes[0];
 			UpdateUI();
+			UseWaitCursor = false;
 		}
 
 		#region Events
@@ -205,12 +230,18 @@ namespace A2v10.Tests.Runner
 			toolRunAll.Enabled = isEnabled;
 			toolReload.Enabled = isEnabled;
 			toolRunOne.Enabled = isEnabled && treeView.SelectedNode != null;
+			toolStop.Enabled = !isEnabled;
 		}
 
 		private void UpdateUI()
 		{
 			SetCurrentNodeText();
 			SetButtonsState();
+		}
+
+		private void OnAbout(Object sender, EventArgs e)
+		{
+			(new AboutForm()).ShowDialog(this);
 		}
 	}
 }

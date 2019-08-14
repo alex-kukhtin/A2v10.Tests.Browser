@@ -25,6 +25,7 @@ namespace A2v10.Tests.Browser
 		void Click(ITestElement elem);
 		void Escape();
 		IWindow GetLastNewWindow();
+		String ExecuteScript(String script);
 
 		IRunScenario StartScenario(String name, String description);
 	}

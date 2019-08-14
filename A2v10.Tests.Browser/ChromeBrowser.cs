@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -30,6 +31,7 @@ namespace A2v10.Tests.Browser
 
 			_driver = new ChromeDriver(opts);
 			_navigate = _driver.Navigate();
+			_driver.Manage().Window.Size = new Size(1600, 1000);
 			_navigate.GoToUrl(url);
 		}
 
@@ -125,7 +127,7 @@ namespace A2v10.Tests.Browser
 			EnsureNoAppException();
 		}
 
-		public ITestElement GetElementByXPath(String xPath)
+		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)
 		{
 			EnsureDriver();
 			var elem = _driver.FindElementByXPath(xPath);
@@ -170,6 +172,15 @@ namespace A2v10.Tests.Browser
 			WaitForComplete();
 			EnsureNoAppException();
 			return new TestWindow(_driver);
+		}
+
+		public String ExecuteScript(String script)
+		{
+			EnsureDriver();
+			var val = _driver.ExecuteScript(script);
+			if (val == null)
+				return null;
+			return val.ToString();
 		}
 
 		#endregion

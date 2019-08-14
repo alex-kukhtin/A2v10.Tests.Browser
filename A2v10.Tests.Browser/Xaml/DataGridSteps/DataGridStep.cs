@@ -4,12 +4,12 @@ using System.Collections.Generic;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class ElementStepCollection : List<ElementStep>
+	public class DataGridStepCollection : List<DataGridStep>
 	{
 
 	}
 
-	public abstract class ElementStep : Step
+	public abstract class DataGridStep : Step
 	{
 		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{

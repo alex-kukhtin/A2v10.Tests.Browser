@@ -12,6 +12,9 @@ namespace A2v10.Tests.Browser.Xaml
 
 	public abstract class Step : XamlItem
 	{
+		internal Step Parent { get; set; }
+
+		public String TestId { get; set; }
 		public String Description { get; set; }
 	}
 }

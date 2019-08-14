@@ -4,6 +4,6 @@ namespace A2v10.Tests.Browser.Xaml
 {
 	public abstract class XamlItem
 	{
-		public abstract void Run(IWebBrowser browser, IScope scope);
+		public abstract void Run(IRootElement root, IWebBrowser browser, IScope scope);
 	}
 }

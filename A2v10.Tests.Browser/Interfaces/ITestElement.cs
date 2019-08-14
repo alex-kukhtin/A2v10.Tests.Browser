@@ -11,5 +11,6 @@ namespace A2v10.Tests.Browser
 		void Click();
 		void TypeText(String text);
 		void Enter();
+		String GetAttribute(String name);
 	}
 }

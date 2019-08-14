@@ -35,5 +35,14 @@ namespace A2v10.Tests.Runner
 				}
 			}
 		}
+
+		public void Clear(Action action)
+		{
+			while (!IsEmpty)
+			{
+				if (_queue.TryDequeue(out Action result))
+					action();
+			}
+		}
 	}
 }

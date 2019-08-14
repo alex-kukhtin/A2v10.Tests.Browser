@@ -40,10 +40,9 @@ namespace A2v10.Tests.Runner
 		public Boolean IsFailure => !Running && HasSteps && Steps.Any(x => x.IsFailure);
 
 		internal const Int32 IMAGE_FOLDER = 0;
-		internal const Int32 IMAGE_HIDDEN = 4;
 		internal const Int32 IMAGE_SUCCESS = 2;
 		internal const Int32 IMAGE_FAIL = 3;
-		internal const Int32 IMAGE_NOT_STARTED = 1;
+		internal const Int32 IMAGE_NOT_STARTED = 4;
 		internal const Int32 IMAGE_LOADING = 5;
 
 		public void Clear()
@@ -65,7 +64,7 @@ namespace A2v10.Tests.Runner
 			if (type == NodeType.Folder)
 				node.SetImage(IMAGE_FOLDER);
 			else
-				node.SetImage(IMAGE_HIDDEN);
+				node.SetImage(IMAGE_NOT_STARTED);
 			return node;
 		}
 
@@ -109,7 +108,7 @@ namespace A2v10.Tests.Runner
 
 		public static void Clear(this TreeNode node)
 		{
-			node.SetImage(NodeInfo.IMAGE_HIDDEN);
+			node.SetImage(NodeInfo.IMAGE_NOT_STARTED);
 			if (node.Tag is NodeInfo ni)
 				ni.Clear();
 		}
@@ -120,6 +119,20 @@ namespace A2v10.Tests.Runner
 			var ni = node.Tag as NodeInfo;
 			ni.Clear();
 			ni.Running = true;
+		}
+
+		public static Boolean IsRunning(this TreeNode node)
+		{
+			var ni = node.Tag as NodeInfo;
+			return ni.Running;
+		}
+
+		public static void SetStop(this TreeNode node)
+		{
+			var ni = node.Tag as NodeInfo;
+			if (ni.IsFolder) return;
+			if (ni.IsSuccess || ni.IsFailure) return;
+			node.Clear();
 		}
 
 		public static void SetResult(this TreeNode node)

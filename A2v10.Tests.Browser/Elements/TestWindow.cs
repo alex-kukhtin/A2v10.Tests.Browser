@@ -36,7 +36,7 @@ namespace A2v10.Tests.Browser
 			return result;
 		}
 
-		public ITestElement GetElementByXPath(String xPath)
+		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)
 		{
 			var elem = _driver.FindElementByXPath(xPath);
 			return new TestElement(elem);

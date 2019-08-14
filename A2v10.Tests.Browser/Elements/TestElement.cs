@@ -38,10 +38,10 @@ namespace A2v10.Tests.Browser
 			_elem.SendKeys(Keys.Enter);
 		}
 
-		public ITestElement GetElementByXPath(String xPath)
+		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)
 		{
 			var elem = _elem.FindElement(By.XPath(xPath));
-			if (!elem.Displayed)
+			if (checkVisibility && !elem.Displayed)
 				throw new TestException($"Element '{xPath}' is not currently visible and so may not be interacted with");
 			return new TestElement(elem);
 		}
@@ -54,6 +54,11 @@ namespace A2v10.Tests.Browser
 		public IReadOnlyList<ITestElement> GetElementsByClassName(String className)
 		{
 			return GetCollection(() => _elem.FindElements(By.ClassName(className)));
+		}
+
+		public String GetAttribute(String name)
+		{
+			return _elem.GetAttribute(name);
 		}
 		#endregion
 

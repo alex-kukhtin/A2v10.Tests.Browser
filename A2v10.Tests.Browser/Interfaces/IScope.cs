@@ -10,6 +10,6 @@ namespace A2v10.Tests.Browser
 		IReadOnlyList<ITestElement> GetElementsByXPath(String xPath);
 		IReadOnlyList<ITestElement> GetElementsByClassName(String className);
 
-		ITestElement GetElementByXPath(String xPath);
+		ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true);
 	}
 }

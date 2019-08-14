@@ -13,7 +13,7 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public StepCollection Steps { get; set; } = new StepCollection();
 
-		public override void Run(IWebBrowser browser, IScope scope)
+		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
 			IWindow newWindow = browser.GetLastNewWindow();
 			try
@@ -28,7 +28,7 @@ namespace A2v10.Tests.Browser.Xaml
 
 				foreach (var step in Steps)
 				{
-					step.Run(browser, newWindow);
+					step.Run(root, browser, newWindow);
 				}
 			}
 			finally {

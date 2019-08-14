@@ -1,11 +1,10 @@
 ﻿
 4. Ensure DropDown (MenuItems)
-9. EnsureControlInvalid Label="Сумма" Text=""
-10. EnsureControlValid Label=""
-12. About dialog
 14. Show state in status bar
-15. StopCommand
 12. IsValid
 13. IsInvalid Message
 14. ClickAddOn Icon
-
+15. Линия красаня.зеленая
+16. About elements (Version, Copyright, selenium licenses links)
+17. DataGrid
+18.

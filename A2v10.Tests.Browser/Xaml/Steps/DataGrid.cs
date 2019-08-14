@@ -7,17 +7,23 @@ using System.Windows.Markup;
 namespace A2v10.Tests.Browser.Xaml
 {
 	[ContentProperty("Steps")]
-	public class Dialog : EnsureDialog, ISupportInitialize
+
+	public class DataGrid : Step, ISupportInitialize
 	{
-		public StepCollection Steps { get; set; } = new StepCollection();
+		public DataGridStepCollection Steps { get; set; } = new DataGridStepCollection();
 
 		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
-			ITestElement dialog = FindDialog(browser);
+			String xPath = String.Empty;
+
+			if (!String.IsNullOrEmpty(TestId))
+				xPath = $".//div[contains(@class, 'data-grid-container')][@test-id='{TestId}']";
+
+			var dataGrid = scope.GetElementByXPath(xPath);
 
 			foreach (var step in Steps)
 			{
-				step.Run(root, browser, dialog);
+				step.ElementRun(root, browser, dataGrid);
 			}
 		}
 

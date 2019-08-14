@@ -1,7 +1,5 @@
 ﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
 
-using System;
-using System.Threading;
 using System.Windows.Markup;
 
 namespace A2v10.Tests.Browser.Xaml
@@ -9,9 +7,9 @@ namespace A2v10.Tests.Browser.Xaml
 	[ContentProperty("Steps")]
 	public class Confirm : Dialog
 	{
-		public override void Run(IWebBrowser browser, IScope scope)
+		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
-			base.Run(browser, scope);
+			base.Run(root, browser, scope);
 		}
 	}
 }

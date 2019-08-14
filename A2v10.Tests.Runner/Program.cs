@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+
+using System;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace A2v10.Tests.Runner
@@ -21,7 +20,7 @@ namespace A2v10.Tests.Runner
 
 			String configPath = Path.Combine(path, "Tests.Runner.config");
 			if (!File.Exists(configPath))
-				MessageBox.Show($"Config file '{configPath}' not found");
+				MessageBox.Show($"Config file '{configPath}' not found", "Usage", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);

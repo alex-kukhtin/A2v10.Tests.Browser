@@ -33,6 +33,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml" />
     <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -41,15 +42,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChromeBrowser.cs" />
+    <Compile Include="Interfaces\IRootElement.cs" />
     <Compile Include="Interfaces\IScope.cs" />
     <Compile Include="Interfaces\IWindow.cs" />
     <Compile Include="Interfaces\ITestElement.cs" />
     <Compile Include="Interfaces\IWebBrowser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RunScenario.cs" />
-    <Compile Include="TestElement.cs" />
+    <Compile Include="Elements\TestElement.cs" />
     <Compile Include="TestException.cs" />
-    <Compile Include="TestWindow.cs" />
+    <Compile Include="Elements\TestWindow.cs" />
+    <Compile Include="Xaml\DataGridSteps\DataGridStep.cs" />
+    <Compile Include="Xaml\DataGridSteps\SelectRow.cs" />
+    <Compile Include="Xaml\Declare.cs" />
+    <Compile Include="Xaml\ElementSteps\ClickCaret.cs" />
+    <Compile Include="Xaml\ElementSteps\Select.cs" />
+    <Compile Include="Xaml\ElementSteps\SelectorPane.cs" />
+    <Compile Include="Xaml\ElementSteps\Invalid.cs" />
+    <Compile Include="Xaml\ElementSteps\Valid.cs" />
     <Compile Include="Xaml\ElementSteps\Enter.cs" />
     <Compile Include="Xaml\ElementSteps\TypeText.cs" />
     <Compile Include="Xaml\ElementSteps\ElementStep.cs" />
@@ -63,8 +73,10 @@
     <Compile Include="Xaml\Steps\ClickMenuItem.cs" />
     <Compile Include="Xaml\Steps\ClickLink.cs" />
     <Compile Include="Xaml\Steps\ClickButton.cs" />
+    <Compile Include="Xaml\Steps\DataGrid.cs" />
     <Compile Include="Xaml\Steps\Control.cs" />
     <Compile Include="Xaml\Steps\Confirm.cs" />
+    <Compile Include="Xaml\Steps\ModelValue.cs" />
     <Compile Include="Xaml\Steps\NewWindow.cs" />
     <Compile Include="Xaml\Steps\Dialog.cs" />
     <Compile Include="Xaml\Steps\EnsureDialog.cs" />

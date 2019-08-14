@@ -5,15 +5,12 @@ using System.Windows.Markup;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-
-	[ContentProperty("Text")]
-	public class TypeText : ElementStep
+	public class ClickCaret: ElementStep
 	{
-		public String Text { get; set; }
-
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
-			elem.TypeText(Text);
+			// current pos - input
+			elem.GetElementByXPath("./../a/span[@class='caret']")?.Click();
 		}
 	}
 }

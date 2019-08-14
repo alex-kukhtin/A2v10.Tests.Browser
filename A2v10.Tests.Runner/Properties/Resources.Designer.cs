@@ -61,22 +61,46 @@ namespace A2v10.Tests.Runner.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon checkmark {
+            get {
+                object obj = ResourceManager.GetObject("checkmark", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &lt;!DOCTYPE html&gt;
-        ///
-        ///&lt;html lang=&quot;en&quot; xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+        ///&lt;html&gt;
         ///&lt;head&gt;
-        ///    &lt;meta charset=&quot;utf-8&quot; /&gt;
-        ///    &lt;title&gt;&lt;/title&gt;
+        ///	&lt;meta charset=&quot;utf-8&quot; /&gt;
+        ///	&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
         ///	&lt;style&gt;
-        ///		.red {
-        ///			color:red;
+        ///		body {
+        ///			font-family: &apos;Segoe UI&apos;,Tahoma,Arial,sans-serif;
+        ///			color: #333;
+        ///			padding: 10px;
+        ///			font-size:13px;
         ///		}
-        ///	&lt;/style&gt;
-        ///&lt;/head&gt;
-        ///&lt;body&gt;
-        ///	&lt;div class=&quot;red&quot;&gt;&lt;/div&gt;
-        ///&lt;/body&gt;
-        ///&lt;/html&gt;.
+        ///
+        ///		.red {
+        ///			color: red;
+        ///		}
+        ///
+        ///		h1 {
+        ///			font-size: 18px;
+        ///			color: #999;
+        ///			margin: 0 0 4px 0;
+        ///			padding:0 0 8px 0;
+        ///		}
+        ///
+        ///		.state:before {
+        ///			line-height: 20px;
+        ///			display: inline-block;
+        ///			border-radius: 50%;
+        ///			color: white;
+        ///			text-align: ce [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string layout {
             get {

@@ -6,13 +6,12 @@ using System.Windows.Markup;
 namespace A2v10.Tests.Browser.Xaml
 {
 	[ContentProperty("Steps")]
-
 	public class Control : Step
 	{
 		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
 		public String Label { get; set; }
 
-		public override void Run(IWebBrowser browser, IScope scope)
+		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
 			String xPath = String.Empty;
 			if (!String.IsNullOrEmpty(Label))
@@ -20,7 +19,7 @@ namespace A2v10.Tests.Browser.Xaml
 			var control = scope.GetElementByXPath(xPath);
 			foreach (var step in Steps)
 			{
-				step.ElementRun(browser, control);
+				step.ElementRun(root, browser, control);
 			}
 		}
 	}

@@ -8,7 +8,7 @@ namespace A2v10.Tests.Browser.Xaml
 	{
 		public String Items { get; set; }
 
-		public override void Run(IWebBrowser browser, IScope scope)
+		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
 			String xPath = ".//div[contains(@class, 'dropdown')][contains(@class, 'show')]/*/button";
 			// TODO

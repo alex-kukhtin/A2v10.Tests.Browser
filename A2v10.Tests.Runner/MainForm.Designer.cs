@@ -33,8 +33,10 @@
 			this.mainToolStrip = new System.Windows.Forms.ToolStrip();
 			this.toolRunOne = new System.Windows.Forms.ToolStripButton();
 			this.toolRunAll = new System.Windows.Forms.ToolStripButton();
+			this.toolStop = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolReload = new System.Windows.Forms.ToolStripButton();
+			this.toolHelp = new System.Windows.Forms.ToolStripButton();
 			this.mainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.statusSuccess = new System.Windows.Forms.ToolStripStatusLabel();
 			this.treeImageList = new System.Windows.Forms.ImageList(this.components);
@@ -54,11 +56,13 @@
 			this.mainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolRunOne,
             this.toolRunAll,
+            this.toolStop,
             this.toolStripSeparator1,
-            this.toolReload});
+            this.toolReload,
+            this.toolHelp});
 			this.mainToolStrip.Location = new System.Drawing.Point(0, 0);
 			this.mainToolStrip.Name = "mainToolStrip";
-			this.mainToolStrip.Size = new System.Drawing.Size(784, 25);
+			this.mainToolStrip.Size = new System.Drawing.Size(861, 25);
 			this.mainToolStrip.TabIndex = 0;
 			this.mainToolStrip.Text = "toolStrip1";
 			// 
@@ -80,6 +84,15 @@
 			this.toolRunAll.Text = "Run All";
 			this.toolRunAll.Click += new System.EventHandler(this.RunAll);
 			// 
+			// toolStop
+			// 
+			this.toolStop.Image = ((System.Drawing.Image)(resources.GetObject("toolStop.Image")));
+			this.toolStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStop.Name = "toolStop";
+			this.toolStop.Size = new System.Drawing.Size(51, 22);
+			this.toolStop.Text = "Stop";
+			this.toolStop.Click += new System.EventHandler(this.OnStop);
+			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -94,6 +107,16 @@
 			this.toolReload.Text = "Reload";
 			this.toolReload.Click += new System.EventHandler(this.OnReload);
 			// 
+			// toolHelp
+			// 
+			this.toolHelp.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+			this.toolHelp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolHelp.Image = ((System.Drawing.Image)(resources.GetObject("toolHelp.Image")));
+			this.toolHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolHelp.Name = "toolHelp";
+			this.toolHelp.Size = new System.Drawing.Size(23, 22);
+			this.toolHelp.Click += new System.EventHandler(this.OnAbout);
+			// 
 			// mainStatusBar
 			// 
 			this.mainStatusBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -101,15 +124,17 @@
 			this.mainStatusBar.Location = new System.Drawing.Point(0, 676);
 			this.mainStatusBar.Name = "mainStatusBar";
 			this.mainStatusBar.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
-			this.mainStatusBar.Size = new System.Drawing.Size(784, 22);
+			this.mainStatusBar.Size = new System.Drawing.Size(861, 22);
 			this.mainStatusBar.TabIndex = 1;
 			this.mainStatusBar.Text = "mainStatusBar";
 			// 
 			// statusSuccess
 			// 
+			this.statusSuccess.BackColor = System.Drawing.Color.Green;
+			this.statusSuccess.ForeColor = System.Drawing.Color.White;
 			this.statusSuccess.Name = "statusSuccess";
-			this.statusSuccess.Size = new System.Drawing.Size(48, 17);
-			this.statusSuccess.Text = "Success";
+			this.statusSuccess.Size = new System.Drawing.Size(207, 17);
+			this.statusSuccess.Text = "In progress: 50 Pass: 20 Fail:30 Total:50";
 			this.statusSuccess.Visible = false;
 			// 
 			// treeImageList
@@ -138,8 +163,8 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
 			this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.splitContainer1.Size = new System.Drawing.Size(784, 651);
-			this.splitContainer1.SplitterDistance = 370;
+			this.splitContainer1.Size = new System.Drawing.Size(861, 651);
+			this.splitContainer1.SplitterDistance = 406;
 			this.splitContainer1.SplitterWidth = 8;
 			this.splitContainer1.TabIndex = 2;
 			// 
@@ -153,7 +178,7 @@
 			this.treeView.Location = new System.Drawing.Point(0, 0);
 			this.treeView.Name = "treeView";
 			this.treeView.SelectedImageIndex = 0;
-			this.treeView.Size = new System.Drawing.Size(370, 651);
+			this.treeView.Size = new System.Drawing.Size(406, 651);
 			this.treeView.TabIndex = 0;
 			this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewAfterSelect);
 			// 
@@ -165,7 +190,7 @@
 			this.webBrowser1.Location = new System.Drawing.Point(0, 0);
 			this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser1.Name = "webBrowser1";
-			this.webBrowser1.Size = new System.Drawing.Size(406, 651);
+			this.webBrowser1.Size = new System.Drawing.Size(447, 651);
 			this.webBrowser1.TabIndex = 1;
 			this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
 			this.webBrowser1.WebBrowserShortcutsEnabled = false;
@@ -174,12 +199,13 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(784, 698);
+			this.ClientSize = new System.Drawing.Size(861, 698);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.mainStatusBar);
 			this.Controls.Add(this.mainToolStrip);
 			this.DoubleBuffered = true;
 			this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "MainForm";
 			this.Text = "Browser Test Runner";
 			this.TopMost = true;
@@ -211,6 +237,8 @@
 		private System.Windows.Forms.WebBrowser webBrowser1;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton toolReload;
+		private System.Windows.Forms.ToolStripButton toolStop;
+		private System.Windows.Forms.ToolStripButton toolHelp;
 	}
 }
 
