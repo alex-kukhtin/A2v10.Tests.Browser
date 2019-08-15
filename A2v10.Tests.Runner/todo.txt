@@ -1,10 +1,8 @@
 ﻿
 4. Ensure DropDown (MenuItems)
 14. Show state in status bar
-12. IsValid
-13. IsInvalid Message
 14. ClickAddOn Icon
 15. Линия красаня.зеленая
 16. About elements (Version, Copyright, selenium licenses links)
-17. DataGrid
-18.
+18. Diagram
+	$x(".//div[@class='diagram']//span[@class='d-ab-text' and text()='Придбання']")
