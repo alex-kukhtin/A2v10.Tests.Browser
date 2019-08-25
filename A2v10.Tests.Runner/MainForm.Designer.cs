@@ -35,8 +35,10 @@
 			this.toolRunAll = new System.Windows.Forms.ToolStripButton();
 			this.toolStop = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-			this.toolReload = new System.Windows.Forms.ToolStripButton();
 			this.toolHelp = new System.Windows.Forms.ToolStripButton();
+			this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+			this.toolHosts = new System.Windows.Forms.ToolStripComboBox();
+			this.toolReload = new System.Windows.Forms.ToolStripButton();
 			this.mainStatusBar = new System.Windows.Forms.StatusStrip();
 			this.statusSuccess = new System.Windows.Forms.ToolStripStatusLabel();
 			this.treeImageList = new System.Windows.Forms.ImageList(this.components);
@@ -53,16 +55,20 @@
 			// 
 			// mainToolStrip
 			// 
+			this.mainToolStrip.BackColor = System.Drawing.SystemColors.ControlLight;
 			this.mainToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolRunOne,
             this.toolRunAll,
             this.toolStop,
             this.toolStripSeparator1,
-            this.toolReload,
-            this.toolHelp});
+            this.toolHelp,
+            this.toolStripLabel1,
+            this.toolHosts,
+            this.toolReload});
 			this.mainToolStrip.Location = new System.Drawing.Point(0, 0);
 			this.mainToolStrip.Name = "mainToolStrip";
-			this.mainToolStrip.Size = new System.Drawing.Size(861, 25);
+			this.mainToolStrip.Padding = new System.Windows.Forms.Padding(2);
+			this.mainToolStrip.Size = new System.Drawing.Size(861, 27);
 			this.mainToolStrip.TabIndex = 0;
 			this.mainToolStrip.Text = "toolStrip1";
 			// 
@@ -71,7 +77,7 @@
 			this.toolRunOne.Image = ((System.Drawing.Image)(resources.GetObject("toolRunOne.Image")));
 			this.toolRunOne.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolRunOne.Name = "toolRunOne";
-			this.toolRunOne.Size = new System.Drawing.Size(48, 22);
+			this.toolRunOne.Size = new System.Drawing.Size(48, 20);
 			this.toolRunOne.Text = "Run";
 			this.toolRunOne.Click += new System.EventHandler(this.RunOne);
 			// 
@@ -80,7 +86,7 @@
 			this.toolRunAll.Image = ((System.Drawing.Image)(resources.GetObject("toolRunAll.Image")));
 			this.toolRunAll.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolRunAll.Name = "toolRunAll";
-			this.toolRunAll.Size = new System.Drawing.Size(65, 22);
+			this.toolRunAll.Size = new System.Drawing.Size(65, 20);
 			this.toolRunAll.Text = "Run All";
 			this.toolRunAll.Click += new System.EventHandler(this.RunAll);
 			// 
@@ -89,23 +95,14 @@
 			this.toolStop.Image = ((System.Drawing.Image)(resources.GetObject("toolStop.Image")));
 			this.toolStop.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStop.Name = "toolStop";
-			this.toolStop.Size = new System.Drawing.Size(51, 22);
+			this.toolStop.Size = new System.Drawing.Size(51, 20);
 			this.toolStop.Text = "Stop";
 			this.toolStop.Click += new System.EventHandler(this.OnStop);
 			// 
 			// toolStripSeparator1
 			// 
 			this.toolStripSeparator1.Name = "toolStripSeparator1";
-			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-			// 
-			// toolReload
-			// 
-			this.toolReload.Image = ((System.Drawing.Image)(resources.GetObject("toolReload.Image")));
-			this.toolReload.ImageTransparentColor = System.Drawing.Color.Magenta;
-			this.toolReload.Name = "toolReload";
-			this.toolReload.Size = new System.Drawing.Size(63, 22);
-			this.toolReload.Text = "Reload";
-			this.toolReload.Click += new System.EventHandler(this.OnReload);
+			this.toolStripSeparator1.Size = new System.Drawing.Size(6, 23);
 			// 
 			// toolHelp
 			// 
@@ -114,8 +111,30 @@
 			this.toolHelp.Image = ((System.Drawing.Image)(resources.GetObject("toolHelp.Image")));
 			this.toolHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolHelp.Name = "toolHelp";
-			this.toolHelp.Size = new System.Drawing.Size(23, 22);
+			this.toolHelp.Size = new System.Drawing.Size(23, 20);
 			this.toolHelp.Click += new System.EventHandler(this.OnAbout);
+			// 
+			// toolStripLabel1
+			// 
+			this.toolStripLabel1.Name = "toolStripLabel1";
+			this.toolStripLabel1.Size = new System.Drawing.Size(45, 20);
+			this.toolStripLabel1.Text = "source:";
+			// 
+			// toolHosts
+			// 
+			this.toolHosts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.toolHosts.Margin = new System.Windows.Forms.Padding(1, 0, 5, 0);
+			this.toolHosts.Name = "toolHosts";
+			this.toolHosts.Size = new System.Drawing.Size(121, 23);
+			// 
+			// toolReload
+			// 
+			this.toolReload.Image = ((System.Drawing.Image)(resources.GetObject("toolReload.Image")));
+			this.toolReload.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolReload.Name = "toolReload";
+			this.toolReload.Size = new System.Drawing.Size(63, 20);
+			this.toolReload.Text = "Reload";
+			this.toolReload.Click += new System.EventHandler(this.OnReload);
 			// 
 			// mainStatusBar
 			// 
@@ -151,7 +170,7 @@
 			// splitContainer1
 			// 
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+			this.splitContainer1.Location = new System.Drawing.Point(0, 27);
 			this.splitContainer1.Name = "splitContainer1";
 			// 
 			// splitContainer1.Panel1
@@ -163,7 +182,7 @@
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.webBrowser1);
 			this.splitContainer1.Panel2.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.splitContainer1.Size = new System.Drawing.Size(861, 651);
+			this.splitContainer1.Size = new System.Drawing.Size(861, 649);
 			this.splitContainer1.SplitterDistance = 406;
 			this.splitContainer1.SplitterWidth = 8;
 			this.splitContainer1.TabIndex = 2;
@@ -178,7 +197,7 @@
 			this.treeView.Location = new System.Drawing.Point(0, 0);
 			this.treeView.Name = "treeView";
 			this.treeView.SelectedImageIndex = 0;
-			this.treeView.Size = new System.Drawing.Size(406, 651);
+			this.treeView.Size = new System.Drawing.Size(406, 649);
 			this.treeView.TabIndex = 0;
 			this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewAfterSelect);
 			// 
@@ -190,7 +209,7 @@
 			this.webBrowser1.Location = new System.Drawing.Point(0, 0);
 			this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
 			this.webBrowser1.Name = "webBrowser1";
-			this.webBrowser1.Size = new System.Drawing.Size(447, 651);
+			this.webBrowser1.Size = new System.Drawing.Size(447, 649);
 			this.webBrowser1.TabIndex = 1;
 			this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
 			this.webBrowser1.WebBrowserShortcutsEnabled = false;
@@ -239,6 +258,8 @@
 		private System.Windows.Forms.ToolStripButton toolReload;
 		private System.Windows.Forms.ToolStripButton toolStop;
 		private System.Windows.Forms.ToolStripButton toolHelp;
+		private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+		private System.Windows.Forms.ToolStripComboBox toolHosts;
 	}
 }
 

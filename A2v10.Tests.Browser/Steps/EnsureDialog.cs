@@ -28,7 +28,7 @@ namespace A2v10.Tests.Browser.Xaml
 			if (!String.IsNullOrEmpty(Title))
 			{
 				var titleElem = lastWindow.GetElementsByXPath(".//div[contains(@class, 'modal-header')]/span");
-				if (titleElem.Count != 1)
+				if (titleElem.Count < 1)
 					throw new TestException($"Dialog with title '{Title}' not found");
 				String strTitle = titleElem[0].Text;
 				if (strTitle.Trim() != Title.Trim())
