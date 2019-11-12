@@ -36,8 +36,10 @@ namespace A2v10.Tests.Browser.Xaml
 			}
 			if (!String.IsNullOrEmpty(TestId))
 			{
-				var modalElem = lastWindow.GetElementByXPath(".//div[@class='modal']");
-				var testId = modalElem.GetAttribute("test-id");
+				var modalElem = lastWindow.GetElementsByClassName("modal");
+				if (modalElem.Count != 1)
+					throw new TestException($"Dialog not found");
+				var testId = modalElem[0].GetAttribute("test-id");
 				if (testId != TestId)
 					throw new TestException($"Invalid dialog TestId. Actual:'{testId}', expected: '{TestId}'");
 			}
