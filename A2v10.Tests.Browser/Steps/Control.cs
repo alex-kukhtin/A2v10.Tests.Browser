@@ -16,11 +16,19 @@ namespace A2v10.Tests.Browser.Xaml
 			String xPath = String.Empty;
 			if (!String.IsNullOrEmpty(Label))
 				xPath = $".//div[contains(@class, 'control-group')]/label/span[text()={Label.XPathText()}]/../../div[contains(@class, 'input-group')]/input";
+			else if (!String.IsNullOrEmpty(TestId))
+				xPath = $".//div[contains(@class, 'control-group')][@test-id='{TestId}']/div[contains(@class, 'input-group')]/input";
+
 			var control = scope.GetElementByXPath(xPath);
 			foreach (var step in Steps)
 			{
 				step.ElementRun(root, browser, control);
 			}
 		}
+	}
+
+	public class TextBox : Control
+	{
+
 	}
 }

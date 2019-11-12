@@ -41,6 +41,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Container.cs" />
     <Compile Include="Elements\ChromeBrowser.cs" />
     <Compile Include="Interfaces\IRootElement.cs" />
     <Compile Include="Interfaces\IScope.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="Steps\Navigate.cs" />
     <Compile Include="Steps\OpenUrl.cs" />
     <Compile Include="Base\XamlItem.cs" />
+    <Compile Include="Steps\Table.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
