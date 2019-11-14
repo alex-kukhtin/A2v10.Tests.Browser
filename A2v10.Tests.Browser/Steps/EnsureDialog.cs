@@ -5,11 +5,11 @@ using System.Threading;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class EnsureDialog : Step
+	public class EnsureDialog : ElementStep
 	{
 		public String Title { get; set; }
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			FindDialog(browser);
 		}

@@ -6,14 +6,15 @@ using System.Windows.Markup;
 namespace A2v10.Tests.Browser.Xaml
 {
 	[ContentProperty("Steps")]
-	public class NewWindow : Step
+	public class NewWindow : ElementStep
 	{
 		public String Title { get; set; }
 		public String Url { get; set; }
 
-		public StepCollection Steps { get; set; } = new StepCollection();
+		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			IWindow newWindow = browser.GetLastNewWindow();
 			try
@@ -26,12 +27,12 @@ namespace A2v10.Tests.Browser.Xaml
 					if (newWindow.Url != Url)
 						throw new TestException($"Invalid window url. Actual:'{newWindow.Url}', expected: '{Url}'");
 
-				foreach (var step in Steps)
-				{
-					step.Run(root, browser, newWindow);
-				}
+				var scope = newWindow.GetElementsByClassName("shell")[0];
+
+				Steps.ElementsRun(root, browser, scope);
 			}
-			finally {
+			finally
+			{
 				newWindow.Close();
 			}
 		}

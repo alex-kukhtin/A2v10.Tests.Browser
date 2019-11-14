@@ -15,13 +15,14 @@ namespace A2v10.Tests.Browser.Xaml
 	{
 		public String Description { get; set; }
 		public String Name { get; set; }
-		public StepCollection Steps { get; set; } = new StepCollection();
+		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
 
 		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
 			browser.Escape(); // ensure there are no open dialogs
+			var shell = scope.GetElementsByClassName("shell")[0];
 			foreach (var st in Steps)
-				st.Run(root, browser, scope);
+				st.ElementRun(root, browser, shell);
 		}
 	}
 }

@@ -1,16 +1,21 @@
 ﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
 
 using System;
+using System.Windows.Markup;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class Navigate : Step
+	[ContentProperty("Steps")]
+	public class Navigate : ElementStep
 	{
 		public String Url { get; set; }
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
+
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			browser.Navigate(Url);
+			Steps.ElementsRun(root, browser, control);
 		}
 	}
 }

@@ -26,12 +26,12 @@ namespace A2v10.Tests.Browser
 				return;
 			ChromeOptions opts = new ChromeOptions()
 			{
-				PageLoadStrategy = PageLoadStrategy.Default
+				PageLoadStrategy = PageLoadStrategy.Normal,
+				Proxy = null
 			};
-
 			_driver = new ChromeDriver(opts);
-			_navigate = _driver.Navigate();
 			_driver.Manage().Window.Size = new Size(1600, 1000);
+			_navigate = _driver.Navigate();
 			_navigate.GoToUrl(url);
 		}
 
@@ -70,6 +70,7 @@ namespace A2v10.Tests.Browser
 					if (readyState)
 						return;
 					Thread.Sleep(20);
+					Debug.WriteLine("waiting...");
 					if (sw.ElapsedMilliseconds > WAIT_TIMEOUT)
 						throw new TimeoutException();
 				} while (!readyState);
@@ -168,7 +169,9 @@ namespace A2v10.Tests.Browser
 			if (handles.Count < 2)
 				throw new TestException($"Window not found");
 			var winName = handles[handles.Count - 1];
-			_driver.SwitchTo().Window(winName);
+
+			var st = _driver.SwitchTo();
+			st.Window(winName);
 			WaitForComplete();
 			EnsureNoAppException();
 			return new TestWindow(_driver);

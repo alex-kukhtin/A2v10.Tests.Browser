@@ -82,7 +82,7 @@
     <Compile Include="Steps\NewWindow.cs" />
     <Compile Include="Steps\Dialog.cs" />
     <Compile Include="Steps\EnsureDialog.cs" />
-    <Compile Include="Steps\EnsureDropDown.cs" />
+    <Compile Include="Steps\DropDown.cs" />
     <Compile Include="Steps\Escape.cs" />
     <Compile Include="Steps\Navigate.cs" />
     <Compile Include="Steps\OpenUrl.cs" />
@@ -92,6 +92,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

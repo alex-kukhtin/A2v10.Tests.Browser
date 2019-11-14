@@ -9,7 +9,7 @@ namespace A2v10.Tests.Browser.Xaml
 	[ContentProperty("Steps")]
 	public class Dialog : EnsureDialog, ISupportInitialize
 	{
-		public StepCollection Steps { get; set; } = new StepCollection();
+		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
 
 		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
@@ -17,7 +17,7 @@ namespace A2v10.Tests.Browser.Xaml
 
 			foreach (var step in Steps)
 			{
-				step.Run(root, browser, dialog);
+				step.ElementRun(root, browser, dialog);
 			}
 		}
 

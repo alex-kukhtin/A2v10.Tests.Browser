@@ -4,12 +4,12 @@ using System;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class ModelValue : Step
+	public class ModelValue : ElementStep
 	{
 		public String Path { get; set; }
 		public String To { get; set; }
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			var script = $"return window.__tests__.$invoke({{target: 'controller', testId: '{Parent.TestId}', action: 'eval', path: '{Path}'}});";
 			var result = browser.ExecuteScript(script);

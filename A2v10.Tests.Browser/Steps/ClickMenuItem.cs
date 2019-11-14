@@ -4,16 +4,16 @@ using System;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class ClickMenuItem : Step
+	public class ClickMenuItem : ElementStep
 	{
 		public String Text { get; set; }
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			String xPath = null;
 			if (Text != null)
 				xPath = $".//button[contains(@class,'dropdown-item')][normalize-space()={Text.XPathText()}]";
-			browser.Click(scope.GetElementByXPath(xPath));
+			browser.Click(control.GetElementByXPath(xPath));
 		}
 	}
 }

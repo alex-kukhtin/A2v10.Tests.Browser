@@ -4,16 +4,16 @@ using System;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class ClickListItem : Step
+	public class ClickListItem : ElementStep
 	{
 		public String Header { get; set; }
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			String xPath = null;
 			if (Header != null)
-				xPath =$".//li[contains(@class,'a2-list-item')]/*/div[contains(@class,'list-item-header')][normalize-space()={Header.XPathText()}]";
-			browser.Click(scope.GetElementByXPath(xPath));
+				xPath = $".//li[contains(@class,'a2-list-item')]/*/div[contains(@class,'list-item-header')][normalize-space()={Header.XPathText()}]";
+			browser.Click(control.GetElementByXPath(xPath));
 		}
 	}
 }

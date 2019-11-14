@@ -4,16 +4,16 @@ using System;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class ClickTabBarButton : Step
+	public class ClickTabBarButton : ElementStep
 	{
 		public String Text { get; set; }
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			String xPath = null;
 			if (Text != null)
 				xPath = $".//div[contains(@class,'a2-tab-bar-item')]/a[contains(@class,'a2-tab-button')]/span[contains(@class,'content')][normalize-space()='{Text}']";
-			browser.Click(scope.GetElementByXPath(xPath));
+			browser.Click(control.GetElementByXPath(xPath));
 		}
 	}
 }
