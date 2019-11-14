@@ -1,4 +1,7 @@
-﻿
+﻿WebDriver source:
+https://sites.google.com/a/chromium.org/chromedriver/
+
+
 4. Ensure DropDown (MenuItems)
 14. Show state in status bar
 14. ClickAddOn Icon
@@ -6,3 +9,6 @@
 16. About elements (Version, Copyright, selenium licenses links)
 18. Diagram
 	$x(".//div[@class='diagram']//span[@class='d-ab-text' and text()='Придбання']")
+
+
+
