@@ -9,13 +9,7 @@ namespace A2v10.Tests.Browser.Xaml
 
 	}
 
-	public abstract class DataGridStep : Step
+	public abstract class DataGridStep : ElementStep
 	{
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
-		{
-			throw new System.NotImplementedException();
-		}
-
-		public abstract void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control);
 	}
 }

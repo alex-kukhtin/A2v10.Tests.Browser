@@ -11,7 +11,7 @@ namespace A2v10.Tests.Browser.Xaml
 	{
 		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			ITestElement dialog = FindDialog(browser);
 

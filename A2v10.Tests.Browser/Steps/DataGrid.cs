@@ -8,18 +8,18 @@ namespace A2v10.Tests.Browser.Xaml
 {
 	[ContentProperty("Steps")]
 
-	public class DataGrid : Step, ISupportInitialize
+	public class DataGrid : ElementStep, ISupportInitialize
 	{
 		public DataGridStepCollection Steps { get; set; } = new DataGridStepCollection();
 
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			String xPath = String.Empty;
 
 			if (!String.IsNullOrEmpty(TestId))
 				xPath = $".//div[contains(@class, 'data-grid-container')][@test-id='{TestId}']";
 
-			var dataGrid = scope.GetElementByXPath(xPath);
+			var dataGrid = control.GetElementByXPath(xPath);
 
 			foreach (var step in Steps)
 			{

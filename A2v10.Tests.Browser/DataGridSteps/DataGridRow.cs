@@ -7,10 +7,11 @@ using System.Windows.Markup;
 namespace A2v10.Tests.Browser.Xaml
 {
 	[ContentProperty("Steps")]
-	public class SelectRow : DataGridStep
+	public class DataGridRow : DataGridStep
 	{
 		public String Id { get; set; }
-		public StepCollection Steps { get; set; } = new StepCollection();
+
+		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
@@ -27,7 +28,7 @@ namespace A2v10.Tests.Browser.Xaml
 			var row = elem.GetElementByXPath(".//tr[contains($class, 'dg-row') or contains(@class, 'active')]");
 
 			foreach (var step in Steps)
-				step.Run(root, browser, row);
+				step.ElementRun(root, browser, row);
 		}
 	}
 }

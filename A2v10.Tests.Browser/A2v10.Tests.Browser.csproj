@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Container.cs" />
+    <Compile Include="ElementSteps\EnterText.cs" />
+    <Compile Include="ElementSteps\EnsureText.cs" />
     <Compile Include="Elements\ChromeBrowser.cs" />
     <Compile Include="Interfaces\IRootElement.cs" />
     <Compile Include="Interfaces\IScope.cs" />
@@ -54,7 +56,7 @@
     <Compile Include="Exceptions\TestException.cs" />
     <Compile Include="Elements\TestWindow.cs" />
     <Compile Include="DataGridSteps\DataGridStep.cs" />
-    <Compile Include="DataGridSteps\SelectRow.cs" />
+    <Compile Include="DataGridSteps\DataGridRow.cs" />
     <Compile Include="Base\Declare.cs" />
     <Compile Include="ElementSteps\ClickCaret.cs" />
     <Compile Include="ElementSteps\Select.cs" />

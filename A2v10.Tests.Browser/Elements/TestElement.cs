@@ -2,7 +2,7 @@
 
 using System;
 using System.Collections.Generic;
-
+using System.Threading;
 using OpenQA.Selenium;
 
 namespace A2v10.Tests.Browser
@@ -17,7 +17,7 @@ namespace A2v10.Tests.Browser
 		}
 
 		#region ITestElement
-		public String Text => _elem.Text;
+		public String Text => GetElementText();
 
 		public void Click()
 		{
@@ -30,6 +30,8 @@ namespace A2v10.Tests.Browser
 		{
 			if (!_elem.Enabled)
 				throw new TestException($"Element is not currently enabled and so may not be interacted with");
+			_elem.Click();
+			Thread.Sleep(20); // vue set focus
 			_elem.SendKeys(text);
 		}
 
@@ -68,6 +70,13 @@ namespace A2v10.Tests.Browser
 			foreach (var el in func())
 				result.Add(new TestElement(el));
 			return result;
+		}
+
+		String GetElementText()
+		{
+			if (_elem.TagName.ToLowerInvariant() == "input")
+				return _elem.GetAttribute("value");
+			return _elem.Text;
 		}
 	}
 }

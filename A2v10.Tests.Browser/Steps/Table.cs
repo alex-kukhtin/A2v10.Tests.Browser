@@ -44,40 +44,43 @@ namespace A2v10.Tests.Browser.Xaml
 		public override String tagName => "thead";
 	}
 
-	[ContentProperty("Steps")]
-	public class Table : Step
+	public class Table : ElementStepContainer
 	{
-		public TableStepCollection Steps { get; set; } = new TableStepCollection();
-
-		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
+		public override ITestElement FindScope(IScope scope)
 		{
 			String xPath = String.Empty;
 			if (!String.IsNullOrEmpty(TestId))
 				xPath = $".//table[contains(@class, 'a2-table')][@test-id='{TestId}']";
 
-			var table = scope.GetElementByXPath(xPath);
-			foreach (var s in Steps)
-				s.ElementRun(root, browser, table);
+			return scope.GetElementByXPath(xPath);
 		}
 	}
 
-	[ContentProperty("Steps")]
-	public class TableRow : ElementStep
+	public class TableRow : ElementStepContainer
 	{
-		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
-
 		public Int32 Index { get; set; }
 
-		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
+		public override ITestElement FindScope(IScope scope)
 		{
 			String xPath = $".//tr";
-			var rows = control.GetElementsByXPath(xPath);
+			var rows = scope.GetElementsByXPath(xPath);
 			if (Index < 0 || Index >= rows.Count)
 				throw new TestException($"Index was outside the bounds of the array. (Index={Index}, Rows={rows.Count})");
-			foreach (var step in Steps)
-			{
-				step.ElementRun(root, browser, rows[Index]);
-			}
+			return rows[Index];
+		}
+	}
+
+	public class TableCell : ElementStepContainer
+	{
+		public Int32 Index { get; set; }
+
+		public override ITestElement FindScope(IScope scope)
+		{
+			String xPath = $".//td";
+			var cells = scope.GetElementsByXPath(xPath);
+			if (Index < 0 || Index >= cells.Count)
+				throw new TestException($"Index was outside the bounds of the array. (Index={Index}, Cells={cells.Count})");
+			return cells[Index];
 		}
 	}
 }
