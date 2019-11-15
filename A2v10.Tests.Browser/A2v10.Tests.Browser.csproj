@@ -45,6 +45,7 @@
     <Compile Include="ElementSteps\EnterText.cs" />
     <Compile Include="ElementSteps\EnsureText.cs" />
     <Compile Include="Elements\ChromeBrowser.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Interfaces\IRootElement.cs" />
     <Compile Include="Interfaces\IScope.cs" />
     <Compile Include="Interfaces\IWindow.cs" />

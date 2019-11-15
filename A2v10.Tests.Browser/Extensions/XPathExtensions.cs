@@ -1,4 +1,5 @@
-﻿
+﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+
 using System;
 using System.Text;
 using System.Text.RegularExpressions;
