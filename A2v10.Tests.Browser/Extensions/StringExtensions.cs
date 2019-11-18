@@ -14,5 +14,12 @@ namespace A2v10.Tests.Browser.Xaml
 			str = str.Replace(" ", "").Replace("\u00A0", "").Replace(',', '.');
 			return Convert.ToDecimal(str, CultureInfo.InvariantCulture);
 		}
+
+		public static DateTime ToDate(this String str)
+		{
+			if (DateTime.TryParseExact(str, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt))
+				return dt;
+			throw new TestException($"Invalid date value: {str}");
+		}
 	}
 }

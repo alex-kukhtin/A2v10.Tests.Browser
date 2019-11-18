@@ -13,8 +13,8 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
-			// current pos - input
-			Thread.Sleep(50);
+			// current pos - input (debounce!)
+			Thread.Sleep(50); // Vue
 			var pane = elem.GetElementByXPath("./../div[contains(@class, 'selector-pane')]");
 			foreach (var s in Steps)
 			{

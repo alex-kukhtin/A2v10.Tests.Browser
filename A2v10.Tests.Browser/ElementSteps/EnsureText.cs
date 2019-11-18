@@ -37,4 +37,19 @@ namespace A2v10.Tests.Browser.Xaml
 				throw new TestException($"Number mismatch. Actual: '{val}', expected: '{Number}'");
 		}
 	}
+
+	public class EnsureDate : ElementStep
+	{
+		public Boolean Today { get; set; }
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
+		{
+			elem.Click();
+			Thread.Sleep(20); // vue set focus
+			var val = elem.Text.ToDate();
+			if (Today) { 
+				if (val != DateTime.Today)
+					throw new TestException($"Date mismatch. Actual: '{val}', expected: '{DateTime.Today.ToString("dd.MM")}'");
+			}
+		}
+	}
 }

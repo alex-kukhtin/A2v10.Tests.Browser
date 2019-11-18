@@ -44,6 +44,7 @@
     <Compile Include="Base\Container.cs" />
     <Compile Include="ElementSteps\EnterText.cs" />
     <Compile Include="ElementSteps\EnsureText.cs" />
+    <Compile Include="ElementSteps\WaitForComplete.cs" />
     <Compile Include="Elements\ChromeBrowser.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Interfaces\IRootElement.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="Loader.cs" />
     <Compile Include="Root\Scenario.cs" />
     <Compile Include="Base\Step.cs" />
+    <Compile Include="Steps\ClickAddOn.cs" />
     <Compile Include="Steps\ClickListItem.cs" />
     <Compile Include="Steps\ClickTabBarButton.cs" />
     <Compile Include="Steps\ClickMenuItem.cs" />

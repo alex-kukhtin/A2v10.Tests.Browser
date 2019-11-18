@@ -20,4 +20,20 @@ namespace A2v10.Tests.Browser.Xaml
 			item.Click();
 		}
 	}
+
+	[ContentProperty("Text")]
+	public class SelectRow : ElementStep
+	{
+		public String Text { get; set; }
+
+		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
+		{
+			// current = selector pane
+			String xPath = String.Empty;
+			if (!String.IsNullOrEmpty(Text))
+				xPath = $"./div[@class='selector-body']//table//td/span[normalize-space()='{Text}']";
+			var item = elem.GetElementByXPath(xPath);
+			item.Click();
+		}
+	}
 }
