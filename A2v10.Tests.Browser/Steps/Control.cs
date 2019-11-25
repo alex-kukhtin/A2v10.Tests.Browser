@@ -30,9 +30,21 @@ namespace A2v10.Tests.Browser.Xaml
 		{
 			throw new NotImplementedException();
 		}
+
+		public override void OnInit()
+		{
+			base.OnInit();
+			foreach (var s in Steps)
+				s.Parent = this;
+		}
 	}
 
 	public class TextBox : Control
+	{
+
+	}
+
+	public class Selector : Control
 	{
 
 	}

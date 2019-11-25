@@ -31,7 +31,7 @@ namespace A2v10.Tests.Browser
 			if (!_elem.Enabled)
 				throw new TestException($"Element is not currently enabled and so may not be interacted with");
 			_elem.Click();
-			Thread.Sleep(20); // vue set focus
+			Thread.Sleep(50); // vue set focus
 			_elem.SendKeys(text);
 		}
 

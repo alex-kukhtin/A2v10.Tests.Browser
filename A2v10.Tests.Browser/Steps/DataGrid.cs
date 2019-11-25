@@ -8,7 +8,7 @@ namespace A2v10.Tests.Browser.Xaml
 {
 	[ContentProperty("Steps")]
 
-	public class DataGrid : ElementStep, ISupportInitialize
+	public class DataGrid : ElementStep
 	{
 		public DataGridStepCollection Steps { get; set; } = new DataGridStepCollection();
 
@@ -27,16 +27,12 @@ namespace A2v10.Tests.Browser.Xaml
 			}
 		}
 
-		#region ISupportInitialize
-		public void BeginInit()
-		{
-		}
 
-		public void EndInit()
+		public override void OnInit()
 		{
+			base.OnInit();
 			foreach (var s in Steps)
 				s.Parent = this;
 		}
-		#endregion
 	}
 }

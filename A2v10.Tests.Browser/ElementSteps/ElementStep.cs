@@ -1,6 +1,7 @@
 ﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
 
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Markup;
 
 namespace A2v10.Tests.Browser.Xaml
@@ -16,7 +17,7 @@ namespace A2v10.Tests.Browser.Xaml
 		}
 	}
 
-	public abstract class ElementStep : Step
+	public abstract class ElementStep : Step, ISupportInitialize
 	{
 		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
@@ -24,6 +25,22 @@ namespace A2v10.Tests.Browser.Xaml
 		}
 
 		public abstract void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control);
+
+		public virtual void OnInit()
+		{
+
+		}
+
+		#region ISupportInitialize
+		public void BeginInit()
+		{
+		}
+
+		public void EndInit()
+		{
+			OnInit();
+		}
+		#endregion
 	}
 
 	[ContentProperty("Steps")]

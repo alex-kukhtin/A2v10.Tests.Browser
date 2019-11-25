@@ -15,7 +15,7 @@ namespace A2v10.Tests.Browser.Xaml
 			if (Text != null)
 				xPath = $".//button[contains(@class,'btn')][normalize-space()={Text.XPathText()}]";
 			else if (Icon != null)
-				xPath = $".//button[contains(@class,'btn')]/i[contains(@class, 'ico-{Icon.ToLowerInvariant()}')]";
+				xPath = $".//button[contains(@class,'btn')]/i[contains(@class, 'ico-{Icon.ToKebabCase()}')]";
 			browser.Click(control.GetElementByXPath(xPath));
 		}
 	}

@@ -12,7 +12,7 @@ namespace A2v10.Tests.Browser.Xaml
 		{
 			String xPath = null;
 			if (Icon != null)
-				xPath = $"./../a[contains(@class, 'add-on')]/i[contains(@class, 'ico-{Icon.ToLowerInvariant()}')]";
+				xPath = $"./ancestor::div[contains(@class, 'input-group')]//*[contains(@class, 'add-on')]//i[contains(@class, 'ico-{Icon.ToKebabCase()}')]";
 			browser.Click(control.GetElementByXPath(xPath));
 		}
 	}

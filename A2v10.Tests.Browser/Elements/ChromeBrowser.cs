@@ -26,7 +26,7 @@ namespace A2v10.Tests.Browser
 				return;
 			ChromeOptions opts = new ChromeOptions()
 			{
-				PageLoadStrategy = PageLoadStrategy.Normal,
+				PageLoadStrategy = PageLoadStrategy.Eager,
 				Proxy = null
 			};
 			_driver = new ChromeDriver(opts);
@@ -68,7 +68,10 @@ namespace A2v10.Tests.Browser
 					if (rs is Boolean)
 						readyState = (Boolean)rs;
 					if (readyState)
+					{
+						Thread.Sleep(50); // Vue
 						return;
+					}
 					Thread.Sleep(20);
 					Debug.WriteLine("waiting...");
 					if (sw.ElapsedMilliseconds > WAIT_TIMEOUT)
@@ -123,6 +126,7 @@ namespace A2v10.Tests.Browser
 		public void Click(ITestElement elem)
 		{
 			EnsureDriver();
+			Thread.Sleep(50); // Vue
 			elem.Click();
 			WaitForComplete();
 			EnsureNoAppException();

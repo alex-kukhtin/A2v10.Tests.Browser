@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using System.Text;
 
 namespace A2v10.Tests.Browser.Xaml
 {
@@ -20,6 +21,27 @@ namespace A2v10.Tests.Browser.Xaml
 			if (DateTime.TryParseExact(str, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt))
 				return dt;
 			throw new TestException($"Invalid date value: {str}");
+		}
+
+		public static String ToKebabCase(this String s, String delim = "-")
+		{
+			if (String.IsNullOrEmpty(s))
+				return null;
+			var b = new StringBuilder(s.Length + 5);
+			for (var i = 0; i < s.Length; i++)
+			{
+				Char ch = s[i];
+				if (Char.IsUpper(ch) && (i > 0))
+				{
+					b.Append(delim);
+					b.Append(Char.ToLowerInvariant(ch));
+				}
+				else
+				{
+					b.Append(Char.ToLowerInvariant(ch));
+				}
+			}
+			return b.ToString();
 		}
 	}
 }

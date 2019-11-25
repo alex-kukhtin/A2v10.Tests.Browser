@@ -13,14 +13,15 @@ namespace A2v10.Tests.Browser.Xaml
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
 			// current pos - input
-			var control = elem.GetElementByXPath("./../..");
+			var control = elem.GetElementByXPath("./ancestor::div[contains(@class, 'control-group')]");
 			var elemClass = control.GetAttribute("class");
 			if (!elemClass.Contains("invalid"))
 				throw new TestException("Element is valid");
 			String xPath = String.Empty;
 			if (!String.IsNullOrEmpty(Message))
-				xPath = $"./../div[@class='validator']/span[text()={Message.XPathText()}]";
-			elem.GetElementByXPath(xPath, checkVisibility:false);
+				//elem.GetElementByXPath("./ancestor::div[contains(@class, 'input-group')]/a").GetAttribute("class")
+				xPath = $"./ancestor::div[contains(@class, 'input-group')]/div[contains(@class, 'validator')]/span[@class='error' and normalize-space()={Message.XPathText()}]";
+			var validator = elem.GetElementByXPath(xPath, checkVisibility:false);
 		}
 	}
 }

@@ -9,6 +9,8 @@ namespace A2v10.Tests.Browser.Xaml
 		public override ITestElement FindScope(IScope scope)
 		{
 			String xPath = ".//div[contains(@class, 'dropdown')][contains(@class, 'show')]";
+			if (Parent is Control)
+				xPath = "./ancestor::div[contains(@class, 'input-group')]//div[contains(@class, 'dropdown')][contains(@class, 'show')]";
 			return scope.GetElementByXPath(xPath);
 		}
 	}

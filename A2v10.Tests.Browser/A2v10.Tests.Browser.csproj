@@ -42,8 +42,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Container.cs" />
+    <Compile Include="ElementSteps\Click.cs" />
+    <Compile Include="ElementSteps\EnsureEmpty.cs" />
     <Compile Include="ElementSteps\EnterText.cs" />
     <Compile Include="ElementSteps\EnsureText.cs" />
+    <Compile Include="Steps\TabPanel.cs" />
+    <Compile Include="Steps\List.cs" />
+    <Compile Include="Steps\NavBar.cs" />
+    <Compile Include="Steps\SideBar.cs" />
+    <Compile Include="Steps\Hyperlink.cs" />
     <Compile Include="ElementSteps\WaitForComplete.cs" />
     <Compile Include="Elements\ChromeBrowser.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
@@ -73,12 +80,12 @@
     <Compile Include="Loader.cs" />
     <Compile Include="Root\Scenario.cs" />
     <Compile Include="Base\Step.cs" />
-    <Compile Include="Steps\ClickAddOn.cs" />
-    <Compile Include="Steps\ClickListItem.cs" />
+    <Compile Include="ElementSteps\ClickAddOn.cs" />
+    <Compile Include="ElementSteps\ClickListItem.cs" />
     <Compile Include="Steps\ClickTabBarButton.cs" />
-    <Compile Include="Steps\ClickMenuItem.cs" />
-    <Compile Include="Steps\ClickLink.cs" />
-    <Compile Include="Steps\ClickButton.cs" />
+    <Compile Include="ElementSteps\ClickMenuItem.cs" />
+    <Compile Include="ElementSteps\ClickLink.cs" />
+    <Compile Include="ElementSteps\ClickButton.cs" />
     <Compile Include="Steps\DataGrid.cs" />
     <Compile Include="Steps\Control.cs" />
     <Compile Include="Steps\Confirm.cs" />

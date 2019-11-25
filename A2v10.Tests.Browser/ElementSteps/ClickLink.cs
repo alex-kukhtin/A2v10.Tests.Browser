@@ -7,13 +7,18 @@ namespace A2v10.Tests.Browser.Xaml
 	public class ClickLink : ElementStep
 	{
 		public String Url { get; set; }
+		public String Text { get; set; }
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
 			String xPath = null;
 			if (Url != null)
 				xPath = $".//a[@href='{Url.Trim()}']";
-			browser.Click(control.GetElementByXPath(xPath));
+			else if (Text != null)
+				xPath = $".//a[normalize-space()='{Text}']";
+			var elem = control.GetElementByXPath(xPath);
+			elem.Click();
+			browser.WaitForComplete();
 		}
 	}
 }

@@ -7,7 +7,7 @@ using System.Windows.Markup;
 namespace A2v10.Tests.Browser.Xaml
 {
 	[ContentProperty("Steps")]
-	public class Dialog : EnsureDialog, ISupportInitialize
+	public class Dialog : EnsureDialog
 	{
 		public ElementStepCollection Steps { get; set; } = new ElementStepCollection();
 
@@ -21,16 +21,11 @@ namespace A2v10.Tests.Browser.Xaml
 			}
 		}
 
-		#region ISupportInitialize
-		public void BeginInit()
+		public override void OnInit()
 		{
-		}
-
-		public void EndInit()
-		{
+			base.OnInit();
 			foreach (var s in Steps)
 				s.Parent = this;
 		}
-		#endregion
 	}
 }

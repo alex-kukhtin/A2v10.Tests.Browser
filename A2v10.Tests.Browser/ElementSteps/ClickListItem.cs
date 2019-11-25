@@ -12,8 +12,10 @@ namespace A2v10.Tests.Browser.Xaml
 		{
 			String xPath = null;
 			if (Header != null)
-				xPath = $".//li[contains(@class,'a2-list-item')]/*/div[contains(@class,'list-item-header')][normalize-space()={Header.XPathText()}]";
-			browser.Click(control.GetElementByXPath(xPath));
+				xPath = $".//li[contains(@class,'a2-list-item')]//div[contains(@class,'list-item-header')][normalize-space()={Header.XPathText()}]";
+			var elem = control.GetElementByXPath(xPath);
+			elem.Click();
+			browser.WaitForComplete();
 		}
 	}
 }

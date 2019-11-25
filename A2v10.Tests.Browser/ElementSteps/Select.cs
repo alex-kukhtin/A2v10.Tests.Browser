@@ -18,6 +18,7 @@ namespace A2v10.Tests.Browser.Xaml
 				xPath = $"./div[@class='selector-body']/ul[@class='selector-ul']/li[normalize-space()='{Text}']";
 			var item = elem.GetElementByXPath(xPath);
 			item.Click();
+			browser.WaitForComplete();
 		}
 	}
 
