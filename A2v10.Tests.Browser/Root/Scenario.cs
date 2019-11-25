@@ -19,7 +19,6 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void Run(IRootElement root, IWebBrowser browser, IScope scope)
 		{
-			browser.Escape(); // ensure there are no open dialogs
 			var shell = scope.GetElementsByClassName("shell")[0];
 			foreach (var st in Steps)
 				st.ElementRun(root, browser, shell);

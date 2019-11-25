@@ -16,6 +16,8 @@ namespace A2v10.Tests.Browser.Xaml
 				xPath = $".//a[@href='{Url.Trim()}']";
 			else if (Text != null)
 				xPath = $".//a[normalize-space()='{Text}']";
+			else if (TestId != null)
+				asdasdasdasdasd; + TestId в Hyperlink Xaml
 			var elem = control.GetElementByXPath(xPath);
 			elem.Click();
 			browser.WaitForComplete();

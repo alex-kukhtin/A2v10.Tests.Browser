@@ -82,7 +82,7 @@
     <Compile Include="Base\Step.cs" />
     <Compile Include="ElementSteps\ClickAddOn.cs" />
     <Compile Include="ElementSteps\ClickListItem.cs" />
-    <Compile Include="Steps\ClickTabBarButton.cs" />
+    <Compile Include="ElementSteps\ClickTabBarButton.cs" />
     <Compile Include="ElementSteps\ClickMenuItem.cs" />
     <Compile Include="ElementSteps\ClickLink.cs" />
     <Compile Include="ElementSteps\ClickButton.cs" />
@@ -95,7 +95,7 @@
     <Compile Include="Steps\Dialog.cs" />
     <Compile Include="Steps\EnsureDialog.cs" />
     <Compile Include="Steps\DropDown.cs" />
-    <Compile Include="Steps\Escape.cs" />
+    <Compile Include="ElementSteps\Escape.cs" />
     <Compile Include="Steps\Navigate.cs" />
     <Compile Include="Steps\OpenUrl.cs" />
     <Compile Include="Base\XamlItem.cs" />
