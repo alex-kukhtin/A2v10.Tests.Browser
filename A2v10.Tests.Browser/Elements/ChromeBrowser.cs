@@ -181,6 +181,28 @@ namespace A2v10.Tests.Browser
 			return new TestWindow(_driver);
 		}
 
+		void WaitForNewWindow()
+		{
+			Int32 xCount = _driver.WindowHandles.Count;
+			while (_driver.WindowHandles.Count == xCount)
+				Thread.Sleep(500);
+		}
+
+		public IPrintWindow GetPrintWindow()
+		{
+			Int32 initCount = _driver.WindowHandles.Count;
+			WaitForNewWindow();
+			EnsureDriver();
+			var handles = _driver.WindowHandles;
+			if (handles.Count < 2)
+				throw new TestException($"Window not found");
+			var winName = handles[handles.Count - 1];
+
+			var st = _driver.SwitchTo();
+			st.Window(winName);
+			return new TestPrintWindow(_driver, initCount);
+		}
+
 		public String ExecuteScript(String script)
 		{
 			EnsureDriver();
@@ -189,6 +211,15 @@ namespace A2v10.Tests.Browser
 			if (val == null)
 				return null;
 			return val.ToString();
+		}
+
+		public Object ExecuteScriptObject(String script)
+		{
+			EnsureDriver();
+			var val = _driver.ExecuteScript(script);
+			if (val == null)
+				return null;
+			return val;
 		}
 
 		#endregion

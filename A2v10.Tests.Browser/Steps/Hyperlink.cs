@@ -13,10 +13,12 @@ namespace A2v10.Tests.Browser.Xaml
 		public override ITestElement FindScope(IScope scope)
 		{
 			String xPath = null;
-			if (Url != null)
+			if (TestId != null)
+				xPath = $".//a[@test-id='{TestId}']";
+			else if (Url != null)
 				xPath = $".//a[@href='{Url.Trim()}']";
 			else if (Text != null)
-				xPath = $".//a[normalize-space()='{Text}']";
+				xPath = $".//a[normalize-space()={Text.XPathText()}]";
 			else if (Icon != null)
 				xPath = $".//a/i[contains(@class, 'ico-{Icon.ToKebabCase()}')]/..";
 			return scope.GetElementByXPath(xPath);

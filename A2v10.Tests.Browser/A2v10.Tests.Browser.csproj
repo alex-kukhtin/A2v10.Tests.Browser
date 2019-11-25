@@ -46,6 +46,13 @@
     <Compile Include="ElementSteps\EnsureEmpty.cs" />
     <Compile Include="ElementSteps\EnterText.cs" />
     <Compile Include="ElementSteps\EnsureText.cs" />
+    <Compile Include="Elements\TestPrintWindow.cs" />
+    <Compile Include="Interfaces\IPrintWindow.cs" />
+    <Compile Include="PrintSteps\CancelPrint.cs" />
+    <Compile Include="PrintSteps\PrintStep.cs" />
+    <Compile Include="Steps\ComboBox.cs" />
+    <Compile Include="Steps\PrintWindow.cs" />
+    <Compile Include="Steps\Panel.cs" />
     <Compile Include="Steps\TabPanel.cs" />
     <Compile Include="Steps\List.cs" />
     <Compile Include="Steps\NavBar.cs" />

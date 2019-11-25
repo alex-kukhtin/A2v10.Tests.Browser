@@ -12,13 +12,26 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
-			// current = selector pane
 			String xPath = String.Empty;
-			if (!String.IsNullOrEmpty(Text))
-				xPath = $"./div[@class='selector-body']/ul[@class='selector-ul']/li[normalize-space()='{Text}']";
-			var item = elem.GetElementByXPath(xPath);
-			item.Click();
-			browser.WaitForComplete();
+			if (Parent is ComboBox combo)
+			{
+				// current is select
+				if (!String.IsNullOrEmpty(Text))
+					xPath = $"./option[normalize-space()='{Text}']";
+				var item = elem.GetElementByXPath(xPath);
+				item.Click();
+				browser.WaitForComplete();
+
+			}
+			else
+			{
+				// current = selector pane
+				if (!String.IsNullOrEmpty(Text))
+					xPath = $"./div[@class='selector-body']/ul[@class='selector-ul']/li[normalize-space()='{Text}']";
+				var item = elem.GetElementByXPath(xPath);
+				item.Click();
+				browser.WaitForComplete();
+			}
 		}
 	}
 

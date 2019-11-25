@@ -25,7 +25,9 @@ namespace A2v10.Tests.Browser
 		void Click(ITestElement elem);
 		void Escape();
 		IWindow GetLastNewWindow();
+		IPrintWindow GetPrintWindow();
 		String ExecuteScript(String script);
+		Object ExecuteScriptObject(String script);
 		void WaitForComplete();
 
 		IRunScenario StartScenario(String name, String description);
