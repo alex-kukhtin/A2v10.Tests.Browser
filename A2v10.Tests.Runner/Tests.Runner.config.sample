@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
-	<appSettings>
-		<add key="url" value="service_url_here"/>
-		<add key="login" value="my_login_here"/>
-		<add key="password" value="my_password_here"/>
-	</appSettings>
+	<configSections>
+		<section name="sources" allowDefinition="Everywhere" type="A2v10.Tests.Browser.SourcesSection, A2v10.Tests.Browser"/>
+	</configSections>
+	<sources>
+		<source name="first test set" directory="test_directory1" url="url_here" login="login_here" password="password_hrere"/>
+		<source name="second test set" directory="test_directory2" url="url_here" login="login_here" password="password_hrere"/>
+	</sources>
 </configuration>

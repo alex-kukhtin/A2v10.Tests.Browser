@@ -1,11 +1,10 @@
-﻿using A2v10.Tests.Browser.Xaml;
+﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+
 using System;
-using System.Collections.Generic;
-using System.Configuration;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using A2v10.Tests.Browser;
+using A2v10.Tests.Browser.Xaml;
 
 namespace A2v10.Tests.Runner
 {
@@ -21,14 +20,14 @@ namespace A2v10.Tests.Runner
 			}
 		}
 
-		public String Url => GetKey("url");
-		public String Login => GetKey("login");
-		public String Password => GetKey("password");
+		public String Url => _source.url;
+		public String Login => _source.login;
+		public String Password => _source.password;
 
 
-		public static void CreateConfig(Configuration config, String appDir)
+		public static void CreateConfig(SourceElement source, String appDir)
 		{
-			_current = new Config(config, appDir);
+			_current = new Config(source, appDir);
 		}
 
 		public Feature GetFuture(String dir)
@@ -43,20 +42,14 @@ namespace A2v10.Tests.Runner
 			return Loader.LoadFeature(path);
 		}
 
-		private Config(Configuration config, String appDir)
+		private Config(SourceElement source, String appDir)
 		{
-			_configuration = config;
+			_source = source;
 			_appDir = appDir;
 		}
 
-		String GetKey(String key)
-		{
-			var x = _configuration?.AppSettings?.Settings[key];
-			return x.Value;
-		}
-
 		private static Config _current;
-		private readonly Configuration _configuration;
+		private readonly SourceElement _source;
 		private readonly String _appDir;
 	}
 }

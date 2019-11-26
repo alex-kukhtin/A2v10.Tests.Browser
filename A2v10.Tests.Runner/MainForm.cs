@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-
+using A2v10.Tests.Browser;
 using A2v10.Tests.Runner.Properties;
 
 namespace A2v10.Tests.Runner
@@ -14,16 +14,19 @@ namespace A2v10.Tests.Runner
 	public partial class MainForm : Form
 	{
 
-		public String AppRoot { get; set; }
 		public String AppDir { get; set; }
-		public String ConfigFile { get; set; }
+
+		private SourcesCollection _sources {get; }
+		private String _appRoot { get; set; }
 
 		private ThreadQueue _threadQueue;
 		private Int32 _countThreads;
 
-		public MainForm()
+		public MainForm(SourcesCollection sources, String appRoot)
 		{
 			InitializeComponent();
+			_sources = sources;
+			_appRoot = appRoot;
 		}
 
 		void ForEachNodes(TreeNodeCollection nodes, Action<TreeNode> action)
@@ -187,9 +190,10 @@ namespace A2v10.Tests.Runner
 
 		void LoadHosts()
 		{
-			foreach (var d in Directory.EnumerateDirectories(AppRoot))
+			foreach (var s in _sources)
 			{
-				toolHosts.Items.Add(Path.GetFileName(d));
+				var src = s as SourceElement;
+				toolHosts.Items.Add(src.name);
 			}
 			if (toolHosts.Items.Count > 0)
 				toolHosts.SelectedIndex = 0;
@@ -253,17 +257,12 @@ namespace A2v10.Tests.Runner
 		{
 			var index = toolHosts.SelectedIndex;
 			String text = toolHosts.Items[index].ToString();
-			AppDir = Path.Combine(AppRoot, text);
-			ConfigFile = Path.Combine(AppDir, "Tests.Runner.config");
-			if (!File.Exists(ConfigFile))
-				MessageBox.Show($"Config file '{ConfigFile}' not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			SourceElement src = _sources.GetSource(text);
+
+			AppDir = Path.Combine(_appRoot, src.directory);
+
 			OnReload(null, null);
-			ExeConfigurationFileMap configMap = new ExeConfigurationFileMap()
-			{
-				ExeConfigFilename = ConfigFile
-			};
-			var config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
-			Config.CreateConfig(config, AppDir);
+			Config.CreateConfig(src, AppDir);
 			Browser.Restart();
 		}
 	}

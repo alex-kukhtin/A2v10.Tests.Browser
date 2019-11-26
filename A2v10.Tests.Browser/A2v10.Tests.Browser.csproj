@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xaml" />
@@ -42,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Container.cs" />
+    <Compile Include="Config\SourcesSection.cs" />
     <Compile Include="ElementStates\Disabled.cs" />
     <Compile Include="ElementSteps\Click.cs" />
     <Compile Include="ElementStates\EnsureEmpty.cs" />
