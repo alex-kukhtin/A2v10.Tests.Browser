@@ -21,18 +21,26 @@ namespace A2v10.Tests.Browser
 		{
 		}
 
-		public void Start(String url) {
-			if (_driver != null)
-				return;
-			ChromeOptions opts = new ChromeOptions()
+		public void Start(String url)
+		{
+			if (_driver == null)
 			{
-				PageLoadStrategy = PageLoadStrategy.Eager,
-				Proxy = null
-			};
-			_driver = new ChromeDriver(opts);
-			_driver.Manage().Window.Size = new Size(1600, 1000);
+				ChromeOptions opts = new ChromeOptions()
+				{
+					PageLoadStrategy = PageLoadStrategy.Eager,
+					Proxy = null
+				};
+				_driver = new ChromeDriver(opts);
+				_driver.Manage().Window.Size = new Size(1600, 1000);
+			}
 			_navigate = _driver.Navigate();
 			_navigate.GoToUrl(url);
+		}
+
+		public void Restart(String url)
+		{
+			_navigate = _driver.Navigate();
+			_navigate.GoToUrl($"{url}/account/login");
 		}
 
 		public void Login(String login, String passsword)
@@ -129,6 +137,7 @@ namespace A2v10.Tests.Browser
 			Thread.Sleep(50); // Vue
 			elem.Click();
 			WaitForComplete();
+			Thread.Sleep(50); // Vue
 			EnsureNoAppException();
 		}
 

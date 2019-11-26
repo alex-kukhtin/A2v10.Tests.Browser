@@ -39,6 +39,15 @@ namespace A2v10.Tests.Runner
 		{
 		}
 
+		public static void Restart()
+		{
+			if (_current == null)
+				return;
+			var config = Config.Current;
+			_current._browser.Restart(config.Url);
+			_current._browser.Login(config.Login, config.Password);
+		}
+
 		public void RunOne(String futureFile, Action<IRunScenario> run)
 		{
 			var config = Config.Current;

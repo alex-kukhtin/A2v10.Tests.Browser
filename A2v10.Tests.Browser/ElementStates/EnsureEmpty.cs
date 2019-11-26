@@ -1,9 +1,7 @@
 ﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
 
 using System;
-using System.Globalization;
 using System.Threading;
-using System.Windows.Markup;
 
 namespace A2v10.Tests.Browser.Xaml
 {

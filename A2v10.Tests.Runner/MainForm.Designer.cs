@@ -125,7 +125,8 @@
 			this.toolHosts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.toolHosts.Margin = new System.Windows.Forms.Padding(1, 0, 5, 0);
 			this.toolHosts.Name = "toolHosts";
-			this.toolHosts.Size = new System.Drawing.Size(121, 23);
+			this.toolHosts.Size = new System.Drawing.Size(220, 23);
+			this.toolHosts.SelectedIndexChanged += new System.EventHandler(this.toolHosts_SelectedIndexChanged);
 			// 
 			// toolReload
 			// 
@@ -152,7 +153,7 @@
 			this.statusSuccess.BackColor = System.Drawing.Color.Green;
 			this.statusSuccess.ForeColor = System.Drawing.Color.White;
 			this.statusSuccess.Name = "statusSuccess";
-			this.statusSuccess.Size = new System.Drawing.Size(207, 17);
+			this.statusSuccess.Size = new System.Drawing.Size(206, 17);
 			this.statusSuccess.Text = "In progress: 50 Pass: 20 Fail:30 Total:50";
 			this.statusSuccess.Visible = false;
 			// 

@@ -42,8 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\Container.cs" />
+    <Compile Include="ElementStates\Disabled.cs" />
     <Compile Include="ElementSteps\Click.cs" />
-    <Compile Include="ElementSteps\EnsureEmpty.cs" />
+    <Compile Include="ElementStates\EnsureEmpty.cs" />
     <Compile Include="ElementSteps\EnterText.cs" />
     <Compile Include="ElementSteps\EnsureText.cs" />
     <Compile Include="Elements\TestPrintWindow.cs" />
@@ -77,8 +78,8 @@
     <Compile Include="ElementSteps\ClickCaret.cs" />
     <Compile Include="ElementSteps\Select.cs" />
     <Compile Include="ElementSteps\SelectorPane.cs" />
-    <Compile Include="ElementSteps\Invalid.cs" />
-    <Compile Include="ElementSteps\Valid.cs" />
+    <Compile Include="ElementStates\Invalid.cs" />
+    <Compile Include="ElementStates\Valid.cs" />
     <Compile Include="ElementSteps\Enter.cs" />
     <Compile Include="ElementSteps\TypeText.cs" />
     <Compile Include="ElementSteps\ElementStep.cs" />

@@ -2,7 +2,6 @@
 
 using System;
 using System.Configuration;
-using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -15,6 +14,7 @@ namespace A2v10.Tests.Runner
 	public partial class MainForm : Form
 	{
 
+		public String AppRoot { get; set; }
 		public String AppDir { get; set; }
 		public String ConfigFile { get; set; }
 
@@ -118,8 +118,10 @@ namespace A2v10.Tests.Runner
 
 		private void OnReload(Object sender, EventArgs e)
 		{
+			treeView.Visible = false;
 			treeView.Nodes.Clear();
 			LoadTree(AppDir, treeView.Nodes);
+			treeView.Visible = true;
 		}
 
 		private void OnStop(Object sender, EventArgs e)
@@ -171,23 +173,26 @@ namespace A2v10.Tests.Runner
 
 		private void OnLoad(Object sender, EventArgs e)
 		{
-			ExeConfigurationFileMap configMap = new ExeConfigurationFileMap()
-			{
-				ExeConfigFilename = ConfigFile
-			};
-			var config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
-			Config.CreateConfig(config, AppDir);
-
 			String html = Resources.layout;
 			webBrowser1.DocumentText = html; // "<html><head><style body {color:red;}></style></head><body></body></html>";
 			webBrowser1.DocumentCompleted += (ds, arg) => {
-				LoadTree(AppDir, treeView.Nodes);
+				LoadHosts();
 			};
 			_threadQueue = new ThreadQueue();
 
 			var v = Assembly.GetExecutingAssembly().GetName().Version;
 			String ver = $" [version {v.Major}.{v.Minor}.{v.Build}]";
 			this.Text += ver;
+		}
+
+		void LoadHosts()
+		{
+			foreach (var d in Directory.EnumerateDirectories(AppRoot))
+			{
+				toolHosts.Items.Add(Path.GetFileName(d));
+			}
+			if (toolHosts.Items.Count > 0)
+				toolHosts.SelectedIndex = 0;
 		}
 
 		private void OnClosing(Object sender, FormClosingEventArgs e)
@@ -242,6 +247,24 @@ namespace A2v10.Tests.Runner
 		private void OnAbout(Object sender, EventArgs e)
 		{
 			(new AboutForm()).ShowDialog(this);
+		}
+
+		private void toolHosts_SelectedIndexChanged(Object sender, EventArgs e)
+		{
+			var index = toolHosts.SelectedIndex;
+			String text = toolHosts.Items[index].ToString();
+			AppDir = Path.Combine(AppRoot, text);
+			ConfigFile = Path.Combine(AppDir, "Tests.Runner.config");
+			if (!File.Exists(ConfigFile))
+				MessageBox.Show($"Config file '{ConfigFile}' not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			OnReload(null, null);
+			ExeConfigurationFileMap configMap = new ExeConfigurationFileMap()
+			{
+				ExeConfigFilename = ConfigFile
+			};
+			var config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+			Config.CreateConfig(config, AppDir);
+			Browser.Restart();
 		}
 	}
 }

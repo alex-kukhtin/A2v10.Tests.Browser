@@ -18,19 +18,20 @@ namespace A2v10.Tests.Runner
 			if (args.Length > 0)
 				path = args[0];
 
+			/*
 			String configPath = Path.Combine(path, "Tests.Runner.config");
 			if (!File.Exists(configPath))
 				MessageBox.Show($"Config file '{configPath}' not found", "Usage", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+			*/
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(
 				new MainForm()
 				{
-					AppDir = path,
-					ConfigFile = configPath
+					AppRoot = path,
 				}
-				);
+			);
 		}
 	}
 }
