@@ -15,11 +15,17 @@ namespace A2v10.Tests.Browser.Xaml
 		{
 			String xPath = String.Empty;
 			if (!String.IsNullOrEmpty(Label))
-				xPath = $".//div[contains(@class, 'control-group')]/label/span[normalize-space()={Label.XPathText()}]/../../div[contains(@class, 'input-group')]/input";
+				xPath = $".//div[contains(@class, 'control-group')]/label/span[normalize-space()={Label.XPathText()}]/../../div[contains(@class, 'input-group')]/*";
 			else if (!String.IsNullOrEmpty(TestId))
-				xPath = $".//div[contains(@class, 'control-group')][@test-id='{TestId}']/div[contains(@class, 'input-group')]/input";
+				xPath = $".//div[contains(@class, 'control-group')][@test-id='{TestId}']/div[contains(@class, 'input-group')]/*";
 
 			var scope = control.GetElementByXPath(xPath);
+
+			var tn = scope.TagName;
+			if (tn != "input" && tn != "textarea")
+				throw new TestException($"Invalid element '{tn}'. Expected 'input' or 'textarea'");
+
+
 			foreach (var step in Steps)
 			{
 				step.ElementRun(root, browser, scope);

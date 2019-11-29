@@ -18,6 +18,7 @@ namespace A2v10.Tests.Browser
 
 		#region ITestElement
 		public String Text => GetElementText();
+		public String TagName => _elem.TagName.ToLowerInvariant();
 
 		public void Click()
 		{
@@ -38,6 +39,11 @@ namespace A2v10.Tests.Browser
 		public void Enter()
 		{
 			_elem.SendKeys(Keys.Enter);
+		}
+
+		public void Clear()
+		{
+			_elem.Clear();
 		}
 
 		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)
