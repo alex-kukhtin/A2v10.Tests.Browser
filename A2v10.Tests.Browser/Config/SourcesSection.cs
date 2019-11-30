@@ -74,6 +74,13 @@ namespace A2v10.Tests.Browser
 			get { return (String)this["password"]; }
 			set { this["password"] = value; }
 		}
+
+		[ConfigurationProperty("company", IsRequired = false)]
+		public String company
+		{
+			get { return (String)this["company"]; }
+			set { this["company"] = value; }
+		}
 	}
 
 }

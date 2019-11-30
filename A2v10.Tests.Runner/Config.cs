@@ -23,6 +23,7 @@ namespace A2v10.Tests.Runner
 		public String Url => _source.url;
 		public String Login => _source.login;
 		public String Password => _source.password;
+		public String CompanyName => _source.company;
 
 
 		public static void CreateConfig(SourceElement source, String appDir)

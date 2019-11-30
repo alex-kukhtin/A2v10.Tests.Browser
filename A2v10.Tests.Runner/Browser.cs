@@ -1,5 +1,6 @@
 ﻿
 using A2v10.Tests.Browser;
+using A2v10.Tests.Browser.Xaml;
 using System;
 using System.Threading.Tasks;
 
@@ -33,6 +34,7 @@ namespace A2v10.Tests.Runner
 			var config = Config.Current;
 			_browser.Start(config.Url);
 			_browser.Login(config.Login, config.Password);
+			SwicthToCompany(_browser, config.CompanyName); 
 		}
 
 		public void RunAll()
@@ -46,6 +48,7 @@ namespace A2v10.Tests.Runner
 			var config = Config.Current;
 			_current._browser.Restart(config.Url);
 			_current._browser.Login(config.Login, config.Password);
+			SwicthToCompany(_current._browser, config.CompanyName);
 		}
 
 		public void RunOne(String futureFile, Action<IRunScenario> run)
@@ -61,6 +64,19 @@ namespace A2v10.Tests.Runner
 			_browser = null;
 			if (browser != null)
 				browser.Dispose();
+		}
+
+		static void SwicthToCompany(ChromeBrowser browser, String companyName)
+		{
+			if (String.IsNullOrEmpty(companyName))
+				return;
+			var f = new Feature();
+			var s = new Scenario();
+			var c = new SelectCompany();
+			c.Text = companyName;
+			s.Steps.Add(c);
+			f.Scenarios.Add(s);
+			f.RunAll(browser, (r) => { });
 		}
 	}
 }

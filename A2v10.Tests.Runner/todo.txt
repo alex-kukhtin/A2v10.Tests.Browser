@@ -1,11 +1,10 @@
 ﻿WebDriver source:
 https://sites.google.com/a/chromium.org/chromedriver/
 
-Latest stable release: ChromeDriver 78.0.3904.70
+Latest stable release: ChromeDriver 78.0.3904.105
 
 4. Ensure DropDown (MenuItems)
 14. Show state in status bar
-14. ClickAddOn Icon
 15. Линия красаня.зеленая
 16. About elements (Version, Copyright, selenium licenses links)
 18. Diagram
