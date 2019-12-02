@@ -24,7 +24,7 @@ namespace A2v10.Tests.Browser.Xaml
 						throw new TestException($"Invalid window title. Actual:'{newWindow.Title}', expected: '{Title}'");
 
 				if (!String.IsNullOrEmpty(Url))
-					if (newWindow.Url != Url)
+					if (newWindow.Url.ToLowerInvariant() != Url.ToLowerInvariant())
 						throw new TestException($"Invalid window url. Actual:'{newWindow.Url}', expected: '{Url}'");
 
 				var scope = newWindow.GetElementsByClassName("shell")[0];

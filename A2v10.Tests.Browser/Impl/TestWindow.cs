@@ -58,7 +58,7 @@ namespace A2v10.Tests.Browser
 		private String GetUrl()
 		{
 			var uri = new Uri(_driver.Url);
-			return uri.LocalPath;
+			return uri.PathAndQuery;
 		}
 	}
 }
