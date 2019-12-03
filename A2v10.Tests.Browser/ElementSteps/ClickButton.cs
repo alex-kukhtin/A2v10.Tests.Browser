@@ -16,6 +16,8 @@ namespace A2v10.Tests.Browser.Xaml
 				xPath = $".//button[contains(@class,'btn')][normalize-space()={Text.XPathText()}]";
 			else if (Icon != null)
 				xPath = $".//button[contains(@class,'btn')]/i[contains(@class, 'ico-{Icon.ToKebabCase()}')]";
+			else
+				throw new TestException("ClickButton. Attributes 'Text' or 'Icon' are required");
 			browser.Click(control.GetElementByXPath(xPath));
 		}
 	}

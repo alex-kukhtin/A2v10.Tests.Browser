@@ -47,6 +47,7 @@
     <Compile Include="ElementSteps\Clear.cs" />
     <Compile Include="ElementSteps\ClickCompany.cs" />
     <Compile Include="ElementSteps\Open.cs" />
+    <Compile Include="Elements\Button.cs" />
     <Compile Include="Elements\ListItem.cs" />
     <Compile Include="Elements\Page.cs" />
     <Compile Include="Elements\TreeView.cs" />
