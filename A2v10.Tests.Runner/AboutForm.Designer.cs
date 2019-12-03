@@ -28,9 +28,15 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.Windows.Forms.Label label1;
+			System.Windows.Forms.Label label2;
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.picIcon = new System.Windows.Forms.PictureBox();
-			this.label1 = new System.Windows.Forms.Label();
+			this.lblVersion = new System.Windows.Forms.Label();
+			this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+			this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+			label1 = new System.Windows.Forms.Label();
+			label2 = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -55,13 +61,61 @@
 			// 
 			// label1
 			// 
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.label1.Location = new System.Drawing.Point(68, 12);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(118, 15);
-			this.label1.TabIndex = 2;
-			this.label1.Text = "A2v10 Tests Runner";
+			label1.AutoSize = true;
+			label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			label1.Location = new System.Drawing.Point(68, 12);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(118, 15);
+			label1.TabIndex = 2;
+			label1.Text = "A2v10 Tests Runner";
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			label2.Location = new System.Drawing.Point(68, 47);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(288, 15);
+			label2.TabIndex = 3;
+			label2.Text = "Copyright © 2019 Alex A. Kukhtin. All rights reserved.";
+			// 
+			// lblVersion
+			// 
+			this.lblVersion.AutoSize = true;
+			this.lblVersion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.lblVersion.Location = new System.Drawing.Point(68, 27);
+			this.lblVersion.Name = "lblVersion";
+			this.lblVersion.Size = new System.Drawing.Size(53, 15);
+			this.lblVersion.TabIndex = 4;
+			this.lblVersion.Text = "{Version}";
+			// 
+			// linkLabel1
+			// 
+			this.linkLabel1.AutoSize = true;
+			this.linkLabel1.LinkArea = new System.Windows.Forms.LinkArea(15, 6);
+			this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
+			this.linkLabel1.Location = new System.Drawing.Point(68, 102);
+			this.linkLabel1.Name = "linkLabel1";
+			this.linkLabel1.Size = new System.Drawing.Size(132, 21);
+			this.linkLabel1.TabIndex = 5;
+			this.linkLabel1.TabStop = true;
+			this.linkLabel1.Text = "Source code on GitHub";
+			this.linkLabel1.UseCompatibleTextRendering = true;
+			this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+			// 
+			// linkLabel2
+			// 
+			this.linkLabel2.AutoSize = true;
+			this.linkLabel2.LinkArea = new System.Windows.Forms.LinkArea(18, 35);
+			this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
+			this.linkLabel2.Location = new System.Drawing.Point(68, 123);
+			this.linkLabel2.Name = "linkLabel2";
+			this.linkLabel2.Size = new System.Drawing.Size(318, 21);
+			this.linkLabel2.TabIndex = 6;
+			this.linkLabel2.TabStop = true;
+			this.linkLabel2.Text = "This program uses Selenium automated browser software";
+			this.linkLabel2.UseCompatibleTextRendering = true;
+			this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
 			// 
 			// AboutForm
 			// 
@@ -69,7 +123,11 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
 			this.ClientSize = new System.Drawing.Size(408, 241);
-			this.Controls.Add(this.label1);
+			this.Controls.Add(this.linkLabel2);
+			this.Controls.Add(this.linkLabel1);
+			this.Controls.Add(this.lblVersion);
+			this.Controls.Add(label2);
+			this.Controls.Add(label1);
 			this.Controls.Add(this.picIcon);
 			this.Controls.Add(this.btnCancel);
 			this.DoubleBuffered = true;
@@ -82,7 +140,8 @@
 			this.ShowIcon = false;
 			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-			this.Text = "About";
+			this.Text = "About A2v10 Tests Runner";
+			this.Load += new System.EventHandler(this.AboutForm_Load);
 			((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -93,6 +152,8 @@
 
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.PictureBox picIcon;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label lblVersion;
+		private System.Windows.Forms.LinkLabel linkLabel1;
+		private System.Windows.Forms.LinkLabel linkLabel2;
 	}
 }

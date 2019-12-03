@@ -22,8 +22,8 @@ namespace A2v10.Tests.Browser.Xaml
 			var scope = control.GetElementByXPath(xPath);
 
 			var tn = scope.TagName;
-			if (tn != "input" && tn != "textarea")
-				throw new TestException($"Invalid element '{tn}'. Expected 'input' or 'textarea'");
+			if (tn != "input" && tn != "textarea" && tn != "span")
+				throw new TestException($"Invalid element '{tn}'. Expected 'input' or 'textarea' or 'span'");
 
 
 			foreach (var step in Steps)
