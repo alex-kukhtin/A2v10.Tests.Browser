@@ -265,5 +265,12 @@ namespace A2v10.Tests.Runner
 			Config.CreateConfig(src, AppDir);
 			Browser.Restart();
 		}
+
+		private void treeView_NodeMouseDoubleClick(Object sender, TreeNodeMouseClickEventArgs e)
+		{
+			var sn = treeView.SelectedNode;
+			if (sn.IsFeature())
+				RunOne(sn);
+		}
 	}
 }

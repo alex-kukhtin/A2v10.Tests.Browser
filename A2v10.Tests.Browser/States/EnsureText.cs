@@ -15,7 +15,10 @@ namespace A2v10.Tests.Browser.Xaml
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
 			Thread.Sleep(20); // vue set focus
+			var tagName = elem.TagName;
 			var txt = elem.Text;
+			if (tagName == "textarea")
+				txt = elem.GetAttribute("value");
 			if (txt != Text)
 				throw new TestException($"Text mismatch. Actual: '{txt}', expected: '{Text}'");
 		}

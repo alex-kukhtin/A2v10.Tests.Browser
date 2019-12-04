@@ -21,6 +21,7 @@ namespace A2v10.Tests.Browser.Xaml
 				DeclareVariable(d.Name, d.Value);
 			}
 
+			browser.Escape();
 			foreach (var sc in Scenarios)
 			{
 				var helper = browser.StartScenario(sc.Name, sc.Description);

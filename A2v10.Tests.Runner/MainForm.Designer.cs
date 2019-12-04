@@ -201,6 +201,7 @@
 			this.treeView.Size = new System.Drawing.Size(406, 649);
 			this.treeView.TabIndex = 0;
 			this.treeView.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.TreeViewAfterSelect);
+			this.treeView.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView_NodeMouseDoubleClick);
 			// 
 			// webBrowser1
 			// 
