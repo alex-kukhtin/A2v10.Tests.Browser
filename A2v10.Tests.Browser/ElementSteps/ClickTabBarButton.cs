@@ -12,7 +12,7 @@ namespace A2v10.Tests.Browser.Xaml
 		{
 			String xPath = null;
 			if (Text != null)
-				xPath = $".//div[contains(@class,'a2-tab-bar-item')]/a[contains(@class,'a2-tab-button')]/span[contains(@class,'content')][normalize-space()='{Text}']";
+				xPath = $".//div[contains(@class,'a2-tab-bar-item')]/a[contains(@class,'a2-tab-button')]/span[contains(@class,'content')][normalize-space()='{Text.XPathText()}']";
 			browser.Click(control.GetElementByXPath(xPath));
 		}
 	}
