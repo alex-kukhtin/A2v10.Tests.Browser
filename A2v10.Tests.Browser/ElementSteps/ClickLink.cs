@@ -15,7 +15,7 @@ namespace A2v10.Tests.Browser.Xaml
 			if (Url != null)
 				xPath = $".//a[@href='{Url.Trim()}']";
 			else if (Text != null)
-				xPath = $".//a[normalize-space()='{Text}']";
+				xPath = $".//a[normalize-space()='{Text.XPathText()}']";
 			else if (TestId != null)
 				xPath = $".//a[@test-id='{TestId}']";
 			var elem = control.GetElementByXPath(xPath);
