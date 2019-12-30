@@ -30,13 +30,14 @@
 		{
 			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
+			System.Windows.Forms.ToolStripLabel lblHost;
+			System.Windows.Forms.ToolStripLabel lblSource;
 			this.mainToolStrip = new System.Windows.Forms.ToolStrip();
 			this.toolRunOne = new System.Windows.Forms.ToolStripButton();
 			this.toolRunAll = new System.Windows.Forms.ToolStripButton();
 			this.toolStop = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolHelp = new System.Windows.Forms.ToolStripButton();
-			this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
 			this.toolHosts = new System.Windows.Forms.ToolStripComboBox();
 			this.toolReload = new System.Windows.Forms.ToolStripButton();
 			this.mainStatusBar = new System.Windows.Forms.StatusStrip();
@@ -45,6 +46,9 @@
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.treeView = new System.Windows.Forms.TreeView();
 			this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+			this.toolSources = new System.Windows.Forms.ToolStripComboBox();
+			lblHost = new System.Windows.Forms.ToolStripLabel();
+			lblSource = new System.Windows.Forms.ToolStripLabel();
 			this.mainToolStrip.SuspendLayout();
 			this.mainStatusBar.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -62,8 +66,10 @@
             this.toolStop,
             this.toolStripSeparator1,
             this.toolHelp,
-            this.toolStripLabel1,
+            lblHost,
             this.toolHosts,
+            lblSource,
+            this.toolSources,
             this.toolReload});
 			this.mainToolStrip.Location = new System.Drawing.Point(0, 0);
 			this.mainToolStrip.Name = "mainToolStrip";
@@ -114,18 +120,18 @@
 			this.toolHelp.Size = new System.Drawing.Size(23, 20);
 			this.toolHelp.Click += new System.EventHandler(this.OnAbout);
 			// 
-			// toolStripLabel1
+			// lblHost
 			// 
-			this.toolStripLabel1.Name = "toolStripLabel1";
-			this.toolStripLabel1.Size = new System.Drawing.Size(45, 20);
-			this.toolStripLabel1.Text = "source:";
+			lblHost.Name = "lblHost";
+			lblHost.Size = new System.Drawing.Size(33, 20);
+			lblHost.Text = "host:";
 			// 
 			// toolHosts
 			// 
 			this.toolHosts.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.toolHosts.Margin = new System.Windows.Forms.Padding(1, 0, 5, 0);
+			this.toolHosts.Margin = new System.Windows.Forms.Padding(1, 0, 10, 0);
 			this.toolHosts.Name = "toolHosts";
-			this.toolHosts.Size = new System.Drawing.Size(220, 23);
+			this.toolHosts.Size = new System.Drawing.Size(150, 23);
 			this.toolHosts.SelectedIndexChanged += new System.EventHandler(this.toolHosts_SelectedIndexChanged);
 			// 
 			// toolReload
@@ -216,6 +222,19 @@
 			this.webBrowser1.Url = new System.Uri("", System.UriKind.Relative);
 			this.webBrowser1.WebBrowserShortcutsEnabled = false;
 			// 
+			// toolSources
+			// 
+			this.toolSources.Margin = new System.Windows.Forms.Padding(1, 0, 10, 0);
+			this.toolSources.Name = "toolSources";
+			this.toolSources.Size = new System.Drawing.Size(220, 23);
+			this.toolSources.SelectedIndexChanged += new System.EventHandler(this.toolSources_SelectedIndexChanged);
+			// 
+			// lblSource
+			// 
+			lblSource.Name = "lblSource";
+			lblSource.Size = new System.Drawing.Size(45, 20);
+			lblSource.Text = "source:";
+			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -260,8 +279,8 @@
 		private System.Windows.Forms.ToolStripButton toolReload;
 		private System.Windows.Forms.ToolStripButton toolStop;
 		private System.Windows.Forms.ToolStripButton toolHelp;
-		private System.Windows.Forms.ToolStripLabel toolStripLabel1;
 		private System.Windows.Forms.ToolStripComboBox toolHosts;
+		private System.Windows.Forms.ToolStripComboBox toolSources;
 	}
 }
 

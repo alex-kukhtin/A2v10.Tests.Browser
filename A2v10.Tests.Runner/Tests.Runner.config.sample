@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <configuration>
 	<configSections>
-		<section name="sources" allowDefinition="Everywhere" type="A2v10.Tests.Browser.SourcesSection, A2v10.Tests.Browser"/>
+		<section name="sources" allowDefinition="Everywhere" type="A2v10.Tests.Browser.HostsSection, A2v10.Tests.Browser"/>
 	</configSections>
-	<sources>
-		<source name="first test set" directory="test_directory1" url="url_here" login="login_here" password="password_hrere"/>
-		<source name="second test set" directory="test_directory2" url="url_here" login="login_here" password="password_hrere"/>
-	</sources>
+	<hosts>
+		<host name="host 1">
+			<source name="first test set" directory="test_directory1" url="url_here" login="login_here" password="password_hrere"/>
+			<source name="second test set" directory="test_directory2" url="url_here" login="login_here" password="password_hrere"/>
+		</host>
+	</hosts>
 </configuration>

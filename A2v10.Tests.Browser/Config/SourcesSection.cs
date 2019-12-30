@@ -4,17 +4,32 @@ using System.Configuration;
 
 namespace A2v10.Tests.Browser
 {
-	public class SourcesSection : ConfigurationSection
+	public class HostsSection: ConfigurationSection
 	{
 		[ConfigurationProperty("", IsDefaultCollection = true)]
-		public SourcesCollection sources
+		public HostsCollection hosts => (HostsCollection)base[String.Empty];
+
+	}
+
+	[ConfigurationCollection(typeof(SourceElement), AddItemName = "host", CollectionType = ConfigurationElementCollectionType.BasicMap)]
+	public class HostsCollection : ConfigurationElementCollection
+	{
+		protected override ConfigurationElement CreateNewElement()
 		{
-			get
-			{
-				return (SourcesCollection)base[String.Empty];
-			}
+			return new HostElement();
+		}
+
+		protected override object GetElementKey(ConfigurationElement element)
+		{
+			return ((HostElement)element).name;
+		}
+
+		public HostElement GetSource(String key)
+		{
+			return (HostElement)BaseGet(key);
 		}
 	}
+
 
 	[ConfigurationCollection(typeof(SourceElement), AddItemName = "source", CollectionType = ConfigurationElementCollectionType.BasicMap)]
 	public class SourcesCollection : ConfigurationElementCollection
@@ -38,11 +53,10 @@ namespace A2v10.Tests.Browser
 
 	public class SourceElement : ConfigurationElement
 	{
-
 		[ConfigurationProperty("name", IsKey = true, IsRequired = true)]
 		public String name
 		{
-			get { return (String) this["name"]; }
+			get { return (String)this["name"]; }
 			set { this["name"] = value; }
 		}
 
@@ -83,4 +97,21 @@ namespace A2v10.Tests.Browser
 		}
 	}
 
+
+	public class HostElement : ConfigurationElement
+	{
+		[ConfigurationProperty("name", IsKey = true, IsRequired = true)]
+		public String name
+		{
+			get { return (String)this["name"]; }
+			set { this["name"] = value; }
+		}
+
+		[ConfigurationProperty("", IsRequired = true, IsDefaultCollection = true)]
+		public SourcesCollection sources
+		{
+			get { return (SourcesCollection)this[String.Empty]; }
+			set { this[String.Empty] = value; }
+		}
+	}
 }

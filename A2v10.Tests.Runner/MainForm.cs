@@ -16,16 +16,16 @@ namespace A2v10.Tests.Runner
 
 		public String AppDir { get; set; }
 
-		private SourcesCollection _sources {get; }
+		private HostsCollection _hosts {get; }
 		private String _appRoot { get; set; }
 
 		private ThreadQueue _threadQueue;
 		private Int32 _countThreads;
 
-		public MainForm(SourcesCollection sources, String appRoot)
+		public MainForm(HostsCollection hosts, String appRoot)
 		{
 			InitializeComponent();
-			_sources = sources;
+			_hosts = hosts;
 			_appRoot = appRoot;
 		}
 
@@ -190,10 +190,10 @@ namespace A2v10.Tests.Runner
 
 		void LoadHosts()
 		{
-			foreach (var s in _sources)
+			foreach (var s in _hosts)
 			{
-				var src = s as SourceElement;
-				toolHosts.Items.Add(src.name);
+				var src = s as HostElement;
+				Int32 index = toolHosts.Items.Add(src.name);
 			}
 			if (toolHosts.Items.Count > 0)
 				toolHosts.SelectedIndex = 0;
@@ -253,17 +253,37 @@ namespace A2v10.Tests.Runner
 			(new AboutForm()).ShowDialog(this);
 		}
 
+		private void toolSources_SelectedIndexChanged(Object sender, EventArgs e)
+		{
+			var hostIndex = toolHosts.SelectedIndex;
+			String hostName = toolHosts.Items[hostIndex].ToString();
+			var host = _hosts.GetSource(hostName);
+
+			var sourceIndex = toolSources.SelectedIndex;
+			String sourceName = toolSources.Items[sourceIndex].ToString();
+			var source = host.sources.GetSource(sourceName);
+
+			AppDir = Path.Combine(_appRoot, source.directory);
+
+			OnReload(null, null);
+			Config.CreateConfig(source, AppDir);
+			Browser.Restart();
+
+		}
+
 		private void toolHosts_SelectedIndexChanged(Object sender, EventArgs e)
 		{
 			var index = toolHosts.SelectedIndex;
 			String text = toolHosts.Items[index].ToString();
-			SourceElement src = _sources.GetSource(text);
-
-			AppDir = Path.Combine(_appRoot, src.directory);
-
-			OnReload(null, null);
-			Config.CreateConfig(src, AppDir);
-			Browser.Restart();
+			var host = _hosts.GetSource(text);
+			toolSources.Items.Clear();
+			foreach (var h in host.sources)
+			{
+				var hs = h as SourceElement;
+				toolSources.Items.Add(hs.name);
+			}
+			if (toolSources.Items.Count > 0)
+				toolSources.SelectedIndex = 0;
 		}
 
 		private void treeView_NodeMouseDoubleClick(Object sender, TreeNodeMouseClickEventArgs e)

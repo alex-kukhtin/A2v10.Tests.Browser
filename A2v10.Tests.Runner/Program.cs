@@ -29,18 +29,27 @@ namespace A2v10.Tests.Runner
 				ExeConfigFilename = configPath
 			};
 
-			var config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
-			SourcesCollection sources = null;
-			if ((config.Sections["sources"] is SourcesSection ss))
-				sources = ss.sources;
-			else {
-				MessageBox.Show($"Invalid configuration file (configPath)");
+			HostsCollection _hosts = null;
+			try
+			{
+				var config = ConfigurationManager.OpenMappedExeConfiguration(configMap, ConfigurationUserLevel.None);
+				if ((config.Sections["hosts"] is HostsSection hs))
+					_hosts = hs.hosts;
+				else
+				{
+					MessageBox.Show("Invalid configuration file (configPath)");
+					return;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"Config error: {ex.Message}");
 				return;
 			}
 
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new MainForm(sources, path));
+			Application.Run(new MainForm(_hosts, path));
 		}
 	}
 }

@@ -154,6 +154,12 @@
         yFlb4+sfqQ2Lx5g3Y1O10+kgYScAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="lblHost.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
+  <metadata name="lblSource.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>False</value>
+  </metadata>
   <data name="toolReload.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -176,7 +182,7 @@
         AAEAAAD/////AQAAAAAAAAAMAgAAAFdTeXN0ZW0uV2luZG93cy5Gb3JtcywgVmVyc2lvbj00LjAuMC4w
         LCBDdWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkFAQAAACZTeXN0
         ZW0uV2luZG93cy5Gb3Jtcy5JbWFnZUxpc3RTdHJlYW1lcgEAAAAERGF0YQcCAgAAAAkDAAAADwMAAABG
-        EwAAAk1TRnQBSQFMAgEBBgEAAXgBAAF4AQABEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
+        EwAAAk1TRnQBSQFMAgEBBgEAAYABAAGAAQABEAEAARABAAT/ARkBAAj/AUIBTQE2BwABNgMAASgDAAFA
         AwABIAMAAQEBAAEYBgABGFQAA/cG8QP0qAAD/gzyAeEBwAGQAd8BuQF/AfAB7wHuA/MD8gP1A/5yABj2
         EgAD+AHtAecB3QHZAakBYQHoAdUBuQPxAd4BtwF+Ad0BtAF3AfAB7QHpAe0B5QHZAeMBxwGeAe8B6gHi
         A/lvAAb2A5wDTQZCA00DnAb2DwAD9wHrAd8BzQHaAaQBWAHjAcYBmwPxAfAB7gHsAfAB7QHpA/EB6gHc
