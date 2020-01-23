@@ -7,11 +7,12 @@ using System.Windows.Markup;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public abstract class CheckBoxStep : ElementStep
+	public interface ICheckBoxStep
 	{
+		// marker
 	}
 
-	public class Checked : CheckBoxStep
+	public class Checked : ElementStep, ICheckBoxStep 
 	{
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
@@ -21,7 +22,7 @@ namespace A2v10.Tests.Browser.Xaml
 		}
 	}
 
-	public class Unchecked : CheckBoxStep
+	public class Unchecked : ElementStep, ICheckBoxStep
 	{
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
@@ -31,7 +32,7 @@ namespace A2v10.Tests.Browser.Xaml
 		}
 	}
 
-	public class Check : CheckBoxStep
+	public class Check : ElementStep, ICheckBoxStep
 	{
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
@@ -41,11 +42,11 @@ namespace A2v10.Tests.Browser.Xaml
 				return; // already checked
 			var elem = control.GetElementByXPath("./parent::label");
 			elem.Click();
-			Thread.Sleep(50); // Vue
+			WaitClient();
 		}
 	}
 
-	public class Uncheck : CheckBoxStep
+	public class Uncheck : ElementStep, ICheckBoxStep
 	{
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
@@ -55,11 +56,11 @@ namespace A2v10.Tests.Browser.Xaml
 				return; // already unchecked
 			var elem = control.GetElementByXPath("./parent::label");
 			elem.Click();
-			Thread.Sleep(50); // Vue
+			WaitClient();
 		}
 	}
 
-	public class CheckBoxRadioStepsCollection : List<CheckBoxStep>
+	public class CheckBoxRadioStepsCollection : List<ICheckBoxStep>
 	{
 	}
 
@@ -83,7 +84,8 @@ namespace A2v10.Tests.Browser.Xaml
 
 			foreach (var step in Steps)
 			{
-				step.ElementRun(root, browser, scope);
+				if (step is ElementStep es)
+					es.ElementRun(root, browser, scope);
 			}
 		}
 	}

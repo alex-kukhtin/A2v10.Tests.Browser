@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace A2v10.Tests.Browser.Xaml
 {
-	public class Disabled: ElementStep
+	public class Disabled: ElementStep, ICheckBoxStep
 	{
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
