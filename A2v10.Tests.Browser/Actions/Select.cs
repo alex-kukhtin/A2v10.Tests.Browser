@@ -17,7 +17,7 @@ namespace A2v10.Tests.Browser.Xaml
 			{
 				// current is select
 				if (!String.IsNullOrEmpty(Text))
-					xPath = $"./option[normalize-space()='{Text.XPathText()}']";
+					xPath = $"./option[normalize-space()={Text.XPathText()}]";
 				var item = elem.GetElementByXPath(xPath);
 				item.Click();
 				browser.WaitForComplete();
@@ -27,7 +27,7 @@ namespace A2v10.Tests.Browser.Xaml
 			{
 				// current = selector pane
 				if (!String.IsNullOrEmpty(Text))
-					xPath = $"./div[@class='selector-body']/ul[@class='selector-ul']/li[normalize-space()='{Text.XPathText()}']";
+					xPath = $"./div[@class='selector-body']/ul[@class='selector-ul']/li[normalize-space()={Text.XPathText()}]";
 				var item = elem.GetElementByXPath(xPath);
 				item.Click();
 				browser.WaitForComplete();
@@ -45,7 +45,7 @@ namespace A2v10.Tests.Browser.Xaml
 			// current = selector pane
 			String xPath = String.Empty;
 			if (!String.IsNullOrEmpty(Text))
-				xPath = $"./div[@class='selector-body']//table//td/span[normalize-space()='{Text.XPathText()}']";
+				xPath = $"./div[@class='selector-body']//table//td/span[normalize-space()={Text.XPathText()}]";
 			var item = elem.GetElementByXPath(xPath);
 			item.Click();
 		}

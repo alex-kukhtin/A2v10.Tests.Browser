@@ -30,7 +30,7 @@ namespace A2v10.Tests.Browser.Xaml
 			}
 			else if (!String.IsNullOrEmpty(Text))
 			{
-				var cell = elem.GetElementByXPath($".//tr[contains(@class, 'dg-row')]/td//span[normalize-space()='{Text.XPathText()}']/ancestor::tr");
+				var cell = elem.GetElementByXPath($".//tr[contains(@class, 'dg-row')]/td//span[normalize-space()={Text.XPathText()}]/ancestor::tr");
 				cell.Click();
 				Thread.Sleep(100); // Vue
 				row = cell;
