@@ -14,11 +14,15 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
-			Thread.Sleep(20); // vue set focus
+			WaitClient();
 			var tagName = elem.TagName;
 			var txt = elem.Text;
 			if (tagName == "textarea")
 				txt = elem.GetAttribute("value");
+			else if (tagName == "select")
+			{
+				txt = elem.GetElementByXPath("./../div[@class='select-wrapper']")?.Text;
+			}
 			if (txt != Text)
 				throw new TestException($"Text mismatch. Actual: '{txt}', expected: '{Text}'");
 		}
@@ -31,8 +35,12 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
-			elem.Click();
-			Thread.Sleep(20); // vue set focus
+			var dis = elem.GetAttribute("disabled");
+			if (dis == null)
+			{
+				elem.Click();
+				WaitClient();
+			}
 			var val = elem.Text.ToDecimal();
 			if (val != Number)
 				throw new TestException($"Number mismatch. Actual: '{val}', expected: '{Number}'");
@@ -46,8 +54,12 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
-			elem.Click();
-			Thread.Sleep(20); // vue set focus
+			var dis = elem.GetAttribute("disabled");
+			if (dis == null)
+			{
+				elem.Click();
+				WaitClient();
+			}
 			var val = elem.Text.ToDate();
 			if (Today)
 			{

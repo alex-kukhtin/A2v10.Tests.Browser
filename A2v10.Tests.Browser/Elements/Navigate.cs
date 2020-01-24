@@ -1,4 +1,4 @@
-﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
 
 using System;
 using System.Windows.Markup;
@@ -14,7 +14,7 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement control)
 		{
-			browser.Navigate(Url);
+			browser.Navigate(Url.ResolveValue(root));
 			Steps.ElementsRun(root, browser, control);
 		}
 	}

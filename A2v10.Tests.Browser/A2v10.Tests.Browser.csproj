@@ -42,11 +42,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\SelectPeriod.cs" />
     <Compile Include="Base\Container.cs" />
+    <Compile Include="Base\Enums.cs" />
     <Compile Include="Config\SourcesSection.cs" />
-    <Compile Include="ElementSteps\Clear.cs" />
-    <Compile Include="ElementSteps\ClickCompany.cs" />
-    <Compile Include="ElementSteps\Open.cs" />
+    <Compile Include="Actions\Clear.cs" />
+    <Compile Include="Actions\ClickCompany.cs" />
+    <Compile Include="Actions\Open.cs" />
     <Compile Include="Elements\Button.cs" />
     <Compile Include="Elements\ListItem.cs" />
     <Compile Include="Elements\Page.cs" />
@@ -54,9 +56,9 @@
     <Compile Include="Elements\TreeView.cs" />
     <Compile Include="Elements\Tab.cs" />
     <Compile Include="States\Disabled.cs" />
-    <Compile Include="ElementSteps\Click.cs" />
+    <Compile Include="Actions\Click.cs" />
     <Compile Include="States\EnsureEmpty.cs" />
-    <Compile Include="ElementSteps\EnterText.cs" />
+    <Compile Include="Actions\EnterText.cs" />
     <Compile Include="States\EnsureText.cs" />
     <Compile Include="Elements\CheckBox.cs" />
     <Compile Include="Impl\TestPrintWindow.cs" />
@@ -71,7 +73,7 @@
     <Compile Include="Elements\NavBar.cs" />
     <Compile Include="Elements\SideBar.cs" />
     <Compile Include="Elements\Hyperlink.cs" />
-    <Compile Include="ElementSteps\WaitForComplete.cs" />
+    <Compile Include="Actions\WaitForComplete.cs" />
     <Compile Include="Impl\ChromeBrowser.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
     <Compile Include="Interfaces\IRootElement.cs" />
@@ -87,25 +89,25 @@
     <Compile Include="DataGridSteps\DataGridStep.cs" />
     <Compile Include="DataGridSteps\DataGridRow.cs" />
     <Compile Include="Base\Declare.cs" />
-    <Compile Include="ElementSteps\ClickCaret.cs" />
-    <Compile Include="ElementSteps\Select.cs" />
+    <Compile Include="Actions\ClickCaret.cs" />
+    <Compile Include="Actions\Select.cs" />
     <Compile Include="Elements\SelectorPane.cs" />
     <Compile Include="States\Invalid.cs" />
     <Compile Include="States\Valid.cs" />
-    <Compile Include="ElementSteps\Enter.cs" />
-    <Compile Include="ElementSteps\TypeText.cs" />
-    <Compile Include="ElementSteps\ElementStep.cs" />
+    <Compile Include="Actions\Enter.cs" />
+    <Compile Include="Actions\TypeText.cs" />
+    <Compile Include="Actions\ElementStep.cs" />
     <Compile Include="Extensions\XPathExtensions.cs" />
     <Compile Include="Root\Feature.cs" />
     <Compile Include="Loader.cs" />
     <Compile Include="Root\Scenario.cs" />
     <Compile Include="Base\Step.cs" />
-    <Compile Include="ElementSteps\ClickAddOn.cs" />
-    <Compile Include="ElementSteps\ClickListItem.cs" />
-    <Compile Include="ElementSteps\ClickTabBarButton.cs" />
-    <Compile Include="ElementSteps\ClickMenuItem.cs" />
-    <Compile Include="ElementSteps\ClickLink.cs" />
-    <Compile Include="ElementSteps\ClickButton.cs" />
+    <Compile Include="Actions\ClickAddOn.cs" />
+    <Compile Include="Actions\ClickListItem.cs" />
+    <Compile Include="Actions\ClickTabBarButton.cs" />
+    <Compile Include="Actions\ClickMenuItem.cs" />
+    <Compile Include="Actions\ClickLink.cs" />
+    <Compile Include="Actions\ClickButton.cs" />
     <Compile Include="Elements\DataGrid.cs" />
     <Compile Include="Elements\Control.cs" />
     <Compile Include="Elements\Confirm.cs" />
@@ -115,7 +117,7 @@
     <Compile Include="Elements\Dialog.cs" />
     <Compile Include="Elements\EnsureDialog.cs" />
     <Compile Include="Elements\DropDown.cs" />
-    <Compile Include="ElementSteps\Escape.cs" />
+    <Compile Include="Actions\Escape.cs" />
     <Compile Include="Elements\Navigate.cs" />
     <Compile Include="Elements\OpenUrl.cs" />
     <Compile Include="Base\XamlItem.cs" />

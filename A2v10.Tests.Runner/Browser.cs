@@ -34,7 +34,8 @@ namespace A2v10.Tests.Runner
 			var config = Config.Current;
 			_browser.Start(config.Url);
 			_browser.Login(config.Login, config.Password);
-			SwicthToCompany(_browser, config.CompanyName); 
+			SwitchToCompany(_browser, config.CompanyName);
+			SwitchToPeriod(_browser, config.Period);
 		}
 
 		public void RunAll()
@@ -48,7 +49,8 @@ namespace A2v10.Tests.Runner
 			var config = Config.Current;
 			_current._browser.Restart(config.Url);
 			_current._browser.Login(config.Login, config.Password);
-			SwicthToCompany(_current._browser, config.CompanyName);
+			SwitchToCompany(_current._browser, config.CompanyName);
+			SwitchToPeriod(_current._browser, config.Period);
 		}
 
 		public void RunOne(String futureFile, Action<IRunScenario> run)
@@ -66,7 +68,7 @@ namespace A2v10.Tests.Runner
 				browser.Dispose();
 		}
 
-		static void SwicthToCompany(ChromeBrowser browser, String companyName)
+		static void SwitchToCompany(ChromeBrowser browser, String companyName)
 		{
 			if (String.IsNullOrEmpty(companyName))
 				return;
@@ -74,6 +76,19 @@ namespace A2v10.Tests.Runner
 			var s = new Scenario();
 			var c = new SelectCompany();
 			c.Text = companyName;
+			s.Steps.Add(c);
+			f.Scenarios.Add(s);
+			f.RunAll(browser, (r) => { });
+		}
+
+		static void SwitchToPeriod(ChromeBrowser browser, String period)
+		{
+			if (String.IsNullOrEmpty(period))
+				return;
+			var f = new Feature();
+			var s = new Scenario();
+			var c = new SelectPeriod();
+			c.Text = period;
 			s.Steps.Add(c);
 			f.Scenarios.Add(s);
 			f.RunAll(browser, (r) => { });

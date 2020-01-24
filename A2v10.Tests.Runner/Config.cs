@@ -24,6 +24,7 @@ namespace A2v10.Tests.Runner
 		public String Login => _source.login;
 		public String Password => _source.password;
 		public String CompanyName => _source.company;
+		public String Period => _source.period;
 
 
 		public static void CreateConfig(SourceElement source, String appDir)

@@ -1,4 +1,4 @@
-﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
 
 using System;
 using System.Globalization;
@@ -21,6 +21,19 @@ namespace A2v10.Tests.Browser.Xaml
 			if (DateTime.TryParseExact(str, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt))
 				return dt;
 			throw new TestException($"Invalid date value: {str}");
+		}
+
+		public static String ToStringFormat(this DateTime date, DateFormat fmt)
+		{
+			switch (fmt)
+			{
+				case DateFormat.Default:
+					return date.ToString("dd.MM.yyyy");
+				case DateFormat.DateUrl:
+					return date.ToString("yyyyMMdd");
+				default:
+					throw new TestException($"Invalid date format: {fmt.ToString()}");
+			}
 		}
 
 		public static String ToKebabCase(this String s, String delim = "-")

@@ -1,4 +1,5 @@
-﻿
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
+
 using System;
 using System.Configuration;
 
@@ -94,6 +95,13 @@ namespace A2v10.Tests.Browser
 		{
 			get { return (String)this["company"]; }
 			set { this["company"] = value; }
+		}
+
+		[ConfigurationProperty(nameof(period), IsRequired = false)]
+		public String period
+		{
+			get { return (String)this[nameof(period)]; }
+			set { this[nameof(period)] = value; }
 		}
 	}
 
