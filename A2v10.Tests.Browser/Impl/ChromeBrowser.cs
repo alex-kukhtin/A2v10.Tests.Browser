@@ -1,4 +1,4 @@
-﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Threading;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Interactions;
 
 namespace A2v10.Tests.Browser
 {
@@ -139,6 +140,15 @@ namespace A2v10.Tests.Browser
 			WaitForComplete();
 			Thread.Sleep(50); // Vue
 			EnsureNoAppException();
+		}
+		
+		public void AdvancedClick(ITestElement elem, Int32 x = 0, Int32 y = 0)
+		{
+			var act = new Actions(_driver);
+			act.MoveToElement(elem.RawElement, x, y, MoveToElementOffsetOrigin.TopLeft)
+			.Click()
+			.Build()
+			.Perform();
 		}
 
 		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)

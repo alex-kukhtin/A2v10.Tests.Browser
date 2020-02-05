@@ -1,8 +1,8 @@
-﻿
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
+
+using System;
 using A2v10.Tests.Browser;
 using A2v10.Tests.Browser.Xaml;
-using System;
-using System.Threading.Tasks;
 
 namespace A2v10.Tests.Runner
 {
@@ -74,8 +74,9 @@ namespace A2v10.Tests.Runner
 				return;
 			var f = new Feature();
 			var s = new Scenario();
-			var c = new SelectCompany();
-			c.Text = companyName;
+			var c = new SelectCompany() {
+				Text = companyName
+			};
 			s.Steps.Add(c);
 			f.Scenarios.Add(s);
 			f.RunAll(browser, (r) => { });
@@ -87,8 +88,10 @@ namespace A2v10.Tests.Runner
 				return;
 			var f = new Feature();
 			var s = new Scenario();
-			var c = new SelectPeriod();
-			c.Text = period;
+			var c = new SelectPeriod()
+			{
+				Text = period
+			};
 			s.Steps.Add(c);
 			f.Scenarios.Add(s);
 			f.RunAll(browser, (r) => { });

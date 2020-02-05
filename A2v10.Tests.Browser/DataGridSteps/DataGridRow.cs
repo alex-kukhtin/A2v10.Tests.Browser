@@ -1,7 +1,6 @@
-﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
 
 using System;
-using System.Threading;
 using System.Windows.Markup;
 
 namespace A2v10.Tests.Browser.Xaml
@@ -24,21 +23,29 @@ namespace A2v10.Tests.Browser.Xaml
 				var result = browser.ExecuteScript(script);
 				if (result == null || result != "success")
 					throw new TestException($"Could not select element with id='{id}'");
-				Thread.Sleep(100); // Vue
+				WaitClient();
 
 				row = elem.GetElementByXPath(".//tr[contains(@class, 'dg-row') and contains(@class, 'active')]");
 			}
 			else if (!String.IsNullOrEmpty(Text))
 			{
-				var cell = elem.GetElementByXPath($".//tr[contains(@class, 'dg-row')]/td//span[normalize-space()={Text.XPathText()}]/ancestor::tr");
+				row = elem.GetElementByXPath($".//tr[contains(@class, 'dg-row')]/td//span[normalize-space()={Text.XPathText()}]/ancestor::tr");
+
+				var cell = row.TryGetElementByXPath("./td[@class='details-marker']");
+				if (cell == null)
+					cell = row.TryGetElementByXPath("./td/span[@class='dg-cell']/..");
+				if (cell == null)
+					cell = row.TryGetElementByXPath("./td/span[contains(@class, 'span-sum')]/..");
+				if (cell == null)
+					throw new TestException("Could not find applicable cell in DataGridRow");
 				cell.Click();
-				Thread.Sleep(100); // Vue
-				row = cell;
-				//row = cell.GetElementByXPath("./ancestor::tr");
+				WaitClient();
 			}
 
 			if (row == null)
+			{
 				throw new TestException("DataGridRow. Attributes 'Id' or 'Text' are required");
+			}
 
 
 			foreach (var step in Steps)

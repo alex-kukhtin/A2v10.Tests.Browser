@@ -1,9 +1,7 @@
-﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
 
-using OpenQA.Selenium;
 using System;
-using System.Threading;
-using System.Windows.Markup;
+using OpenQA.Selenium;
 
 namespace A2v10.Tests.Browser.Xaml
 {
@@ -12,10 +10,10 @@ namespace A2v10.Tests.Browser.Xaml
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
 			String script =
-				"return document.querySelector('print-preview-app').shadowRoot" +
-				".querySelector('#sidebar').shadowRoot"+
-				".querySelector('print-preview-button-strip').shadowRoot"+
-				".querySelector('cr-button.cancel-button')";
+@"return document.querySelector('print-preview-app').shadowRoot
+	.querySelector('#sidebar').shadowRoot
+	.querySelector('print-preview-button-strip').shadowRoot
+	.querySelector('cr-button.cancel-button');";
 
 			var cancelButton = browser.ExecuteScriptObject(script);
 			if (cancelButton is IWebElement cancelElem)

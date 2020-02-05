@@ -1,7 +1,6 @@
-﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
 
 using System;
-using System.Collections.Generic;
 
 namespace A2v10.Tests.Browser
 {
@@ -23,6 +22,7 @@ namespace A2v10.Tests.Browser
 		void GotoUrl(String url);
 		void Navigate(String url);
 		void Click(ITestElement elem);
+		void AdvancedClick(ITestElement elem, Int32 x = 0, Int32 y = 0);
 		void Escape();
 		IWindow GetLastNewWindow();
 		IPrintWindow GetPrintWindow();

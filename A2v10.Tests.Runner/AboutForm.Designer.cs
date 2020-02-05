@@ -40,6 +40,26 @@
 			((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
 			this.SuspendLayout();
 			// 
+			// label1
+			// 
+			label1.AutoSize = true;
+			label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			label1.Location = new System.Drawing.Point(68, 12);
+			label1.Name = "label1";
+			label1.Size = new System.Drawing.Size(118, 15);
+			label1.TabIndex = 2;
+			label1.Text = "A2v10 Tests Runner";
+			// 
+			// label2
+			// 
+			label2.AutoSize = true;
+			label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			label2.Location = new System.Drawing.Point(68, 47);
+			label2.Name = "label2";
+			label2.Size = new System.Drawing.Size(317, 15);
+			label2.TabIndex = 3;
+			label2.Text = "Copyright © 2019-2020 Alex A. Kukhtin. All rights reserved.";
+			// 
 			// btnCancel
 			// 
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -58,26 +78,6 @@
 			this.picIcon.Size = new System.Drawing.Size(50, 50);
 			this.picIcon.TabIndex = 1;
 			this.picIcon.TabStop = false;
-			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			label1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			label1.Location = new System.Drawing.Point(68, 12);
-			label1.Name = "label1";
-			label1.Size = new System.Drawing.Size(118, 15);
-			label1.TabIndex = 2;
-			label1.Text = "A2v10 Tests Runner";
-			// 
-			// label2
-			// 
-			label2.AutoSize = true;
-			label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			label2.Location = new System.Drawing.Point(68, 47);
-			label2.Name = "label2";
-			label2.Size = new System.Drawing.Size(288, 15);
-			label2.TabIndex = 3;
-			label2.Text = "Copyright © 2019 Alex A. Kukhtin. All rights reserved.";
 			// 
 			// lblVersion
 			// 

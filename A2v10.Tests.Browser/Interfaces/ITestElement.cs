@@ -1,6 +1,7 @@
-﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
 
 using System;
+using OpenQA.Selenium;
 
 namespace A2v10.Tests.Browser
 {
@@ -14,5 +15,8 @@ namespace A2v10.Tests.Browser
 		void Clear();
 		String TagName { get; }
 		String GetAttribute(String name);
+		IWebElement RawElement { get; }
+
+		ITestElement TryGetElementByXPath(String xPath);
 	}
 }

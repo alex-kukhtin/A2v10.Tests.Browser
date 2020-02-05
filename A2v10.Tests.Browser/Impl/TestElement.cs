@@ -1,4 +1,4 @@
-﻿// Copyright © 2019 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -19,6 +19,7 @@ namespace A2v10.Tests.Browser
 		#region ITestElement
 		public String Text => GetElementText();
 		public String TagName => _elem.TagName.ToLowerInvariant();
+		public IWebElement RawElement => _elem;
 
 		public void Click()
 		{
@@ -44,6 +45,18 @@ namespace A2v10.Tests.Browser
 		public void Clear()
 		{
 			_elem.Clear();
+		}
+
+		public ITestElement TryGetElementByXPath(String xPath)
+		{
+			try
+			{
+				var elem = _elem.FindElement(By.XPath(xPath));
+				return new TestElement(elem);
+			}
+			catch (Exception ex) {
+				return null;
+			}
 		}
 
 		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)
