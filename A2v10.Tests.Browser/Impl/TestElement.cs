@@ -21,20 +21,39 @@ namespace A2v10.Tests.Browser
 		public String TagName => _elem.TagName.ToLowerInvariant();
 		public IWebElement RawElement => _elem;
 
-		public void Click()
+		public void Click(Boolean checkEnabled = true)
 		{
-			if (!_elem.Enabled)
+			if (checkEnabled && !_elem.Enabled)
 				throw new TestException($"Element is not currently enabled and so may not be interacted with");
 			_elem.Click();
+		}
+
+		public Boolean IsSame(ITestElement elem)
+		{
+			return _elem.Equals(elem.RawElement);
 		}
 
 		public void TypeText(String text)
 		{
 			if (!_elem.Enabled)
 				throw new TestException($"Element is not currently enabled and so may not be interacted with");
-			_elem.Click();
-			Thread.Sleep(50); // vue set focus
-			_elem.SendKeys(text);
+			if (text == null)
+				return;
+			if (_elem.GetAttribute("class").Contains("trigger-input"))
+			{
+				Thread.Sleep(300); // needed!
+				foreach (var t in text)
+				{
+					var sKey = new String(t, 1);
+					_elem.SendKeys(sKey);
+					Thread.Sleep(10);
+				}
+			}
+			else
+			{
+				_elem.SendKeys(text);
+			}
+			Thread.Sleep(50);
 		}
 
 		public void Enter()
@@ -54,7 +73,7 @@ namespace A2v10.Tests.Browser
 				var elem = _elem.FindElement(By.XPath(xPath));
 				return new TestElement(elem);
 			}
-			catch (Exception ex) {
+			catch (Exception /*ex*/) {
 				return null;
 			}
 		}

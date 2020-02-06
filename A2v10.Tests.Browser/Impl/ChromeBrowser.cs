@@ -151,6 +151,14 @@ namespace A2v10.Tests.Browser
 			.Perform();
 		}
 
+		public ITestElement ActiveElement() {
+			var elem = _driver.SwitchTo().ActiveElement();
+			if (elem != null)
+				return new TestElement(elem);
+			return null;
+		}
+
+
 		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)
 		{
 			EnsureDriver();

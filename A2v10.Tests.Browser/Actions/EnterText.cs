@@ -13,6 +13,12 @@ namespace A2v10.Tests.Browser.Xaml
 
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
+			var active = browser.ActiveElement();
+			if (!active.IsSame(elem))
+			{
+				elem.Click();
+				WaitClient();
+			}
 			elem.TypeText(Text);
 			elem.Enter();
 		}

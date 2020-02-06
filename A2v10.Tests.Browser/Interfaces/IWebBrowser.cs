@@ -29,7 +29,7 @@ namespace A2v10.Tests.Browser
 		String ExecuteScript(String script);
 		Object ExecuteScriptObject(String script);
 		void WaitForComplete();
-
+		ITestElement ActiveElement();
 		IRunScenario StartScenario(String name, String description);
 	}
 }

@@ -9,13 +9,14 @@ namespace A2v10.Tests.Browser
 	{
 		String Text { get; }
 
-		void Click();
+		void Click(Boolean checkEnabled = true);
 		void TypeText(String text);
 		void Enter();
 		void Clear();
 		String TagName { get; }
 		String GetAttribute(String name);
 		IWebElement RawElement { get; }
+		Boolean IsSame(ITestElement elem);
 
 		ITestElement TryGetElementByXPath(String xPath);
 	}
