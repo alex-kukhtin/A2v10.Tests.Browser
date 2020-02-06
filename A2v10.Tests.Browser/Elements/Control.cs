@@ -25,8 +25,6 @@ namespace A2v10.Tests.Browser.Xaml
 			if (tn != "input" && tn != "textarea" && tn != "span")
 				throw new TestException($"Invalid element '{tn}'. Expected 'input' or 'textarea' or 'span'");
 
-			scope.Click(checkEnabled:false);
-
 			foreach (var step in Steps)
 			{
 				step.ElementRun(root, browser, scope);
