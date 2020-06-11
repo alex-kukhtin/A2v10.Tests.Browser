@@ -76,14 +76,14 @@ namespace A2v10.Tests.Browser
 		}
 
 
-		[ConfigurationProperty("login", IsRequired = true)]
+		[ConfigurationProperty("login", IsRequired = false)]
 		public String login
 		{
 			get { return (String)this["login"]; }
 			set { this["login"] = value; }
 		}
 
-		[ConfigurationProperty("password", IsRequired = true)]
+		[ConfigurationProperty("password", IsRequired = false)]
 		public String password
 		{
 			get { return (String)this["password"]; }

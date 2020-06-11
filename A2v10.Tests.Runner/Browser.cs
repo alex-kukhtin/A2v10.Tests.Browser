@@ -33,7 +33,8 @@ namespace A2v10.Tests.Runner
 			_browser = new ChromeBrowser();
 			var config = Config.Current;
 			_browser.Start(config.Url);
-			_browser.Login(config.Login, config.Password);
+			if (!String.IsNullOrEmpty(config.Login) && !String.IsNullOrEmpty(config.Password))
+				_browser.Login(config.Login, config.Password);
 			SwitchToCompany(_browser, config.CompanyName);
 			SwitchToPeriod(_browser, config.Period);
 		}
