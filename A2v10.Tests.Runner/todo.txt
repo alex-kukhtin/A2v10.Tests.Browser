@@ -1,7 +1,7 @@
 ﻿WebDriver source:
 https://sites.google.com/a/chromium.org/chromedriver/
 
-Latest stable release: ChromeDriver 85.0.4183.87
+Latest stable release: ChromeDriver 87.0.4280.20
 
 4. Ensure DropDown (MenuItems)
 14. Show state in status bar
