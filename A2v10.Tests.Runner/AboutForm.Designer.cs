@@ -58,7 +58,7 @@
 			label2.Name = "label2";
 			label2.Size = new System.Drawing.Size(317, 15);
 			label2.TabIndex = 3;
-			label2.Text = "Copyright © 2019-2020 Alex A. Kukhtin. All rights reserved.";
+			label2.Text = "Copyright © 2019-2021 Alex A. Kukhtin. All rights reserved.";
 			// 
 			// btnCancel
 			// 
