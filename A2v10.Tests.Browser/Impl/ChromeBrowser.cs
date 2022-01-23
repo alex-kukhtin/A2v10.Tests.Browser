@@ -1,4 +1,4 @@
-﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2022 Alex Kukhtin. All rights reserved.
 
 using System;
 using System.Collections.Generic;
@@ -46,13 +46,13 @@ namespace A2v10.Tests.Browser
 
 		public void Login(String login, String passsword)
 		{
-			var inputLogin = _driver.FindElementById("login");
+			var inputLogin = _driver.FindElement(By.Id("login"));
 			inputLogin.SendKeys(login);
 
-			var inputPassword = _driver.FindElementById("password");
+			var inputPassword = _driver.FindElement(By.Id("password"));
 			inputPassword.SendKeys(passsword);
 
-			var btnSubmit = _driver.FindElementById("submit");
+			var btnSubmit = _driver.FindElement(By.Id("submit"));
 			btnSubmit.Click();
 			WaitForComplete();
 		}
@@ -74,8 +74,8 @@ namespace A2v10.Tests.Browser
 				{
 					var rs = _driver.ExecuteScript("return window.__tests__ && window.__tests__.$isReady();");
 					Debug.WriteLine(rs);
-					if (rs is Boolean)
-						readyState = (Boolean)rs;
+					if (rs is Boolean boolRs)
+						readyState = boolRs;
 					if (readyState)
 					{
 						Thread.Sleep(50); // Vue
@@ -95,7 +95,7 @@ namespace A2v10.Tests.Browser
 
 		public void EnsureNoAppException()
 		{
-			var exceptions = _driver.FindElementsByClassName("app-exception");
+			var exceptions = _driver.FindElements(By.ClassName("app-exception"));
 			if (exceptions != null && exceptions.Count > 0)
 			{
 				var text = exceptions[0]?.FindElement(By.ClassName("message"))?.Text;
@@ -162,14 +162,14 @@ namespace A2v10.Tests.Browser
 		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)
 		{
 			EnsureDriver();
-			var elem = _driver.FindElementByXPath(xPath);
+			var elem = _driver.FindElement(By.XPath(xPath));
 			return new TestElement(elem);
 		}
 
 		public IReadOnlyList<ITestElement> GetElementsByXPath(String xPath)
 		{
 			EnsureDriver();
-			var elems = _driver.FindElementsByXPath(xPath);
+			var elems = _driver.FindElements(By.XPath(xPath));
 			var result = new List<ITestElement>();
 			foreach (var e in elems)
 				result.Add(new TestElement(e));
@@ -179,7 +179,7 @@ namespace A2v10.Tests.Browser
 		public IReadOnlyList<ITestElement> GetElementsByClassName(String className)
 		{
 			EnsureDriver();
-			var elems = _driver.FindElementsByClassName(className);
+			var elems = _driver.FindElements(By.ClassName(className));
 			var result = new List<ITestElement>();
 			foreach (var e in elems)
 				result.Add(new TestElement(e));
@@ -189,7 +189,7 @@ namespace A2v10.Tests.Browser
 		public void Escape()
 		{
 			EnsureDriver();
-			var body = _driver.FindElementByTagName("body");
+			var body = _driver.FindElement(By.TagName("body"));
 			body?.SendKeys(Keys.Escape);
 		}
 

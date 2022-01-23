@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 namespace A2v10.Tests.Browser
@@ -20,7 +21,7 @@ namespace A2v10.Tests.Browser
 	
 		public IReadOnlyList<ITestElement> GetElementsByXPath(String xPath)
 		{
-			var elems = _driver.FindElementsByXPath(xPath);
+			var elems = _driver.FindElements(By.XPath(xPath));
 			var result = new List<ITestElement>();
 			foreach (var e in elems)
 				result.Add(new TestElement(e));
@@ -29,7 +30,7 @@ namespace A2v10.Tests.Browser
 
 		public IReadOnlyList<ITestElement> GetElementsByClassName(String className)
 		{
-			var elems = _driver.FindElementsByClassName(className);
+			var elems = _driver.FindElements(By.ClassName(className));
 			var result = new List<ITestElement>();
 			foreach (var e in elems)
 				result.Add(new TestElement(e));
@@ -38,7 +39,7 @@ namespace A2v10.Tests.Browser
 
 		public ITestElement GetElementByXPath(String xPath, Boolean checkVisibility = true)
 		{
-			var elem = _driver.FindElementByXPath(xPath);
+			var elem = _driver.FindElement(By.XPath(xPath));
 			return new TestElement(elem);
 		}
 
