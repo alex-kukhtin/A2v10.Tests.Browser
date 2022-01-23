@@ -1,6 +1,7 @@
-﻿// Copyright © 2019-2020 Alex Kukhtin. All rights reserved.
+﻿// Copyright © 2019-2022 Alex Kukhtin. All rights reserved.
 
 using System;
+using System.Threading;
 using OpenQA.Selenium;
 
 namespace A2v10.Tests.Browser.Xaml
@@ -9,6 +10,7 @@ namespace A2v10.Tests.Browser.Xaml
 	{
 		public override void ElementRun(IRootElement root, IWebBrowser browser, ITestElement elem)
 		{
+			Thread.Sleep(50); // Chrome
 			String script =
 @"return document.querySelector('print-preview-app').shadowRoot
 	.querySelector('#sidebar').shadowRoot
@@ -18,6 +20,8 @@ namespace A2v10.Tests.Browser.Xaml
 			var cancelButton = browser.ExecuteScriptObject(script);
 			if (cancelButton is IWebElement cancelElem)
 				cancelElem.Click();
+			else
+				throw new ElementNotInteractableException("Cancel button in print window");
 		}
 	}
 }
