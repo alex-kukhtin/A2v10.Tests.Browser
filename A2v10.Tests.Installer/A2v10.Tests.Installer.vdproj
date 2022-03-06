@@ -76,6 +76,18 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_A6C1D43ECD32DF00B5DE0E59ADB91063"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_73A6E2B5C045949B28FB9EBB98BC4F55"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -89,18 +101,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_8B4513D2D6BC470F789227F8BDE6DF7C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A6C1D43ECD32DF00B5DE0E59ADB91063"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -397,7 +397,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7041.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7042.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F380DE6E619F478A993003843CF23ADE"
@@ -480,15 +480,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:A2v10 Tests Runner"
-        "ProductCode" = "8:{10FC4C27-1BD0-49C5-9020-01AC6F23F14A}"
-        "PackageCode" = "8:{A5B82B3E-C067-4DF0-BA4A-E07D470B7B14}"
+        "ProductCode" = "8:{191AE716-1483-4DB3-AEAA-EAF860B0E792}"
+        "PackageCode" = "8:{540D7713-AF78-497D-9398-95380B311DD7}"
         "UpgradeCode" = "8:{C4D96370-4C3E-4F12-BB6D-D6F92A87AFAF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:10.0.7041"
+        "ProductVersion" = "8:10.0.7042"
         "Manufacturer" = "8:Oleksandr Kukhtin"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
