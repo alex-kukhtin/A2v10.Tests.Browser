@@ -145,7 +145,7 @@ namespace A2v10.Tests.Browser
 		public void AdvancedClick(ITestElement elem, Int32 x = 0, Int32 y = 0)
 		{
 			var act = new Actions(_driver);
-			act.MoveToElement(elem.RawElement, x, y, MoveToElementOffsetOrigin.TopLeft)
+			act.MoveToElement(elem.RawElement, x, y)//, MoveToElementOffsetOrigin.TopLeft)
 			.Click()
 			.Build()
 			.Perform();
