@@ -21,14 +21,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
-        "OwnerKey" = "8:_A6C1D43ECD32DF00B5DE0E59ADB91063"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_5A7C5AADCA29774EC987BC97579CBB12"
-        "OwnerKey" = "8:_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
+        "OwnerKey" = "8:_B55E4A914865BAB120BE99A817FCC194"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -40,7 +34,13 @@
         "Entry"
         {
         "MsmKey" = "8:_73A6E2B5C045949B28FB9EBB98BC4F55"
-        "OwnerKey" = "8:_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
+        "OwnerKey" = "8:_B55E4A914865BAB120BE99A817FCC194"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_880AFCCC5834A52A09A2757155B2654F"
+        "OwnerKey" = "8:_F380DE6E619F478A993003843CF23ADE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -52,13 +52,13 @@
         "Entry"
         {
         "MsmKey" = "8:_8B4513D2D6BC470F789227F8BDE6DF7C"
-        "OwnerKey" = "8:_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
+        "OwnerKey" = "8:_B55E4A914865BAB120BE99A817FCC194"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_A6C1D43ECD32DF00B5DE0E59ADB91063"
-        "OwnerKey" = "8:_F380DE6E619F478A993003843CF23ADE"
+        "MsmKey" = "8:_B55E4A914865BAB120BE99A817FCC194"
+        "OwnerKey" = "8:_880AFCCC5834A52A09A2757155B2654F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -70,19 +70,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_8B4513D2D6BC470F789227F8BDE6DF7C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_F380DE6E619F478A993003843CF23ADE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_A6C1D43ECD32DF00B5DE0E59ADB91063"
+        "OwnerKey" = "8:_880AFCCC5834A52A09A2757155B2654F"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
+        "OwnerKey" = "8:_B55E4A914865BAB120BE99A817FCC194"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -95,12 +101,6 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_5A7C5AADCA29774EC987BC97579CBB12"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_8B4513D2D6BC470F789227F8BDE6DF7C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -190,7 +190,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:.NETFramework,Version=v4.6.1"
+                "FrameworkVersion" = "8:v4.6.1 "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=671728"
                 }
@@ -216,37 +216,6 @@
             "Register" = "3:1"
             "Exclude" = "11:TRUE"
             "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WebDriver, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_3BC41CA6D4EE9CA9CCB4AF18ADE5567F"
-                    {
-                    "Name" = "8:WebDriver.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:WebDriver.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_50FDA4D23476485F88FC7EAC22B6B720"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5A7C5AADCA29774EC987BC97579CBB12"
@@ -276,7 +245,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -327,7 +296,38 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_880AFCCC5834A52A09A2757155B2654F"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Browser, Version=10.0.7046.0, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_880AFCCC5834A52A09A2757155B2654F"
+                    {
+                    "Name" = "8:A2v10.Tests.Browser.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:A2v10.Tests.Browser.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_50FDA4D23476485F88FC7EAC22B6B720"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -358,24 +358,24 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A6C1D43ECD32DF00B5DE0E59ADB91063"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_B55E4A914865BAB120BE99A817FCC194"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Browser, Version=10.0.7043.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:WebDriver, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_A6C1D43ECD32DF00B5DE0E59ADB91063"
+                    "_B55E4A914865BAB120BE99A817FCC194"
                     {
-                    "Name" = "8:A2v10.Tests.Browser.dll"
+                    "Name" = "8:WebDriver.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:A2v10.Tests.Browser.dll"
+            "SourcePath" = "8:WebDriver.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_50FDA4D23476485F88FC7EAC22B6B720"
@@ -397,7 +397,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7043.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7046.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F380DE6E619F478A993003843CF23ADE"
@@ -480,15 +480,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:A2v10 Tests Runner"
-        "ProductCode" = "8:{F3450238-35C2-410B-8780-08E96892A756}"
-        "PackageCode" = "8:{A1C53F81-1DEE-4037-A2E5-1AABBCB430B9}"
+        "ProductCode" = "8:{031B23F8-D40B-4712-A6E3-0E6F3F0928EE}"
+        "PackageCode" = "8:{B829FAE3-40E0-4D40-A215-B58538E3AB34}"
         "UpgradeCode" = "8:{C4D96370-4C3E-4F12-BB6D-D6F92A87AFAF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:10.0.7044"
+        "ProductVersion" = "8:10.0.7046"
         "Manufacturer" = "8:Oleksandr Kukhtin"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

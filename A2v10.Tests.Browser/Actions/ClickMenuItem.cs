@@ -14,7 +14,7 @@ namespace A2v10.Tests.Browser.Xaml
 			if (Text != null)
 				xPath = $".//button[contains(@class,'dropdown-item')][normalize-space()={Text.XPathText()}]";
 			browser.Click(control.GetElementByXPath(xPath));
-			browser.Escape();
+			//browser.Escape(); ????
 		}
 	}
 }

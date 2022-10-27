@@ -22,7 +22,7 @@ namespace A2v10.Tests.Browser.Xaml
 
 			var windows = browser.GetElementsByXPath(xPath);
 			if (windows.Count == 0)
-				throw new TestException("Element with class 'modal_window' not found");
+				throw new TestException("Element with class 'modal-window' not found");
 			var lastWindow = windows[windows.Count - 1];
 
 			if (!String.IsNullOrEmpty(Title))
