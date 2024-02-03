@@ -81,12 +81,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_6DF20966B119C01C14DB35ECDFDD3CD9"
-        "OwnerKey" = "8:_B55E4A914865BAB120BE99A817FCC194"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_73A6E2B5C045949B28FB9EBB98BC4F55"
         "OwnerKey" = "8:_E99B243EE20D3DAE491D9C0F38560251"
         "MsmSig" = "8:_UNDEFINED"
@@ -280,12 +274,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6DF20966B119C01C14DB35ECDFDD3CD9"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_765B104247039A8B40403B794C19EA5A"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -376,7 +364,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:v4.6.1       "
+                "FrameworkVersion" = "8:v4.6.1        "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=671728"
                 }
@@ -703,37 +691,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6DF20966B119C01C14DB35ECDFDD3CD9"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Drawing.Common, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_6DF20966B119C01C14DB35ECDFDD3CD9"
-                    {
-                    "Name" = "8:System.Drawing.Common.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:System.Drawing.Common.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_50FDA4D23476485F88FC7EAC22B6B720"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_73A6E2B5C045949B28FB9EBB98BC4F55"
             {
             "AssemblyRegister" = "3:1"
@@ -800,7 +757,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Browser, Version=10.0.7051.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Browser, Version=10.0.7052.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_880AFCCC5834A52A09A2757155B2654F"
@@ -1079,7 +1036,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7051.0, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:A2v10.Tests.Runner, Version=10.0.7052.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_F380DE6E619F478A993003843CF23ADE"
@@ -1162,15 +1119,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:A2v10 Tests Runner"
-        "ProductCode" = "8:{CBEC83EF-C748-478D-8D05-B895DAEA97BE}"
-        "PackageCode" = "8:{EA6E4FAA-4918-4070-A67A-9997C717C33B}"
+        "ProductCode" = "8:{B18E250E-D58F-45F4-A832-74118A9CDFE3}"
+        "PackageCode" = "8:{BBF4CA66-81F2-4869-AA6F-23D66B28C371}"
         "UpgradeCode" = "8:{C4D96370-4C3E-4F12-BB6D-D6F92A87AFAF}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:10.0.7052"
+        "ProductVersion" = "8:10.0.7053"
         "Manufacturer" = "8:Oleksandr Kukhtin"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
