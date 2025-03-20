@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("A2v10.Tests.Browser")]
-[assembly: AssemblyCopyright("Copyright © 2019-2024 Oleksandr Kukhtin. All rights reserved.")]
+[assembly: AssemblyCopyright("Copyright © 2019-2025 Oleksandr Kukhtin. All rights reserved.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("10.0.7058.0")]
-[assembly: AssemblyFileVersion("10.0.7058.0")]
+[assembly: AssemblyVersion("10.0.7059.0")]
+[assembly: AssemblyFileVersion("10.0.7059.0")]
